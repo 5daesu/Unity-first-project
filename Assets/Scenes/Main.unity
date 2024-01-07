@@ -494,7 +494,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &693857657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,7 +507,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 759e3731728db4340b29ce219d6cbd18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lv1_Container: []
+  Lv1_Container:
+  - {fileID: 11400000, guid: 9507b92646b6b6244a740cda80929550, type: 2}
   Lv2_Container: []
   Lv3_Container: []
   Lv4_Container: []
@@ -1442,5 +1443,5 @@ SceneRoots:
   - {fileID: 1154051485}
   - {fileID: 542498176}
   - {fileID: 1012954259}
-  - {fileID: 693857658}
   - {fileID: 1830022004}
+  - {fileID: 693857658}
