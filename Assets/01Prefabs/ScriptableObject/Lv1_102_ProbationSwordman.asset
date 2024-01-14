@@ -15,7 +15,7 @@ MonoBehaviour:
   unitName: Lv1_ProbationSwordman
   unitCode: 2
   unitLevel: 1
-  blankModel: {fileID: 2345010499524777885, guid: b57f5fa8239d2bb40981efb9807dddeb, type: 3}
+  blankModel: {fileID: 914631993699149358, guid: b57f5fa8239d2bb40981efb9807dddeb, type: 3}
   unitImage: {fileID: 0}
   MergeRecipe: 
   MergeNumber: 

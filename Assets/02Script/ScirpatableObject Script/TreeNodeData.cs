@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu]
 public class TreeNodeData : ScriptableObject
@@ -9,7 +10,7 @@ public class TreeNodeData : ScriptableObject
     public int unitCode;
     public int unitLevel;
     public GameObject blankModel;
-    public Sprite unitImage;
+    public Image unitImage;
 
     public int[] MergeRecipe;  //int is for unitcode
     public int[] MergeNumber;
