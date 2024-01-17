@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RoutingManager : MonoBehaviour
 {
-    public List<Node> finalNodeList;    //save determined route
+    public List<Node> finalNodeList;        //save determined route
+    private List<Node> supposedNodeList;    //
     public Node startNode, targetNode;
     Node curNode;   //current Node
     List<Node> openList, closeList;
@@ -12,10 +13,9 @@ public class RoutingManager : MonoBehaviour
     public bool CheckPath(Node selectedNode)    //true = can go, false = cant go
     {
         selectedNode.grid.castle = true;    //if the grid has caslte
+        SupposedPathFinding();
 
-        PathFinding();
-
-        if (finalNodeList.Count == 0)   //there's no path
+        if (supposedNodeList.Count == 0)   //there's no path
         {
             selectedNode.grid.castle = false;   //undo supposition
             return false;
@@ -56,6 +56,49 @@ public class RoutingManager : MonoBehaviour
                 }
                 finalNodeList.Add(startNode);
                 finalNodeList.Reverse();
+
+                //for (int i = 0; i < finalNodeList.Count; i++) Debug.Log(i + "번째는" + finalNodeList[i].grid.i_Row + "행" + finalNodeList[i].grid.i_Column + "렬입니다.");
+                return;
+            }
+
+            OpenListAdd(curNode.grid.i_Row + 1, curNode.grid.i_Column);
+            OpenListAdd(curNode.grid.i_Row, curNode.grid.i_Column + 1);
+            OpenListAdd(curNode.grid.i_Row - 1, curNode.grid.i_Column);
+            OpenListAdd(curNode.grid.i_Row, curNode.grid.i_Column - 1);
+        }
+    }
+
+    public void SupposedPathFinding()   //for build castle, check something block to targetNode by supposing
+    {
+        startNode = ManagerGrouping.managerGrouping.ggM.nodeArray[0, 0];
+        targetNode = ManagerGrouping.managerGrouping.ggM.nodeArray[ManagerGrouping.managerGrouping.ggM.row - 1, ManagerGrouping.managerGrouping.ggM.column - 1];
+
+        openList = new List<Node>() { startNode };
+        closeList = new List<Node>();
+        supposedNodeList = new List<Node>();
+
+        if (startNode.grid.castle == true) return;  //ban building in startNode
+
+        while (openList.Count > 0)
+        {
+            curNode = openList[0];
+            for (int i = 1; i < openList.Count; i++)
+            {
+                if (openList[i].value_F <= curNode.value_F && openList[i].value_H < curNode.value_H) curNode = openList[i];
+            }
+            openList.Remove(curNode);
+            closeList.Add(curNode);
+
+            if (curNode == targetNode)
+            {
+                Node targetCurNode = targetNode;
+                while (targetCurNode != startNode)
+                {
+                    supposedNodeList.Add(targetCurNode);
+                    targetCurNode = targetCurNode.parentNode;
+                }
+                supposedNodeList.Add(startNode);
+                supposedNodeList.Reverse();
 
                 //for (int i = 0; i < finalNodeList.Count; i++) Debug.Log(i + "번째는" + finalNodeList[i].grid.i_Row + "행" + finalNodeList[i].grid.i_Column + "렬입니다.");
                 return;
