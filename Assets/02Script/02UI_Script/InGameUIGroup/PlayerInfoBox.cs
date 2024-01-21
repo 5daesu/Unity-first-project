@@ -5,16 +5,18 @@ using UnityEngine.UI;
 
 public class PlayerInfoBox : MonoBehaviour
 {
-    public PlayerInfoManager piM;
+    public PlayerManager piM;
     public Text playerMoneyText;
+    public Text playerHpText;
 
     void Update()
     {
-        UpdateMoneyValue(); 
+        UpdateTextValue(); 
     }
 
-    public void UpdateMoneyValue()
+    public void UpdateTextValue()
     {
         playerMoneyText.text = piM.playerMoney.ToString() + " Gold";
+        playerHpText.text = piM.playerHp.ToString();
     }
 }

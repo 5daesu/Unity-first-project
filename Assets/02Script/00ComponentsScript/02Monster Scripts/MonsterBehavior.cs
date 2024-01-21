@@ -9,7 +9,7 @@ public class MonsterBehavior : MonoBehaviour
 
     float maxHp;
     float curHp;
-    int def;
+    float def;
     float speed;
     int rewardMoney;
 
@@ -17,17 +17,16 @@ public class MonsterBehavior : MonoBehaviour
 
     void Start()
     {
-        maxHp = gameObject.GetComponent<MonsterStatus>().maxHp;
-        def = gameObject.GetComponent<MonsterStatus>().def;
-        speed = gameObject.GetComponent<MonsterStatus>().spd;
-        rewardMoney = gameObject.GetComponent<MonsterStatus>().rewardMoney;
+        maxHp = gameObject.GetComponent<MonsterInfo>().maxHp;
+        def = gameObject.GetComponent<MonsterInfo>().startDef;
+        speed = gameObject.GetComponent<MonsterInfo>().spd;
+        rewardMoney = gameObject.GetComponent<MonsterInfo>().cost;
 
         curHp = maxHp;
         hpSlider.value = curHp / maxHp;
         i = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         MovePath();
@@ -36,10 +35,9 @@ public class MonsterBehavior : MonoBehaviour
 
     void MovePath()
     {
-        transform.position = Vector2.MoveTowards(transform.position, ManagerGrouping.managerGrouping.rtM.finalNodeList[i + 1].grid.myPosition, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, ManagerGrouping.managerGrouping.rtM.finalNodeList[i + 1].grid.transform.position, speed * Time.deltaTime);
 
-        if (transform.position == ManagerGrouping.managerGrouping.rtM.finalNodeList[i + 1].grid.myPosition) i++;
-
+        if (transform.position == ManagerGrouping.managerGrouping.rtM.finalNodeList[i + 1].grid.transform.position) i++;
     }
 
     public void GetDamage(bool attackType, float beforeDamage)
@@ -67,7 +65,11 @@ public class MonsterBehavior : MonoBehaviour
 
     void CheckArrival()
     {
-        if (transform.position == ManagerGrouping.managerGrouping.rtM.targetNode.grid.myPosition) DeActivation();
+        if (transform.position == ManagerGrouping.managerGrouping.rtM.targetNode.grid.transform.position)
+        {
+            ManagerGrouping.managerGrouping.piM.ChangeHp(true, 1);
+            DeActivation();
+        }
     }
 
     void DeActivation()

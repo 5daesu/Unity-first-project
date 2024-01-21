@@ -69,7 +69,7 @@ public class StageManager : MonoBehaviour
         ManagerGrouping.managerGrouping.rtM.PathFinding();
 
         curMonster = stageMonsters[curStage - 1];
-        int curMonsterCost = curMonster.GetComponent<MonsterStatus>().cost;
+        int curMonsterCost = curMonster.GetComponent<MonsterInfo>().cost;
         Debug.Log(curMonsterCost);
 
         StartCoroutine(GenerateMonster(curMonsterCost));

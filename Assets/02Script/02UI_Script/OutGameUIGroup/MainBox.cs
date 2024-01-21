@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainBox : MonoBehaviour
 {
@@ -20,19 +21,19 @@ public class MainBox : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
 
-    public void OnClickEnterGame()
+    public void OnClickStartGame()
     {
-
+        SceneManager.LoadScene("InGame");
     }
 
     public void OnClickDeckBuilding()
     {
-        deckBuildingBox.SetActive(true);
+        if (!deckBuildingBox.activeSelf) deckBuildingBox.SetActive(true);
+        else deckBuildingBox.GetComponent<SmoothMove>().Callmove();
     }
 }

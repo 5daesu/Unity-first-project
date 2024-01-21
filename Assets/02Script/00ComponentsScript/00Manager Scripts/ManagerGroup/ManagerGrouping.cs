@@ -10,7 +10,7 @@ public class ManagerGrouping : MonoBehaviour
     public RoutingManager rtM;          // ManagerGrouping.managerGruoping.rtM.~
     public PoolingManager opM;          //
     public StageManager stM;            //
-    public PlayerInfoManager piM;       //
+    public PlayerManager piM;       //
 
     void Awake()    //for singleton
     {

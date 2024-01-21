@@ -20,11 +20,13 @@ public class TreeNodeGenerator : MonoBehaviour
         }
 
         width = widthinterval * (2 * listLength + 1);
-        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(width, 295);        
+        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(width, 50);
     }
 
     void Start()
     {
+        gameObject.GetComponent<RectTransform>().localPosition = new Vector3(45, 0, 0);
+
         int floor = 1;
 
         for(int i=0; i < 4; i++)    //i is Unit's Level
@@ -38,7 +40,7 @@ public class TreeNodeGenerator : MonoBehaviour
                 RectTransform rectTransform = treenode.GetComponent<RectTransform>();
                 rectTransform.SetParent(gameObject.transform);                                                              //Set Parent
                 rectTransform.transform.localPosition = new Vector3((-width * 0.5f) + (20 + 40 * (2 * index + 1)), 0, 0);   //Set Position
-                rectTransform.sizeDelta = new Vector2(80, 80);                                                              //Set Size,     instead of treenode.GetComponent<RectTransform>().localScale = new Vector3(30, 30, 30);
+                rectTransform.sizeDelta = new Vector2(100, 100);                                                            //Set Size,     instead of treenode.GetComponent<RectTransform>().localScale = new Vector3(30, 30, 30);
                 rectTransform.anchorMin = new Vector2(0.5f, Anchor_y_Value * floor);                                        //Set Anchor
                 rectTransform.anchorMax = new Vector2(0.5f, Anchor_y_Value * floor);
                 rectTransform.localScale = new Vector3(0.5f, 0.5f, 0.5f);                                                   //Set Scale     I dont know why RectTransform's value is changed by itself

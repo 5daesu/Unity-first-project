@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SmoothMove : MonoBehaviour
+public class SmoothMove : MonoBehaviour     //caution! : When values of pivot and anchor are 0.5, this script run well.     // i dont know why...
 {
     public float startPoint_x;
     public float startPoint_y;
@@ -31,7 +31,7 @@ public class SmoothMove : MonoBehaviour
     void OnEnable()
     {
         rectTransform.localPosition = startPoint;
-        //Debug.Log(rectTransform.localPosition.x + " " + rectTransform.localPosition.y + " " + rectTransform.localPosition.z);
+        Debug.Log(rectTransform.localPosition.x + " " + rectTransform.localPosition.y + " " + rectTransform.localPosition.z);
         currentSpeed = initialSpeed;
         StartCoroutine(Move());
     }

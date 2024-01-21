@@ -12,12 +12,11 @@ public class Grid : MonoBehaviour
 
     SpriteRenderer gridsprite;
     public Sprite castlesprite;     // work on inspector window
-    public Vector3 myPosition;      // object own self's position
+    //public Vector3 myPosition;      // object own self's position
 
     void Awake()
     {
         gridsprite = gameObject.GetComponent<SpriteRenderer>();
-        myPosition = gameObject.transform.position;
     }
 
     public void BuildCastle()  //construct castle in grid
