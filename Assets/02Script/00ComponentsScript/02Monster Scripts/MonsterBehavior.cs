@@ -59,7 +59,7 @@ public class MonsterBehavior : MonoBehaviour
 
     private void Die()
     {
-        ManagerGrouping.managerGrouping.piM.ChangeMoney(false, rewardMoney);
+        ManagerGrouping.managerGrouping.paM.ChangeMoney(false, rewardMoney);
         DeActivation();
     }
 
@@ -67,7 +67,7 @@ public class MonsterBehavior : MonoBehaviour
     {
         if (transform.position == ManagerGrouping.managerGrouping.rtM.targetNode.grid.transform.position)
         {
-            ManagerGrouping.managerGrouping.piM.ChangeHp(true, 1);
+            ManagerGrouping.managerGrouping.paM.ChangeHp(true, 1);
             DeActivation();
         }
     }

@@ -36,6 +36,7 @@ public class TreeNodeGenerator : MonoBehaviour
             {
                 GameObject treenode = treeNodeData.MakeTreeNode(treeNodeData);
                 treenode.GetComponent<TreeNodeObject>().treeNodeData = treeNodeData;
+                treenode.GetComponent<TreeNodeObject>().unitImage.sprite = treeNodeData.unitSprite;
 
                 RectTransform rectTransform = treenode.GetComponent<RectTransform>();
                 rectTransform.SetParent(gameObject.transform);                                                              //Set Parent

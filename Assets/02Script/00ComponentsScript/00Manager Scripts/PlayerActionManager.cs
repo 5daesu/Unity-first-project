@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerActionManager : MonoBehaviour
 {
     public GameObject inventoryBox;
     //public GameObject inventoryBox;
