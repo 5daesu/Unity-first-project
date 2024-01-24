@@ -6,12 +6,18 @@ using UnityEngine.EventSystems;
 public class DragAndDropComponent : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private Canvas canvas;
-
     private RectTransform rectTransform;
 
-    private void Awake()
+    private void Start()
     {
+
+        //canvas = GameObject.FindGameObjectWithTag("OutGameMainCanvas").GetComponent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
+
+        //canvas = canvas.rootCanvas;
+
+        Debug.Log(canvas.name);
+        Debug.Log(canvas.scaleFactor);
     }
 
     public void OnBeginDrag(PointerEventData eventData)

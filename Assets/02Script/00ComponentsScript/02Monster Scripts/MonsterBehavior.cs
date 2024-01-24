@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MonsterBehavior : MonoBehaviour
 {
-    public Slider hpSlider;
+    public Image HpBar;
 
     float maxHp;
     float curHp;
@@ -15,15 +15,20 @@ public class MonsterBehavior : MonoBehaviour
 
     int i;
 
+    private void Awake()
+    {
+    }
+
     void Start()
     {
+
         maxHp = gameObject.GetComponent<MonsterInfo>().maxHp;
         def = gameObject.GetComponent<MonsterInfo>().startDef;
         speed = gameObject.GetComponent<MonsterInfo>().spd;
         rewardMoney = gameObject.GetComponent<MonsterInfo>().cost;
 
         curHp = maxHp;
-        hpSlider.value = curHp / maxHp;
+        HpBar.transform.localScale = new Vector3(curHp / maxHp, 1, 1);
         i = 0;
     }
 
@@ -49,7 +54,7 @@ public class MonsterBehavior : MonoBehaviour
         //After calculating by def, ~, ~ ...
 
         curHp -= afterDamage;
-        hpSlider.value = curHp / maxHp;
+        HpBar.transform.localScale = new Vector3(curHp / maxHp, 1, 1);
 
         if (curHp <= 0)
         {
@@ -82,7 +87,7 @@ public class MonsterBehavior : MonoBehaviour
     void OnEnable()
     {
         curHp = maxHp;
-        hpSlider.value = curHp / maxHp;
+        HpBar.transform.localScale = new Vector3(1, 1, 1);
         i = 0;
 
         gameObject.transform.position = gameObject.transform.parent.transform.position; //reset position
