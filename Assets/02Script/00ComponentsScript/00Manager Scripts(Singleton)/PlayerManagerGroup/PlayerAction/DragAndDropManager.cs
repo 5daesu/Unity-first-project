@@ -53,7 +53,7 @@ public class DragAndDropManager : MonoBehaviour
             }
         }
 
-        if (onDrag == true && Input.GetMouseButtonUp(0))  //does this syntax also need to next if-space? 
+        if (onDrag == true && Input.GetMouseButtonUp(0))
         {
             //Debug.Log(mousePosition.x + "+" + mousePosition.y + "+" + mousePosition.z);
             Ray ray = new Ray(mousePosition - new Vector3(0, 0, -0.5f), new Vector3(0, 0, -1f));

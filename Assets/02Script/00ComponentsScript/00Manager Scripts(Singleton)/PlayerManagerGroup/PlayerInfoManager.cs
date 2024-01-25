@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerActionManager : MonoBehaviour
+public class PlayerInfoManager : MonoBehaviour
 {
-    public GameObject inventoryBox;
-    //public GameObject inventoryBox;
-
     public int playerMoney;
     public int castleCost;
     public int castleCostIncrease;  //castle cost should be increased
@@ -21,21 +18,12 @@ public class PlayerActionManager : MonoBehaviour
 
     void Awake()
     {
-        //curPlayerHp = playerHp;
+        
     }
 
-    void Update()   //player control
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            if (inventoryBox.activeSelf == false) inventoryBox.SetActive(true);
-            else inventoryBox.GetComponent<SmoothMove>().Callmove();
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("esc");
-            inventoryBox.GetComponent<SmoothMove>().CallRemove();
-        }
+
     }
 
     public void SpendCastleCost()

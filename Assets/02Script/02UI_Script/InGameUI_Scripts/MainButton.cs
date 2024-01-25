@@ -31,8 +31,8 @@ public class MainButton : MonoBehaviour
                 bool onBreak = ManagerGrouping.managerGrouping.stM.onBreak;
                 Node selectedNode = ManagerGrouping.managerGrouping.ggM.nodeArray[selctedObject.GetComponent<Grid>().i_Row - 1, selctedObject.GetComponent<Grid>().i_Column - 1];
                 bool checkPath = ManagerGrouping.managerGrouping.rtM.CheckPath(selectedNode);
-                int playerMoney = ManagerGrouping.managerGrouping.paM.playerMoney;
-                int castleCost = ManagerGrouping.managerGrouping.paM.castleCost;
+                int playerMoney = ManagerGrouping.managerGrouping.plM.pim.playerMoney;
+                int castleCost = ManagerGrouping.managerGrouping.plM.pim.castleCost;
 
                 if (onBreak == false || checkPath == false || playerMoney < castleCost) ChangeButtonState(0);
                 else ChangeButtonState(1);
@@ -40,8 +40,8 @@ public class MainButton : MonoBehaviour
             else
             {
                 bool summon = selctedObject.GetComponent<Grid>().summon;
-                int playerMoney = ManagerGrouping.managerGrouping.paM.playerMoney;
-                int summonCost = ManagerGrouping.managerGrouping.paM.summonCost;
+                int playerMoney = ManagerGrouping.managerGrouping.plM.pim.playerMoney;
+                int summonCost = ManagerGrouping.managerGrouping.plM.pim.summonCost;
 
                 if (summon == false)
                 {
@@ -87,8 +87,8 @@ public class MainButton : MonoBehaviour
                 bool onBreak = ManagerGrouping.managerGrouping.stM.onBreak;
                 Node selectedNode = ManagerGrouping.managerGrouping.ggM.nodeArray[selctedObject.GetComponent<Grid>().i_Row - 1, selctedObject.GetComponent<Grid>().i_Column - 1];
                 bool checkPath = ManagerGrouping.managerGrouping.rtM.CheckPath(selectedNode);
-                int playerMoney = ManagerGrouping.managerGrouping.paM.playerMoney;
-                int castleCost = ManagerGrouping.managerGrouping.paM.castleCost;
+                int playerMoney = ManagerGrouping.managerGrouping.plM.pim.playerMoney;
+                int castleCost = ManagerGrouping.managerGrouping.plM.pim.castleCost;
 
                 if (onBreak == false || checkPath == false || playerMoney < castleCost) ChangeButtonState(0);
                 else ChangeButtonState(1);
@@ -96,8 +96,8 @@ public class MainButton : MonoBehaviour
             else
             {
                 bool summon = selctedObject.GetComponent<Grid>().summon;
-                int playerMoney = ManagerGrouping.managerGrouping.paM.playerMoney;
-                int summonCost = ManagerGrouping.managerGrouping.paM.summonCost;
+                int playerMoney = ManagerGrouping.managerGrouping.plM.pim.playerMoney;
+                int summonCost = ManagerGrouping.managerGrouping.plM.pim.summonCost;
 
                 if (summon == false)
                 {
