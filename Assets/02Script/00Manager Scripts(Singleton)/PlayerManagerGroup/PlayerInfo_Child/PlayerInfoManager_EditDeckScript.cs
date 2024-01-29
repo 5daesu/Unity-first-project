@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EditDeckComponent : MonoBehaviour  //Editing Deck should be did in Game but sometime i need do it by script
+public class TestDeckEditor : MonoBehaviour  //Editing Deck should be did in Game but sometime there's need to do it in Unity Editor
 {
-    public Deck testDeck;   //it is used for Exception
+    public Deck testDeck;   //If there's some Exception it will be used by Basic Deck
+    public UnitData blankUnitData;
 
     [SerializeField] UnitData[] lv_1_unitData;
     [SerializeField] UnitData[] lv_2_unitData;
@@ -13,7 +14,8 @@ public class EditDeckComponent : MonoBehaviour  //Editing Deck should be did in 
 
     private void Start()
     {
-        //testDeck.AssignMemory();
+        testDeck = new Deck();
+        testDeck.AssignMemory(blankUnitData);
 
         for (int i = 0; i < 4; i++)
         {

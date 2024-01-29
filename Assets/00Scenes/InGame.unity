@@ -2258,51 +2258,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryBox: {fileID: 404431527}
---- !u!1 &1561572888
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1561572889}
-  - component: {fileID: 1561572890}
-  m_Layer: 0
-  m_Name: TestDeck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1561572889
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1561572888}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1660724992}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1561572890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1561572888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9858d08576174d14a9875256ede515e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCompleted: 0
 --- !u!1 &1660724990
 GameObject:
   m_ObjectHideFlags: 0
@@ -2314,7 +2269,7 @@ GameObject:
   - component: {fileID: 1660724992}
   - component: {fileID: 1660724993}
   m_Layer: 0
-  m_Name: EditDeck_by_UnityEditor
+  m_Name: DeckEditor_InUnityEditor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2332,8 +2287,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1561572889}
+  m_Children: []
   m_Father: {fileID: 1942507400}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1660724993
@@ -2348,7 +2302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc97e083389610440a28694561f4a9e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testDeck: {fileID: 1561572890}
+  blankUnitData: {fileID: 11400000, guid: f45808288e3642545974040ac48c9deb, type: 2}
   lv_1_unitData:
   - {fileID: 11400000, guid: 9507b92646b6b6244a740cda80929550, type: 2}
   - {fileID: 11400000, guid: c7fac3974a7b21742ac0385a83eab5c7, type: 2}
@@ -2652,7 +2606,6 @@ MonoBehaviour:
   castleCost: 10
   castleCostIncrease: 0
   summonCost: 10
-  playerDeck: {fileID: 0}
   editDeckObject: {fileID: 1660724990}
 --- !u!1 &1991296007
 GameObject:

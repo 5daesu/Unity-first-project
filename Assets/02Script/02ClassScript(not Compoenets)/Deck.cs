@@ -2,14 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Deck : MonoBehaviour
+public class Deck
 {
     public bool isCompleted;
-    public UnitData[,] deckData;   //For save and load Deck
+    public UnitData[,] deckData;    //For save and load Deck
 
     private int[,] mergeCodeTable;
     private GameObject[,] unitPrefabTable;
 
+    public void AssignMemory(UnitData blankUnitData)    //blankUnitData is for instead of "new"
+    {
+        deckData = new UnitData[4, 4];
+        mergeCodeTable = new int[4, 4];
+        unitPrefabTable = new GameObject[4, 4];
+
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                deckData[i, j] = blankUnitData;    //there's some caution in unity editor : i think because scriptableobject is designed to be made directly by asset in unity editor
+                //mergeCodeTable[i, j] = new int();
+                //unitPrefabTable[i, j] = new GameObject();
+            }
+        }
+    }
+
+    /*
     private void Awake()
     {
         deckData = new UnitData[4, 4];
@@ -20,16 +38,17 @@ public class Deck : MonoBehaviour
         {
             for (int j = 0; j < 4; j++)
             {
-                //deckData[i, j] = new UnitData();
-                //mergeCodeTable[i, j] = new int();
-                //unitPrefabTable[i, j] = new GameObject();
+                deckData[i, j] = new UnitData();
+                mergeCodeTable[i, j] = new int();
+                unitPrefabTable[i, j] = new GameObject();
             }
         }
     }
+    */
 
     public void UpdateTable()
     {
-        for (int i = 0; i < 1; i++) //i should be 4
+        for (int i = 0; i < 4; i++) //i should be 4
         {
             for (int j = 0; j < 4; j++)
             {

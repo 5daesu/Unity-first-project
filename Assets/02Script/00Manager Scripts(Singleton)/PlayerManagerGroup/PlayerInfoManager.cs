@@ -23,7 +23,7 @@ public class PlayerInfoManager : MonoBehaviour
     {
         if (playerDeck == null)
         {
-            playerDeck = editDeckObject.GetComponent<EditDeckComponent>().testDeck;
+            playerDeck = editDeckObject.GetComponent<TestDeckEditor>().testDeck;
         }
     }
 

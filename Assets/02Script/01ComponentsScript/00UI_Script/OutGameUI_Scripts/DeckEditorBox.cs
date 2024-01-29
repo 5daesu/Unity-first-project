@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EditDeck : MonoBehaviour
+public class DeckEditorBox : MonoBehaviour
 {
     [SerializeField] Image[] lv1_Deck_Image;
     [SerializeField] Image[] lv2_Deck_Image;

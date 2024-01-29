@@ -17,7 +17,7 @@ public class DropComponent_UnitSlot : MonoBehaviour, IDropHandler
 
         if (eventData.pointerDrag != null)
         {
-            deckEditBox.GetComponent<EditDeck>().UpdateImage(lv, index, eventData.pointerDrag.GetComponent<Image>().sprite);
+            deckEditBox.GetComponent<DeckEditorBox>().UpdateImage(lv, index, eventData.pointerDrag.GetComponent<Image>().sprite);
         }
     }
 
