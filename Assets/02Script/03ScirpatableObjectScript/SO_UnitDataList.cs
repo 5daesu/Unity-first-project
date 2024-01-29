@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class TreeNodeDataList : ScriptableObject
+public class UnitDataList : ScriptableObject
 {
-    public List<TreeNodeData> unitDataList;
+    public List<UnitData> unitDataList;
 }

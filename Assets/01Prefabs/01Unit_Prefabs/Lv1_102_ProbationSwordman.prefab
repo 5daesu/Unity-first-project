@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4001556087229789242}
   - component: {fileID: 780538659286817345}
   m_Layer: 2
-  m_Name: swordman32
+  m_Name: Lv1_102_ProbationSwordman
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

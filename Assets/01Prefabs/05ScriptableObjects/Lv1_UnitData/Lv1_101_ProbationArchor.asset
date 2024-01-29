@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65eec77c2ca0cc74c8c52d0faadb996e, type: 3}
-  m_Name: Lv1_103_Farmer
+  m_Name: Lv1_101_ProbationArchor
   m_EditorClassIdentifier: 
-  unitName: Lv1_Farmer
-  unitCode: 3
+  unitName: Lv1_ProbationArchor
   unitLevel: 1
+  unitCode: 101
+  MergeCode: 0
   emptyTreeNode: {fileID: 914631993699149358, guid: b57f5fa8239d2bb40981efb9807dddeb, type: 3}
+  unitPrefab: {fileID: 1582591168891884711, guid: bea060d2dab079b4ea4253d8cad3ecd7, type: 3}
   unitSprite: {fileID: 21300000, guid: cf08c81262c4b444fbfcc34a4b78a75e, type: 3}
-  MergeRecipe: 
-  MergeNumber: 

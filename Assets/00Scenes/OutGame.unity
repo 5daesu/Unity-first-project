@@ -310,6 +310,7 @@ GameObject:
   - component: {fileID: 207336718}
   - component: {fileID: 207336717}
   - component: {fileID: 207336716}
+  - component: {fileID: 207336719}
   m_Layer: 5
   m_Name: Lv1_UnitSlot_4
   m_TagString: Untagged
@@ -397,6 +398,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207336714}
   m_CullTransparentMesh: 1
+--- !u!114 &207336719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207336714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22786c116a7f2c74791f3803226860ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deckEditBox: {fileID: 3623610499341679355}
+  lv: 1
+  index: 3
 --- !u!1 &236786030
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,6 +583,7 @@ GameObject:
   - component: {fileID: 332095686}
   - component: {fileID: 332095685}
   - component: {fileID: 332095684}
+  - component: {fileID: 332095687}
   m_Layer: 5
   m_Name: Lv1_UnitSlot_3
   m_TagString: Untagged
@@ -654,6 +671,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332095682}
   m_CullTransparentMesh: 1
+--- !u!114 &332095687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332095682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22786c116a7f2c74791f3803226860ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deckEditBox: {fileID: 3623610499341679355}
+  lv: 1
+  index: 2
 --- !u!1 &381644776
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,6 +872,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22786c116a7f2c74791f3803226860ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deckEditBox: {fileID: 3623610499341679355}
+  lv: 1
+  index: 0
 --- !u!223 &390390937
 Canvas:
   m_ObjectHideFlags: 0
@@ -2646,6 +2681,7 @@ GameObject:
   - component: {fileID: 1399480756}
   - component: {fileID: 1399480755}
   - component: {fileID: 1399480754}
+  - component: {fileID: 1399480757}
   m_Layer: 5
   m_Name: Lv1_UnitSlot_2
   m_TagString: Untagged
@@ -2733,6 +2769,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399480752}
   m_CullTransparentMesh: 1
+--- !u!114 &1399480757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399480752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22786c116a7f2c74791f3803226860ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deckEditBox: {fileID: 3623610499341679355}
+  lv: 1
+  index: 1
 --- !u!1 &1403194939
 GameObject:
   m_ObjectHideFlags: 0
@@ -5109,6 +5160,7 @@ GameObject:
   - component: {fileID: 6240631556974442435}
   - component: {fileID: 3623610499341679355}
   - component: {fileID: 4421074252454135211}
+  - component: {fileID: 8758759894481406564}
   m_Layer: 5
   m_Name: EditDeckBox
   m_TagString: Untagged
@@ -5116,6 +5168,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8758759894481406564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8758759894481406563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48eada04e90bc8e4cbadae74185fdd39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lv1_Deck_Image:
+  - {fileID: 390390938}
+  - {fileID: 1399480755}
+  - {fileID: 332095685}
+  - {fileID: 207336717}
+  lv2_Deck_Image: []
+  lv3_Deck_Image: []
+  lv4_Deck_Image: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

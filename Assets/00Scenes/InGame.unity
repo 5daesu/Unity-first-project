@@ -1318,7 +1318,7 @@ Transform:
   m_GameObject: {fileID: 828305115}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.8885, y: -1.2960808, z: 0.056143194}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1924,7 +1924,8 @@ MonoBehaviour:
   rtM: {fileID: 293143033}
   opM: {fileID: 1382261114}
   stM: {fileID: 1848645755}
-  plM: {fileID: 1158498072}
+  piM: {fileID: 1942507401}
+  paM: {fileID: 828305117}
 --- !u!1 &1158498070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,9 +1935,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1158498071}
-  - component: {fileID: 1158498072}
   m_Layer: 0
-  m_Name: PlayerManager
+  m_Name: PlayerManagerGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1951,28 +1951,14 @@ Transform:
   m_GameObject: {fileID: 1158498070}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.8885, y: 1.2960808, z: -0.056143194}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 828305116}
   - {fileID: 1942507400}
+  - {fileID: 828305116}
   m_Father: {fileID: 1154051485}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1158498072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158498070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4738b8e48d52e714586a6631af72ca06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pim: {fileID: 1942507401}
-  pam: {fileID: 828305117}
 --- !u!1 &1222525351
 GameObject:
   m_ObjectHideFlags: 0
@@ -2272,6 +2258,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryBox: {fileID: 404431527}
+--- !u!1 &1561572888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1561572889}
+  - component: {fileID: 1561572890}
+  m_Layer: 0
+  m_Name: TestDeck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1561572889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561572888}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1660724992}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1561572890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561572888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9858d08576174d14a9875256ede515e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCompleted: 0
 --- !u!1 &1660724990
 GameObject:
   m_ObjectHideFlags: 0
@@ -2281,32 +2312,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1660724992}
-  - component: {fileID: 1660724991}
+  - component: {fileID: 1660724993}
   m_Layer: 0
-  m_Name: TestDeck
+  m_Name: EditDeck_by_UnityEditor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1660724991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1660724990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5314b715c10b293498ffa68eda7b5b74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deckList:
-  - {fileID: 1582591168891884711, guid: bea060d2dab079b4ea4253d8cad3ecd7, type: 3}
-  - {fileID: 4578951166833103806, guid: f73331b36d8339b46874e87b19b211a4, type: 3}
-  - {fileID: 1133479703413128544, guid: aadd4bc0fc141654aa0e77ddb18c541f, type: 3}
-  - {fileID: 1582591168891884711, guid: bea060d2dab079b4ea4253d8cad3ecd7, type: 3}
-  - {fileID: 1582591168891884711, guid: bea060d2dab079b4ea4253d8cad3ecd7, type: 3}
 --- !u!4 &1660724992
 Transform:
   m_ObjectHideFlags: 0
@@ -2319,9 +2332,31 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1561572889}
   m_Father: {fileID: 1942507400}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1660724993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660724990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc97e083389610440a28694561f4a9e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testDeck: {fileID: 1561572890}
+  lv_1_unitData:
+  - {fileID: 11400000, guid: 9507b92646b6b6244a740cda80929550, type: 2}
+  - {fileID: 11400000, guid: c7fac3974a7b21742ac0385a83eab5c7, type: 2}
+  - {fileID: 11400000, guid: 7f40633dc1cb43944bb50311e8ab6509, type: 2}
+  - {fileID: 11400000, guid: 06f0475d432fab94b910bbf21b6618a2, type: 2}
+  lv_2_unitData: []
+  lv_3_unitData: []
+  lv_4_unitData: []
 --- !u!1 &1739387653
 GameObject:
   m_ObjectHideFlags: 0
@@ -2593,7 +2628,7 @@ Transform:
   m_GameObject: {fileID: 1942507399}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.8885, y: -1.2960808, z: 0.056143194}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2612,12 +2647,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a1a31c76a2eeac4ab06663119d4aa45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHp: 100
   playerMoney: 100
   castleCost: 10
   castleCostIncrease: 0
   summonCost: 10
-  playerHp: 100
-  playerDeck: {fileID: 1660724991}
+  playerDeck: {fileID: 0}
+  editDeckObject: {fileID: 1660724990}
 --- !u!1 &1991296007
 GameObject:
   m_ObjectHideFlags: 0

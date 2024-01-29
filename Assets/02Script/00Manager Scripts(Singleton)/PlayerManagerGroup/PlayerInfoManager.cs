@@ -4,21 +4,27 @@ using UnityEngine;
 
 public class PlayerInfoManager : MonoBehaviour
 {
+    public int playerHp;
     public int playerMoney;
+
     public int castleCost;
     public int castleCostIncrease;  //castle cost should be increased
     public int summonCost;
 
-    public int playerHp;
-
     public Deck playerDeck;
-
-    //item
-    //skill
+    public GameObject editDeckObject;
 
     void Awake()
     {
         
+    }
+
+    void Start()
+    {
+        if (playerDeck == null)
+        {
+            playerDeck = editDeckObject.GetComponent<EditDeckComponent>().testDeck;
+        }
     }
 
     void Update()

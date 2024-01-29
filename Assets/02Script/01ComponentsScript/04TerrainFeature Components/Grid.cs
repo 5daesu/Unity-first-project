@@ -30,7 +30,7 @@ public class Grid : MonoBehaviour
         Debug.Log("½ÇÇàµÊ");
         int i = Random.Range(0, 5);
         summon = true;
-        unit = Instantiate(Deck.playerDeck.deckList[i], transform.position, Quaternion.identity, transform);
+        unit = Instantiate(ManagerGrouping.managerGrouping.piM.playerDeck.Summon(), transform.position, Quaternion.identity, transform);
     }
     
     private void OnMouseOver()  //run when mouse is over object's collider

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TreeNodeObject : MonoBehaviour
 {
-    public TreeNodeData treeNodeData;
+    public UnitData unitData;
 
     public Image unitImage;
     public Button treeNodeButton;
@@ -16,8 +16,8 @@ public class TreeNodeObject : MonoBehaviour
 
     public void OnClickTreeNode()
     {
-        Debug.Log(treeNodeData.unitName);
-        if (treeNodeData.unitLevel == 1) Debug.Log("Unit Level is 1, There's No Recipe");
-        else Debug.Log("Unit Level is " + treeNodeData.unitLevel);
+        Debug.Log(unitData.unitName);
+        if (unitData.unitLevel == 1) Debug.Log("Unit Level is 1, There's No Recipe");
+        else Debug.Log("Unit Level is " + unitData.unitLevel);
     }
 }

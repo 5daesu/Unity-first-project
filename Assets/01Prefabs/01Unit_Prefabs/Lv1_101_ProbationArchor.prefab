@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2272765961603585335}
   - component: {fileID: 2804682058214536346}
   m_Layer: 2
-  m_Name: archor32
+  m_Name: Lv1_101_ProbationArchor
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -4,24 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [CreateAssetMenu]
-public class TreeNodeData : ScriptableObject
+public class UnitData : ScriptableObject
 {
     public string unitName;
-    public int unitCode;
     public int unitLevel;
+    public int unitCode;
+    public int MergeCode;   //(unitCode * 1000 ^ 2) + (unitCode * 1000 ^ 1) + (unitCode * 1000 ^ 0) is MergeCode
     public GameObject emptyTreeNode;
+    public GameObject unitPrefab;
     public Sprite unitSprite;
 
-    public int[] MergeRecipe;  //int is for unitcode
-    public int[] MergeNumber;
+    
 
-    public GameObject MakeTreeNode(TreeNodeData myself)
+    public GameObject MakeTreeNode(UnitData myself)
     {
         return Instantiate(emptyTreeNode);
     }
 
     /*
-    public TreeNodeData(string Name, int Code, GameObject Prefab, Sprite Image, List<int> Recipe, List<int> Number)   //constructor
+    public UnitData(string Name, int Code, GameObject Prefab, Sprite Image, List<int> Recipe, List<int> Number)   //constructor
     {
         unitName = Name;
         unitCode = Code;

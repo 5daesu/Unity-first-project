@@ -32,13 +32,13 @@ public class InGameUI : MonoBehaviour
     private void BuildCastle()
     {
         ManagerGrouping.managerGrouping.soM.selectedObject.GetComponent<Grid>().BuildCastle();
-        ManagerGrouping.managerGrouping.plM.pim.SpendCastleCost();
+        ManagerGrouping.managerGrouping.piM.SpendCastleCost();
     }
 
     private void SummonUnit()
     {
         ManagerGrouping.managerGrouping.soM.selectedObject.GetComponent<Grid>().Summon();
-        ManagerGrouping.managerGrouping.plM.pim.SpendSummonCost();
+        ManagerGrouping.managerGrouping.piM.SpendSummonCost();
     }
 
 }

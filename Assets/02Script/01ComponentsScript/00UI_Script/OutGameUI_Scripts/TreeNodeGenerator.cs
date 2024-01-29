@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TreeNodeGenerator : MonoBehaviour
 {
-    public TreeNodeDataList[] unitDataList;
+    public UnitDataList[] unitDataList;
 
     float Anchor_y_Value = 0.2f;     //0.2, 0.4, 0.6, 0.8
     float widthinterval = 40;
@@ -32,11 +32,11 @@ public class TreeNodeGenerator : MonoBehaviour
         for(int i=0; i < 4; i++)    //i is Unit's Level
         {
             int index = 0;
-            foreach (TreeNodeData treeNodeData in unitDataList[i].unitDataList)     //i is Unit's Level
+            foreach (UnitData UnitData in unitDataList[i].unitDataList)     //i is Unit's Level
             {
-                GameObject treenode = treeNodeData.MakeTreeNode(treeNodeData);
-                treenode.GetComponent<TreeNodeObject>().treeNodeData = treeNodeData;
-                treenode.GetComponent<TreeNodeObject>().unitImage.sprite = treeNodeData.unitSprite;
+                GameObject treenode = UnitData.MakeTreeNode(UnitData);
+                treenode.GetComponent<TreeNodeObject>().unitData = UnitData;
+                treenode.GetComponent<TreeNodeObject>().unitImage.sprite = UnitData.unitSprite;
 
                 RectTransform rectTransform = treenode.GetComponent<RectTransform>();
                 rectTransform.SetParent(gameObject.transform);                                                              //Set Parent
