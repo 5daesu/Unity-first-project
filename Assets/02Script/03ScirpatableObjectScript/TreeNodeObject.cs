@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class TreeNodeObject : MonoBehaviour
 {
     public UnitData unitData;
-    public int UnitCode;
 
     public Image unitImage;
     public Button treeNodeButton;

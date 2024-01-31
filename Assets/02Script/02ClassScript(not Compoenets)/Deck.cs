@@ -61,7 +61,7 @@ public class Deck
     public GameObject Summon()
     {
         Debug.Log(unitPrefabTable[0, 0].name);
-        return unitPrefabTable[0, Random.Range(0, 4)];
+        return unitPrefabTable[0, Random.Range(0, 5)];
     }
 
     public GameObject Merge(int lv, int mergeCode)
@@ -113,5 +113,4 @@ public class Deck
 
         return mergedUnit;
     }
-
 }
