@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TreeNodeGenerator : MonoBehaviour
+public class TreeNodeGenerator : MonoBehaviour  //TreeNodeGenerator also make sapce for treeNode
 {
     public UnitDataList[] unitDataList;
 
@@ -16,27 +16,29 @@ public class TreeNodeGenerator : MonoBehaviour
         int listLength = 0;
         for (int i = 0; i < 4; i++)
         {
-            if (unitDataList[i].unitDataList.Count > listLength) listLength = unitDataList[i].unitDataList.Count;
+            if (unitDataList[i].unitDataList.Count > listLength) listLength = unitDataList[i].unitDataList.Count;   //Update length by list.count and it will be used to make space for scroll view's inside space
         }
 
         width = widthinterval * (2 * listLength + 1);
-        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(width, 50);
+        GetComponent<RectTransform>().sizeDelta = new Vector2(width, 50);
     }
 
     void Start()
     {
-        gameObject.GetComponent<RectTransform>().localPosition = new Vector3(45, 0, 0);
+        GetComponent<RectTransform>().localPosition = new Vector3(45, 0, 0);
 
         int floor = 1;
 
         for(int i=0; i < 4; i++)    //i is Unit's Level
         {
             int index = 0;
-            foreach (UnitData UnitData in unitDataList[i].unitDataList)     //i is Unit's Level
+            foreach (UnitData UnitData in unitDataList[i].unitDataList)     //index is Unit's order in same level
             {
                 GameObject treenode = UnitData.MakeTreeNode(UnitData);
-                treenode.GetComponent<TreeNodeObject>().unitData = UnitData;
-                treenode.GetComponent<TreeNodeObject>().unitImage.sprite = UnitData.unitSprite;
+                TreeNodeObject treeNodeObject = treenode.GetComponent<TreeNodeObject>();
+                treeNodeObject.unitData = UnitData;
+                treeNodeObject.UnitCode = UnitData.unitCode;
+                treeNodeObject.unitImage.sprite = UnitData.unitSprite;
 
                 RectTransform rectTransform = treenode.GetComponent<RectTransform>();
                 rectTransform.SetParent(gameObject.transform);                                                              //Set Parent

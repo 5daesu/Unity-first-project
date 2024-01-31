@@ -14,24 +14,8 @@ public class UnitData : ScriptableObject
     public GameObject unitPrefab;
     public Sprite unitSprite;
 
-    
-
     public GameObject MakeTreeNode(UnitData myself)
     {
         return Instantiate(emptyTreeNode);
     }
-
-    /*
-    public UnitData(string Name, int Code, GameObject Prefab, Sprite Image, List<int> Recipe, List<int> Number)   //constructor
-    {
-        unitName = Name;
-        unitCode = Code;
-        unitPrefab = Prefab;
-        unitImage = Image;
-        MergeRecipe = new int[Recipe.Count];
-        MergeNumber = new int[Number.Count];
-        MergeRecipe = Recipe.ToArray();
-        MergeNumber = Number.ToArray();
-    }
-    */
 }

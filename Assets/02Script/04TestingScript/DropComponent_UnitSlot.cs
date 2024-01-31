@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 
 public class DropComponent_UnitSlot : MonoBehaviour, IDropHandler
 {
-    [SerializeField] private Image deckEditBox;
     [SerializeField] private int lv, index;
+    [SerializeField] private Image deckEditBox;
 
     private UnitData droppedUnitData;
 
@@ -17,7 +17,7 @@ public class DropComponent_UnitSlot : MonoBehaviour, IDropHandler
 
         if (eventData.pointerDrag != null)
         {
-            deckEditBox.GetComponent<DeckEditorBox>().UpdateImage(lv, index, eventData.pointerDrag.GetComponent<Image>().sprite);
+            deckEditBox.GetComponent<DeckEditorBox>().UpdateUnitSlot(lv, index, eventData.pointerDrag.transform.parent.transform.parent.GetComponent<TreeNodeObject>().unitData);
         }
     }
 
