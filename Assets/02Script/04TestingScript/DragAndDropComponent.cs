@@ -17,8 +17,14 @@ public class DragAndDropComponent : MonoBehaviour, IPointerDownHandler, IBeginDr
     private CanvasGroup canvasGroup;
     private CanvasGroup bi_canvasGroup;
 
+    private void Awake()
+    {
+        
+    }
+
     private void Start()
     {
+        //unitData = gameObject.transform.parent.transform.parent.GetComponent<TreeNodeObject>().unitData;
         rectTransform = GetComponent<RectTransform>();
         bi_rectTransform = blankImage.GetComponent<RectTransform>();
         canvas = GetComponent<Canvas>();
@@ -60,7 +66,6 @@ public class DragAndDropComponent : MonoBehaviour, IPointerDownHandler, IBeginDr
 
     public void OnPointerDown(PointerEventData eventData)
     {
-
+        Debug.Log("OnPointerDown");
     }
-
 }
