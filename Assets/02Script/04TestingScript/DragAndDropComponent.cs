@@ -41,6 +41,7 @@ public class DragAndDropComponent : MonoBehaviour, IPointerDownHandler, IBeginDr
         blankImage.sprite = gameObject.GetComponent<Image>().sprite;
         bi_canvasGroup.alpha = 1f;
 
+        canvas.overrideSorting = true;
         canvas.sortingOrder = 9;
         canvasGroup.blocksRaycasts = false;
         canvasGroup.alpha = 0.6f;
@@ -59,6 +60,7 @@ public class DragAndDropComponent : MonoBehaviour, IPointerDownHandler, IBeginDr
         bi_canvasGroup.alpha = 0f;
 
         rectTransform.anchoredPosition = originalPosition;
+        canvas.overrideSorting = false;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.alpha = 1f;
         
