@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8456557421583300344}
   - component: {fileID: 1130757817445009027}
   - component: {fileID: 5562056100737420311}
-  - component: {fileID: 4062892347316407984}
   m_Layer: 3
   m_Name: TreeNodeObject
   m_TagString: Untagged
@@ -115,22 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71bf3bb5225f96747b06a0f04707a4b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitData: {fileID: 0}
-  UnitCode: 0
+  treeNodeData: {fileID: 0}
   unitImage: {fileID: 444679374864117524}
   treeNodeButton: {fileID: 6748202133684668427}
---- !u!225 &4062892347316407984
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914631993699149358}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
 --- !u!1 &1764336001717014201
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +210,7 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
@@ -257,11 +243,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 0
+  m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
 --- !u!114 &4648398672695946060
 MonoBehaviour:
   m_ObjectHideFlags: 0
