@@ -24,15 +24,6 @@ public class DeckEditorBox : MonoBehaviour
         lv2_Deck_UnitData = new UnitData[4];
         lv3_Deck_UnitData = new UnitData[4];
         lv4_Deck_UnitData = new UnitData[4];
-        /*
-        for (int i = 0; i < 4; i++)
-        {
-            lv1_Deck_UnitData[i] = blankUnitData;
-            lv2_Deck_UnitData[i] = blankUnitData;
-            lv3_Deck_UnitData[i] = blankUnitData;
-            lv4_Deck_UnitData[i] = blankUnitData;
-        }
-        */
     }
 
     public void UpdateUnitSlot(int lv, int index, UnitData droppedUnitData)

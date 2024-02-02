@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Lv2_204_Elder
   m_EditorClassIdentifier: 
   unitName: Lv2_204_Elder
-  unitCode: 204
   unitLevel: 2
+  unitCode: 204
+  MergeCode: 0
   emptyTreeNode: {fileID: 914631993699149358, guid: b57f5fa8239d2bb40981efb9807dddeb, type: 3}
+  unitPrefab: {fileID: 1582591168891884711, guid: bea060d2dab079b4ea4253d8cad3ecd7, type: 3}
   unitSprite: {fileID: 21300000, guid: cf08c81262c4b444fbfcc34a4b78a75e, type: 3}
-  MergeRecipe: 
-  MergeNumber: 

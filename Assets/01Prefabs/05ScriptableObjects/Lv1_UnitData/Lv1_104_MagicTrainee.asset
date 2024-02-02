@@ -16,6 +16,6 @@ MonoBehaviour:
   unitLevel: 1
   unitCode: 104
   MergeCode: 0
-  emptyTreeNode: {fileID: 0}
+  emptyTreeNode: {fileID: 914631993699149358, guid: b57f5fa8239d2bb40981efb9807dddeb, type: 3}
   unitPrefab: {fileID: 1133479703413128544, guid: aadd4bc0fc141654aa0e77ddb18c541f, type: 3}
   unitSprite: {fileID: 0}

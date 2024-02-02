@@ -14,11 +14,13 @@ public class DropComponent_UnitSlot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log("Drop");
+        Debug.Log(eventData.pointerDrag.gameObject.name);
 
         if (eventData.pointerDrag != null)
         {
             deckEditBox.GetComponent<DeckEditorBox>().UpdateUnitSlot(lv, index, eventData.pointerDrag.transform.parent.transform.parent.GetComponent<TreeNodeObject>().unitData);
         }
+
     }
 
     // Start is called before the first frame update

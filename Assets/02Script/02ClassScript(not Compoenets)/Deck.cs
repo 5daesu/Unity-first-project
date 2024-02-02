@@ -52,7 +52,7 @@ public class Deck
         {
             for (int j = 0; j < 4; j++)
             {
-                mergeCodeTable[i, j] = deckData[i, j].MergeCode;
+                mergeCodeTable[i, j] = deckData[i, j].mergeCode;
                 unitPrefabTable[i, j] = deckData[i, j].unitPrefab;
             }
         }
