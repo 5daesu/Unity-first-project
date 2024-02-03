@@ -55,6 +55,5 @@ public class TreeNodeObject : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         {
             isSelected = false;
         }
-        
     }
 }
