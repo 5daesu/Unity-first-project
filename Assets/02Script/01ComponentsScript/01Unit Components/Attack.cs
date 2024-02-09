@@ -7,7 +7,6 @@ public class Attack : MonoBehaviour
     public int poolingIndex;
     public bool atkType;
     public int atkDamage;
-
     float atkRange;
     float atkTerm;      //attack speed      the smaller, the faster
     bool onAttack;      //attacking state
@@ -17,9 +16,9 @@ public class Attack : MonoBehaviour
     void Start()
     {
         onAttack = false;
-        atkDamage = gameObject.GetComponent<UnitStatus>().damage;
-        atkRange = gameObject.GetComponent<UnitStatus>().range;
-        atkTerm = gameObject.GetComponent<UnitStatus>().attackTerm;
+        atkDamage = gameObject.GetComponent<UnitStatus>().attackDamage;
+        atkRange = gameObject.GetComponent<UnitStatus>().attackRange;
+        atkTerm = gameObject.GetComponent<UnitStatus>().attackSpeed;
 
         timer = 0;
         gameObject.GetComponent<CircleCollider2D>().radius = atkRange;

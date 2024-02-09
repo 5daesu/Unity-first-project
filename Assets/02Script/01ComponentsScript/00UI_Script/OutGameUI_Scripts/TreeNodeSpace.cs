@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class TreeNodeSpace : MonoBehaviour  //TreeNodeGenerator also make sapce for treeNode
 {
+    public UnitInfoBox unitInfoBox;
+
     [SerializeField] private GameObject blankTreeNode;
     [SerializeField] private UnitDataList[] unitDataList;
 

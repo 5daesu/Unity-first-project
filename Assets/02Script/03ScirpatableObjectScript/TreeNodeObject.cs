@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class TreeNodeObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    [SerializeField] private TreeNodeSpace treeNodeSpace;
     public int lv, index;
 
     public UnitData unitData;
@@ -16,6 +17,7 @@ public class TreeNodeObject : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     void Start()
     {
+        treeNodeSpace = gameObject.transform.parent.GetComponent<TreeNodeSpace>();
     }
 
     /*
@@ -45,11 +47,13 @@ public class TreeNodeObject : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerClick(PointerEventData eventData)
     {
+
         if (isSelected == false)
         {
             isSelected = true;
-            gameObject.transform.parent.GetComponent<TreeNodeSpace>().FindChildTreeNode(unitData);
-            gameObject.transform.parent.GetComponent<TreeNodeSpace>().FindParentTreeNode(unitData);
+            treeNodeSpace.FindChildTreeNode(unitData);
+            treeNodeSpace.FindParentTreeNode(unitData);
+            treeNodeSpace.unitInfoBox.UpdateUnitInfoBox(unitData);
         }
         else
         {

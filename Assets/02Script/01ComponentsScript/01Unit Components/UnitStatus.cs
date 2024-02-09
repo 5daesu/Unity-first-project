@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class UnitStatus : MonoBehaviour
 {
-    public int damage;
-    public float range;
-    public float attackTerm;
-    public float actionSpeed;
+    public char attackType;
+    public int attackDamage;
+    public float attackRange;
+    public float attackSpeed;
+    public char damageType;         //p = piercing, b = bludgeoning, s = slashing, ...
     public GameObject childObject;
+
+    //public float actionSpeed;
 }

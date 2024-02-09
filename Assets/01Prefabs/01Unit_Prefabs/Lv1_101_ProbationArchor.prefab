@@ -134,10 +134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae1d6605846fe44d87a5a3faa025688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
-  range: 5
-  attackTerm: 1
-  actionSpeed: 1
+  attackType: 49
+  attackDamage: 20
+  attackRange: 5
+  attackSpeed: 1
+  damageType: 112
   childObject: {fileID: 0}
 --- !u!114 &2804682058214536346
 MonoBehaviour:
