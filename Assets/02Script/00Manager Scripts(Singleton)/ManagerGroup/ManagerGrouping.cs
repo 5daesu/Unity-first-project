@@ -12,6 +12,7 @@ public class ManagerGrouping : MonoBehaviour
     public StageManager stM;            //
     public PlayerInfoManager piM;       //
     public PlayerActionManager paM;     //
+    public UiManager uiM;               //
 
     void Awake()    //for singleton
     {

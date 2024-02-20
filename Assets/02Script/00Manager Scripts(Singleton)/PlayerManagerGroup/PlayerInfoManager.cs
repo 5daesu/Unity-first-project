@@ -13,6 +13,7 @@ public class PlayerInfoManager : MonoBehaviour
 
     public Deck playerDeck;
     public GameObject editDeckObject;
+    public List<GameObject> unitList;
 
     void Awake()
     {
