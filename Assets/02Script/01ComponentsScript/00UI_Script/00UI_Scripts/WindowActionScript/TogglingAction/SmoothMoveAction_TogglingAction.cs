@@ -1,23 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class SmoothMove : MonoBehaviour     //caution! : When values of pivot and anchor are 0.5, this script run well.     // i dont know why...
+public class SmoothMoveAction : TogglingAction
 {
-    public float startPoint_x;
-    public float startPoint_y;
-    Vector3 startPoint;
-    public float targetPoint_x;
-    public float targetPoint_y;
-    Vector3 targetPoint;
+    [SerializeField] private float startPoint_x;
+    [SerializeField] private float startPoint_y;
+    private Vector3 startPoint;
+    [SerializeField] private float targetPoint_x;
+    [SerializeField] private float targetPoint_y;
+    private Vector3 targetPoint;
 
-    public float initialSpeed;
-    public float removeSpeed;
-    public float minimumSpeed;
-    float currentSpeed;         //3000 is good
-
-    RectTransform rectTransform;
+    [SerializeField] private float initialSpeed;
+    [SerializeField] private float removeSpeed;
+    [SerializeField] private float minimumSpeed;
+    
+    private float currentSpeed;         //3000 is good
+    private RectTransform rectTransform;
 
     void Awake()
     {
@@ -33,18 +32,17 @@ public class SmoothMove : MonoBehaviour     //caution! : When values of pivot an
         rectTransform.localPosition = startPoint;
         Debug.Log(rectTransform.localPosition.x + " " + rectTransform.localPosition.y + " " + rectTransform.localPosition.z);
         currentSpeed = initialSpeed;
-        //StartCoroutine(Move());
-        Callmove();
+        OpenAction();
     }
 
-    public void Callmove()
+    public override void OpenAction()
     {
         StopAllCoroutines();
         currentSpeed = initialSpeed;
         StartCoroutine(Move());
     }
 
-    public void CallRemove()
+    public override void CloseAction()
     {
         StopAllCoroutines();
         currentSpeed = removeSpeed;
@@ -58,7 +56,7 @@ public class SmoothMove : MonoBehaviour     //caution! : When values of pivot an
             rectTransform.localPosition = Vector3.MoveTowards(rectTransform.localPosition, targetPoint, currentSpeed * Time.deltaTime);
             currentSpeed = initialSpeed * (Vector3.Magnitude(targetPoint - rectTransform.localPosition) / Vector3.Magnitude(targetPoint - startPoint));
             if (currentSpeed < minimumSpeed) currentSpeed = minimumSpeed;
-            
+
             yield return null;
         }
 

@@ -571,7 +571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lv: 1
   index: 3
-  deckEditBox: {fileID: 3623610499341679355}
+  deckEditBoxObject: {fileID: 3623610499341679355}
 --- !u!114 &207336720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -862,7 +862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lv: 1
   index: 2
-  deckEditBox: {fileID: 3623610499341679355}
+  deckEditBoxObject: {fileID: 3623610499341679355}
 --- !u!114 &332095688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -934,7 +934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lv: 4
   index: 1
-  deckEditBox: {fileID: 3623610499341679355}
+  deckEditBoxObject: {fileID: 3623610499341679355}
 --- !u!114 &351951705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1356,7 +1356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lv: 1
   index: 0
-  deckEditBox: {fileID: 3623610499341679355}
+  deckEditBoxObject: {fileID: 3623610499341679355}
 --- !u!223 &390390937
 Canvas:
   m_ObjectHideFlags: 0
@@ -1779,7 +1779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lv: 4
   index: 0
-  deckEditBox: {fileID: 3623610499341679355}
+  deckEditBoxObject: {fileID: 3623610499341679355}
 --- !u!114 &503760734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2045,7 +2045,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lv: 3
   index: 2
-  deckEditBox: {fileID: 3623610499341679355}
+  deckEditBoxObject: {fileID: 3623610499341679355}
 --- !u!114 &647673642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2564,7 +2564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lv: 4
   index: 3
-  deckEditBox: {fileID: 3623610499341679355}
+  deckEditBoxObject: {fileID: 3623610499341679355}
 --- !u!114 &752388367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2932,7 +2932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lv: 2
   index: 0
-  deckEditBox: {fileID: 3623610499341679355}
+  deckEditBoxObject: {fileID: 3623610499341679355}
 --- !u!114 &835267107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3416,7 +3416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lv: 2
   index: 2
-  deckEditBox: {fileID: 3623610499341679355}
+  deckEditBoxObject: {fileID: 3623610499341679355}
 --- !u!114 &950969326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3549,7 +3549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lv: 2
   index: 1
-  deckEditBox: {fileID: 3623610499341679355}
+  deckEditBoxObject: {fileID: 3623610499341679355}
 --- !u!114 &991111834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4340,7 +4340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lv: 3
   index: 0
-  deckEditBox: {fileID: 3623610499341679355}
+  deckEditBoxObject: {fileID: 3623610499341679355}
 --- !u!114 &1214797589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4552,7 +4552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lv: 2
   index: 3
-  deckEditBox: {fileID: 3623610499341679355}
+  deckEditBoxObject: {fileID: 3623610499341679355}
 --- !u!114 &1274943039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4904,7 +4904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lv: 1
   index: 1
-  deckEditBox: {fileID: 3623610499341679355}
+  deckEditBoxObject: {fileID: 3623610499341679355}
 --- !u!114 &1399480758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5238,7 +5238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lv: 4
   index: 2
-  deckEditBox: {fileID: 3623610499341679355}
+  deckEditBoxObject: {fileID: 3623610499341679355}
 --- !u!114 &1555140793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5493,7 +5493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lv: 3
   index: 1
-  deckEditBox: {fileID: 3623610499341679355}
+  deckEditBoxObject: {fileID: 3623610499341679355}
 --- !u!114 &1627154508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6566,7 +6566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lv: 3
   index: 3
-  deckEditBox: {fileID: 3623610499341679355}
+  deckEditBoxObject: {fileID: 3623610499341679355}
 --- !u!114 &1988013441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7430,7 +7430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!223 &4421074252415583622
 Canvas:
   m_ObjectHideFlags: 0

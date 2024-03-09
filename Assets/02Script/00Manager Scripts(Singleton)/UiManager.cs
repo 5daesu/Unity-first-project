@@ -4,30 +4,27 @@ using UnityEngine;
 
 public class UiManager : MonoBehaviour
 {
-    public Window playerInfoBox;
-    public Window stageInfoBox;
-    public Window eventBox;
-    public Window inventoryBox;
+    public Window simplePlayerResourceWindow;
+    public Window stageInfoWindow;
+    public Window gameEventWindow;
+    public Window inventoryWindow;
 
     public Window topWindow { get; set; }  //topWindow is lastNode of List
 
     //private Window[] windowList;
     private LinkedList<Window> windowList;
-    private int windowCount;
 
     void Awake()
     {
         //windowList = new Window[4];
         windowList = new LinkedList<Window>();
-        windowCount = 0;
     }
 
-    public void MoveWindowToTop(Window targetWindow)    //When user click window or open new window
+    public void SetWindowSortingOrderToTop(Window targetWindow)    //When user click window or open new window
     {
         if (targetWindow.isActive == false)             //When window is opened newly
         {
-            windowCount++;
-            targetWindow.canvas.sortingOrder = windowCount;
+            targetWindow.canvas.sortingOrder = windowList.Count;
             windowList.AddLast(targetWindow);
         }
         else                                            //When window is already opened
@@ -35,26 +32,25 @@ public class UiManager : MonoBehaviour
             windowList.Remove(targetWindow);
             windowList.AddLast(targetWindow);
 
-            RearrangeWindow();
+            ReorderWindowSortingOrder();
         }
     }
 
-    public void CloseWindow(Window targetWindow)    //
+    public void RemoveWindowFromWindowList(Window targetWindow)     //Remove Window and Reorder Sorin
     {
-        windowCount--;
         windowList.Remove(targetWindow);
 
-        RearrangeWindow();
+        ReorderWindowSortingOrder();
     }
 
-    private void RearrangeWindow()    //Rearrange sortingorder
+    private void ReorderWindowSortingOrder()    //Rearrange sortingorder
     {
         int i = 1;
         foreach (Window window in windowList)
         {
             window.canvas.sortingOrder = i;
 
-            if (i == windowCount) topWindow = window;
+            if (i == windowList.Count) topWindow = window;
 
             i++;
         }
