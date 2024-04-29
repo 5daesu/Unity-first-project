@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameEventCode: 1
   gameEventName: EconomicBoom
-  gameEventSprite: {fileID: 21300000, guid: d4ebc36d651fa7a4bb2dd262034a4f88, type: 3}
+  gameEventSprite: {fileID: 0}
   gameEventBodyText: 
