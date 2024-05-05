@@ -15,7 +15,7 @@ public class UiWindowManager : MonoBehaviour
     public TogglingWindow gameEventWindow;
     public TogglingWindow inventoryWindow;
     public TogglingWindow questWindow;
-    public TogglingWindow detailedPlayerResourceWindow;
+    public TogglingWindow detailedPlayerInfoWindow;
 
     //2.Common Window Objects
 

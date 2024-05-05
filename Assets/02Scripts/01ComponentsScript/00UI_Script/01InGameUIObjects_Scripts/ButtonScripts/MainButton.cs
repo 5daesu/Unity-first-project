@@ -8,11 +8,11 @@ public class MainButton : MonoBehaviour
     Button button;
 
     public Text buttonText;
-    public int buttonState;
+    public int buttonState { get; private set; }
 
     void Awake()
     {
-        button = gameObject.GetComponent<Button>();
+        button = GetComponent<Button>();
     }
 
     public void CheckButtonState(GameObject selctedObject)
@@ -112,7 +112,6 @@ public class MainButton : MonoBehaviour
         }
         else if (selctedObject.tag == "Unit")
         {
-
             //if(cant merge)ChangeButtonState(5)
             ChangeButtonState(4);
             //else

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolingManager : MonoBehaviour
+public class ObjectPoolingManager : MonoBehaviour
 {
     public GameObject[] prefabs;
 

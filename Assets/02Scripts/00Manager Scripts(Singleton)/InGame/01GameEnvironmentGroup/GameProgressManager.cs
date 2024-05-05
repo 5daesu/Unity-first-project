@@ -11,7 +11,7 @@ using UnityEngine;
 
 public class GameProgressManager : MonoBehaviour
 {
-    public PoolingManager monsterPoolingManager;    //monsterpoolingManager
+    public ObjectPoolingManager monsterPoolingManager;    //monsterpoolingManager
     public GameObject monsterPortal;
     public GameObject[] stageMonsters;              //row is theme, column is list // theme 1:forest, 2:... // i think [4,5]
     public float breakTime;
