@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DragAndDropManager : MonoBehaviour
+public class UnitDragManager : MonoBehaviour        //Action about Moving Unit by Drag and Drop
 {
     public GameObject blankObject;  //for contain copiedObject who is did
 

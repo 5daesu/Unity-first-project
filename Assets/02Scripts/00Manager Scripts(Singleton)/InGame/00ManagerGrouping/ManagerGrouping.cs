@@ -6,24 +6,24 @@ public class ManagerGrouping : MonoBehaviour
 {
     public static ManagerGrouping managerGrouping;  //ManagerGrouping is singleton
 
-    //These are GameEnvironmentGroup
+    //These Group are Related with GameEnvironment
     public GridGenerateManager ggM;     //Make Grids
     public GameProgressManager gpM;     //Manage GameProgress
     public GameEventManager geM;        //Manage GameEvents
     public RoutingManager rtM;          //Calculate Route
-    public ObjectPoolingManager opM;          //Provide Pooling function
+    public ObjectPoolingManager opM;    //Provide Pooling function
 
-    //These are Related with Player
+    //These Group are Related with GamePlayer
     public PlayerInfoManager piM;       //Manage Player information, data,
     public SelectedObjectManager soM;   //About Selecting Object
 
-    //These are UserActionGroup
+    //These Group are Related with UserAction
     public KeyInputManager kiM;         //Action about Pressing a Key
-    public InputBindingManager ibM;     //Make InputBinding
-    public DragAndDropManager ddM;      //Action about Drag and Drop
+    public KeyBindingManager kbM;       //About KeyBinding
+    public UnitDragManager udM;         //Action about Drag and Drop Unit
 
-    //These are UIManagerGroup
-    public UiWindowManager uwM;
+    //These Group are Related with UserInterface
+    public UiWindowManager uwM;         //
 
 
     void Awake()    //for singleton

@@ -2,34 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputBindingManager : MonoBehaviour
+public class KeyBindingManager : MonoBehaviour      //it is a set with KeyInputManager
 {
-    public Dictionary<UserAction, KeyCode> inputbindingDict { get; private set; }
+    public Dictionary<UserAction, KeyCode> keybindingDict { get; private set; }
 
     void Awake()
     {
-        //if there is Local_File about Main InputBinding_Preset, Apply File to inputbindingDict
+        //if there is Local_File about Main InputBinding_Preset, Apply File to keybindingDict
         //else      //if there is No Main InputBinding_Preset in Local
-        inputbindingDict = new Dictionary<UserAction, KeyCode>();
+        keybindingDict = new Dictionary<UserAction, KeyCode>();
         ResetAll();
     }
 
     //
     public void Bind(in UserAction action, in KeyCode code, bool allowOverlap = false)
     {
-        if (!allowOverlap && inputbindingDict.ContainsValue(code))
+        if (!allowOverlap && keybindingDict.ContainsValue(code))
         {
-            var copy = new Dictionary<UserAction, KeyCode>(inputbindingDict);
+            var copy = new Dictionary<UserAction, KeyCode>(keybindingDict);
 
             foreach (var pair in copy)
             {
                 if (pair.Value.Equals(code))
                 {
-                    inputbindingDict[pair.Key] = KeyCode.None;
+                    keybindingDict[pair.Key] = KeyCode.None;
                 }
             }
         }
-        inputbindingDict[action] = code;
+        keybindingDict[action] = code;
     }
 
     //Reset all Binding
