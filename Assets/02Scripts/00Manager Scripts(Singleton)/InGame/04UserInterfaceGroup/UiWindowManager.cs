@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class UiWindowManager : MonoBehaviour
 {
-    //0.GameMenu Window Objects
+    //Beneath there are some Refer of UI objects And It's not all of UI objects in InGameScene!
+    //Because these are Just child's object of Canvas (that is "these are uppermost UI objects")
+    //So some Refer of UI objects which are child of other UI object can be in a another script
+
+    ////0.GameMenu Window Objects
     //public Window deckBuildingWindow;
 
     //1.InGame Window
@@ -16,6 +20,7 @@ public class UiWindowManager : MonoBehaviour
     public TogglingWindow inventoryWindow;
     public TogglingWindow questWindow;
     public TogglingWindow detailedPlayerInfoWindow;
+    public TogglingWindow gameSettingScreen;
 
     //2.Common Window Objects
 
@@ -43,8 +48,10 @@ public class UiWindowManager : MonoBehaviour
     {
         if (targetWindow.isActive == false)             //When window is opened newly
         {
-            targetWindow.canvas.sortingOrder = togglingWindows.Count;
+            targetWindow.canvas.sortingOrder = togglingWindows.Count + 1;
             togglingWindows.Add(targetWindow);
+
+            topTogglingWindow = targetWindow;
         }
         else                                            //When window is already opened, Forexample when user click window, it should go to top
         {
@@ -58,20 +65,33 @@ public class UiWindowManager : MonoBehaviour
     public void RemoveWindowFromWindowList(TogglingWindow targetWindow)     //Remove Window and Reorder Sorin
     {
         togglingWindows.Remove(targetWindow);
+        Debug.Log("Remove " + targetWindow);
 
         ReorderWindowSortingOrder();
     }
 
     private void ReorderWindowSortingOrder()    //Rearrange sortingorder
     {
-        int i = 1;
         foreach (TogglingWindow window in togglingWindows)
+            Debug.Log(window + " in List");
+
+        if (togglingWindows.Count == 0)
         {
-            window.canvas.sortingOrder = i;
+            Debug.Log("togglingWindow List is empty!");
+            topTogglingWindow = null;
+        }
+        else
+        {
+            int i = 1;
 
-            if (i == togglingWindows.Count) topTogglingWindow = window;
+            foreach (TogglingWindow window in togglingWindows)
+            {
+                window.canvas.sortingOrder = i;
 
-            i++;
+                if (i == togglingWindows.Count) topTogglingWindow = window;
+
+                i++;
+            }
         }
     }
 }

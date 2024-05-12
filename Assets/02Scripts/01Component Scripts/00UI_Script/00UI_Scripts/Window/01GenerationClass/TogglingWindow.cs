@@ -15,31 +15,31 @@ public class TogglingWindow : Window
 
     protected virtual void OnEnable()
     {
-        isActive = true;
-        ManagerGrouping.managerGrouping.uwM.SetWindowSortingOrderToTop(this);
+
     }
 
     protected virtual void OnDisable()
     {
-        isActive = false;
-        ManagerGrouping.managerGrouping.uwM.RemoveWindowFromWindowList(this);
+        
     }
 
     public void OpenWindow()
     {
-        isActive = true;
-
         togglingAction = GetComponent<TogglingAction>();
         if (togglingAction == null) togglingAction = gameObject.AddComponent<BasicTogglingAction>();
 
-        Debug.Log("Open Window");
         gameObject.SetActive(true);
+        ManagerGrouping.managerGrouping.uwM.SetWindowSortingOrderToTop(this);
+
+        isActive = true;
+
         togglingAction.OpenAction();
     }
 
     public void CloseWindow()
     {
         isActive = false;
+        ManagerGrouping.managerGrouping.uwM.RemoveWindowFromWindowList(this);
 
         togglingAction.CloseAction();
         //gameObject.SetActive(false);  //it must be in CloseAction

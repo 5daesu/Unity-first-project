@@ -12,6 +12,16 @@ public class KeyInputManager : MonoBehaviour        //it is a set with KeyBindin
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (ManagerGrouping.managerGrouping.uwM.topTogglingWindow != null) ManagerGrouping.managerGrouping.uwM.topTogglingWindow.CloseWindow();
+            else
+            {
+                Debug.Log("esc!");
+                ManagerGrouping.managerGrouping.uwM.gameSettingScreen.OpenWindow();
+            }
+        }
+
         if (Input.GetKeyDown(ManagerGrouping.managerGrouping.kbM.keybindingDict[UserAction.Toggle_Inventory_Window]))
         {
             if (ManagerGrouping.managerGrouping.uwM.inventoryWindow.isActive == false) ManagerGrouping.managerGrouping.uwM.inventoryWindow.OpenWindow();
@@ -26,13 +36,6 @@ public class KeyInputManager : MonoBehaviour        //it is a set with KeyBindin
         {
             if (ManagerGrouping.managerGrouping.uwM.detailedPlayerInfoWindow.isActive == false) ManagerGrouping.managerGrouping.uwM.detailedPlayerInfoWindow.OpenWindow();
             else ManagerGrouping.managerGrouping.uwM.detailedPlayerInfoWindow.CloseWindow();
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (ManagerGrouping.managerGrouping.uwM.topTogglingWindow != null) ManagerGrouping.managerGrouping.uwM.topTogglingWindow.CloseWindow();
-            else 
-
-            Debug.Log("esc");
         }
     }
 }

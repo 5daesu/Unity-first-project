@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class AlphaChangeTogglingAction : TogglingAction
 {
     [SerializeField] private float colorChangingSpeed;  //5 is good
-    private Image image;
-    private Color tmpColor;   //Its for calculating and assignment  //More explain : For example "image.color" is not variable -> So we can't change its value, but we can assign -> But tmpColor is variable, So we can change its value 
+    private CanvasGroup canvasGroup;
 
     void Awake()
     {
-        image = gameObject.GetComponent<Image>();
+        if (!GetComponent<CanvasGroup>()) canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        else canvasGroup = GetComponent<CanvasGroup>();
     }
 
     public override void OpenAction()
@@ -28,36 +28,30 @@ public class AlphaChangeTogglingAction : TogglingAction
 
     IEnumerator AlphaUp()
     {
-        tmpColor = image.color;     //reset tmpColor
-        tmpColor.a = 0;             //additional_work for reset 
+        canvasGroup.alpha = 0;
 
-        while (image.color.a <= 1)
+        while (canvasGroup.alpha <= 1)
         {
-            tmpColor.a += colorChangingSpeed * Time.deltaTime;
-            image.color = tmpColor;
+            canvasGroup.alpha += colorChangingSpeed * Time.deltaTime;
 
             yield return null;
         }
-        tmpColor.a = 1;
-        image.color = tmpColor;
+        canvasGroup.alpha = 1;
 
         yield break;
     }
 
     IEnumerator AlphaDown()
     {
-        tmpColor = image.color;     //reset tmpColor
-        tmpColor.a = 1;             //additional_work for reset 
+        canvasGroup.alpha = 1;
 
-        while (image.color.a >= 0)
+        while (canvasGroup.alpha > 0)
         {
-            tmpColor.a -= colorChangingSpeed * Time.deltaTime;
-            image.color = tmpColor;
+            canvasGroup.alpha -= colorChangingSpeed * Time.deltaTime;
 
             yield return null;
         }
-        tmpColor.a = 0;
-        image.color = tmpColor;
+        canvasGroup.alpha = 0;
 
         gameObject.SetActive(false);
         yield break;
