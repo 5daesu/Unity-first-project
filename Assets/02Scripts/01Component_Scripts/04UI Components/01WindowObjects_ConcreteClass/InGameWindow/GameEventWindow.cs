@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameEventWindow : FixedToggleWindow
+public class GameEventWindow : TogglingWindow
 {
     [SerializeField] private Image gameEventImage;
     [SerializeField] private Text gameEventName;

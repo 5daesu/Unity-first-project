@@ -1167,7 +1167,7 @@ GameObject:
   - component: {fileID: 368375787}
   - component: {fileID: 368375783}
   - component: {fileID: 368375785}
-  - component: {fileID: 368375786}
+  - component: {fileID: 368375788}
   m_Layer: 5
   m_Name: GameSettingWindow
   m_TagString: Untagged
@@ -1248,18 +1248,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundSettingTab: {fileID: 0}
   keyBindingTab: {fileID: 442120967}
---- !u!114 &368375786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 368375781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44b727c963e6b394aba26d323efe610c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!223 &368375787
 Canvas:
   m_ObjectHideFlags: 0
@@ -1283,6 +1271,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &368375788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368375781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6627c5a3917cbc94ca16c1b7337c5fb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &386497051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1961,7 +1961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5851f312fb91aa4a9bc4d007bc2a52d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSettingWindow: {fileID: 368375786}
+  gameSettingWindow: {fileID: 368375788}
 --- !u!114 &510540428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1971,7 +1971,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 510540421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44b727c963e6b394aba26d323efe610c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6627c5a3917cbc94ca16c1b7337c5fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &542498172
@@ -4308,7 +4308,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1573897448}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 510540427}
+        m_TargetAssemblyTypeName: GameSettingScreen, Assembly-CSharp
+        m_MethodName: OnClickResumeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1573897448
 MonoBehaviour:
   m_ObjectHideFlags: 0
