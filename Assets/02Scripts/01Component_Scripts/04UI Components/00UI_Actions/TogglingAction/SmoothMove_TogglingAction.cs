@@ -50,29 +50,58 @@ public class SmoothMoveTogglingAction : TogglingAction
 
     IEnumerator Move()
     {
-        while (rectTransform.localPosition != targetPoint)
+        if (Time.timeScale == 0)    //UI Action should not be influenced by Time.timescale
         {
-            rectTransform.localPosition = Vector3.MoveTowards(rectTransform.localPosition, targetPoint, currentSpeed * Time.deltaTime);
-            currentSpeed = initialSpeed * (Vector3.Magnitude(targetPoint - rectTransform.localPosition) / Vector3.Magnitude(targetPoint - startPoint));
-            if (currentSpeed < minimumSpeed) currentSpeed = minimumSpeed;
+            while (rectTransform.localPosition != targetPoint)
+            {
+                rectTransform.localPosition = Vector3.MoveTowards(rectTransform.localPosition, targetPoint, currentSpeed * Time.fixedDeltaTime * 0.12f);
+                currentSpeed = initialSpeed * (Vector3.Magnitude(targetPoint - rectTransform.localPosition) / Vector3.Magnitude(targetPoint - startPoint));
+                if (currentSpeed < minimumSpeed) currentSpeed = minimumSpeed;
 
-            yield return null;
+                yield return null;
+            }
         }
+        else
+        {
+            while (rectTransform.localPosition != targetPoint)
+            {
+                rectTransform.localPosition = Vector3.MoveTowards(rectTransform.localPosition, targetPoint, currentSpeed * Time.deltaTime);
+                currentSpeed = initialSpeed * (Vector3.Magnitude(targetPoint - rectTransform.localPosition) / Vector3.Magnitude(targetPoint - startPoint));
+                if (currentSpeed < minimumSpeed) currentSpeed = minimumSpeed;
+
+                yield return null;
+            }
+        }
+            
 
         yield break;
     }
 
     IEnumerator ReMove()
     {
-        Debug.Log("Remove");
-        while (rectTransform.localPosition != startPoint)
+        if (Time.timeScale == 0)    //UI Action should not be influenced by Time.timescale
         {
-            rectTransform.localPosition = Vector3.MoveTowards(rectTransform.localPosition, startPoint, currentSpeed * Time.deltaTime);
-            currentSpeed = initialSpeed * (Vector3.Magnitude(startPoint - rectTransform.localPosition) / Vector3.Magnitude(startPoint - targetPoint));
-            if (currentSpeed < minimumSpeed) currentSpeed = minimumSpeed;
+            while (rectTransform.localPosition != startPoint)
+            {
+                rectTransform.localPosition = Vector3.MoveTowards(rectTransform.localPosition, startPoint, currentSpeed * Time.fixedDeltaTime * 0.12f);
+                currentSpeed = initialSpeed * (Vector3.Magnitude(startPoint - rectTransform.localPosition) / Vector3.Magnitude(startPoint - targetPoint));
+                if (currentSpeed < minimumSpeed) currentSpeed = minimumSpeed;
 
-            yield return null;
+                yield return null;
+            }
         }
+        else
+        {
+            while (rectTransform.localPosition != startPoint)
+            {
+                rectTransform.localPosition = Vector3.MoveTowards(rectTransform.localPosition, startPoint, currentSpeed * Time.deltaTime);
+                currentSpeed = initialSpeed * (Vector3.Magnitude(startPoint - rectTransform.localPosition) / Vector3.Magnitude(startPoint - targetPoint));
+                if (currentSpeed < minimumSpeed) currentSpeed = minimumSpeed;
+
+                yield return null;
+            }
+        }
+            
 
         gameObject.SetActive(false);
         yield break;

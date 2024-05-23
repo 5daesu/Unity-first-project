@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class KeyInputManager : MonoBehaviour        //it is a set with KeyBindingManager
 {
+    private int inputDisabledWinodwStack = 0;           //value = 0 : initial state    value > 0 : input is disabled
+
+    public void InputDisabledWindowStackUp()
+    {
+        inputDisabledWinodwStack++;
+    }
+
+    public void InputDisabledWindowStackDown()
+    {
+        inputDisabledWinodwStack--;
+    }
+
     void Start()
     {
 
@@ -12,7 +24,7 @@ public class KeyInputManager : MonoBehaviour        //it is a set with KeyBindin
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))   //ESC isn't influenced by inputDisabledWindow
         {
             if (ManagerGrouping.managerGrouping.uwM.topTogglingWindow != null) ManagerGrouping.managerGrouping.uwM.topTogglingWindow.CloseWindow();
             else
@@ -22,20 +34,32 @@ public class KeyInputManager : MonoBehaviour        //it is a set with KeyBindin
             }
         }
 
-        if (Input.GetKeyDown(ManagerGrouping.managerGrouping.kbM.keybindingDict[UserAction.Toggle_Inventory_Window]))
+        if (inputDisabledWinodwStack == 0)
         {
-            if (ManagerGrouping.managerGrouping.uwM.inventoryWindow.isActive == false) ManagerGrouping.managerGrouping.uwM.inventoryWindow.OpenWindow();
-            else ManagerGrouping.managerGrouping.uwM.inventoryWindow.CloseWindow();
+
+            if (Input.GetKeyDown(ManagerGrouping.managerGrouping.kbM.keybindingDict[UserAction.Toggle_Inventory_Window]))
+            {
+                if (ManagerGrouping.managerGrouping.uwM.inventoryWindow.isActive == false) ManagerGrouping.managerGrouping.uwM.inventoryWindow.OpenWindow();
+                else ManagerGrouping.managerGrouping.uwM.inventoryWindow.CloseWindow();
+            }
+
+            else if (Input.GetKeyDown(ManagerGrouping.managerGrouping.kbM.keybindingDict[UserAction.Toggle_Quest_Window]))
+            {
+                if (ManagerGrouping.managerGrouping.uwM.questWindow.isActive == false) ManagerGrouping.managerGrouping.uwM.questWindow.OpenWindow();
+                else ManagerGrouping.managerGrouping.uwM.questWindow.CloseWindow();
+            }
+
+            else if (Input.GetKeyDown(ManagerGrouping.managerGrouping.kbM.keybindingDict[UserAction.Toggle_DetailedPlayerInfo_Window]))
+            {
+                if (ManagerGrouping.managerGrouping.uwM.detailedPlayerInfoWindow.isActive == false) ManagerGrouping.managerGrouping.uwM.detailedPlayerInfoWindow.OpenWindow();
+                else ManagerGrouping.managerGrouping.uwM.detailedPlayerInfoWindow.CloseWindow();
+            }
+
         }
-        else if (Input.GetKeyDown(ManagerGrouping.managerGrouping.kbM.keybindingDict[UserAction.Toggle_Quest_Window]))
+        else
         {
-            if (ManagerGrouping.managerGrouping.uwM.questWindow.isActive == false) ManagerGrouping.managerGrouping.uwM.questWindow.OpenWindow();
-            else ManagerGrouping.managerGrouping.uwM.questWindow.CloseWindow();
+            //Need something for User
         }
-        else if (Input.GetKeyDown(ManagerGrouping.managerGrouping.kbM.keybindingDict[UserAction.Toggle_DetailedPlayerInfo_Window]))
-        {
-            if (ManagerGrouping.managerGrouping.uwM.detailedPlayerInfoWindow.isActive == false) ManagerGrouping.managerGrouping.uwM.detailedPlayerInfoWindow.OpenWindow();
-            else ManagerGrouping.managerGrouping.uwM.detailedPlayerInfoWindow.CloseWindow();
-        }
+        
     }
 }

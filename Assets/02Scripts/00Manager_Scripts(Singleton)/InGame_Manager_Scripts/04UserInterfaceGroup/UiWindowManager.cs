@@ -62,7 +62,7 @@ public class UiWindowManager : MonoBehaviour
         }
     }
 
-    public void RemoveWindowFromWindowList(TogglingWindow targetWindow)     //Remove Window and Reorder Sorin
+    public void RemoveWindowFromWindowList(TogglingWindow targetWindow)     //Remove Window and Reorder sortingorder
     {
         togglingWindows.Remove(targetWindow);
         Debug.Log("Remove " + targetWindow);

@@ -1006,12 +1006,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 365918339}
-  - component: {fileID: 365918346}
   - component: {fileID: 365918345}
-  - component: {fileID: 365918344}
-  - component: {fileID: 365918343}
-  - component: {fileID: 365918342}
   - component: {fileID: 365918341}
+  - component: {fileID: 365918346}
+  - component: {fileID: 365918344}
+  - component: {fileID: 365918347}
+  - component: {fileID: 365918343}
   - component: {fileID: 365918340}
   m_Layer: 5
   m_Name: QuestWindow
@@ -1051,7 +1051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e846c351997a1b34ba9c9bc6b47a0233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorChangingSpeed: 10
+  colorChangingSpeed: 5
 --- !u!114 &365918341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1069,18 +1069,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &365918342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 365918338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66786d77c6e8ab84f88eab206b240b5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &365918343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1093,6 +1081,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6627c5a3917cbc94ca16c1b7337c5fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragOption: 1
+  timeStopOption: 0
+  inputDisabledOption: 0
+  fixedCloseMethodOption: 0
 --- !u!223 &365918344
 Canvas:
   m_ObjectHideFlags: 0
@@ -1154,6 +1146,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365918338}
   m_CullTransparentMesh: 1
+--- !u!225 &365918347
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365918338}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &368375781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,6 +1287,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6627c5a3917cbc94ca16c1b7337c5fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragOption: 0
+  timeStopOption: 0
+  inputDisabledOption: 0
+  fixedCloseMethodOption: 0
 --- !u!1 &386497051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,6 +1382,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6627c5a3917cbc94ca16c1b7337c5fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragOption: 0
+  timeStopOption: 0
+  inputDisabledOption: 0
+  fixedCloseMethodOption: 0
 --- !u!1 &420957121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,6 +1986,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6627c5a3917cbc94ca16c1b7337c5fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragOption: 0
+  timeStopOption: 1
+  inputDisabledOption: 1
+  fixedCloseMethodOption: 0
 --- !u!1 &542498172
 GameObject:
   m_ObjectHideFlags: 0
@@ -5631,6 +5647,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6627c5a3917cbc94ca16c1b7337c5fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragOption: 0
+  timeStopOption: 0
+  inputDisabledOption: 0
+  fixedCloseMethodOption: 0
 --- !u!223 &1964489471
 Canvas:
   m_ObjectHideFlags: 0
@@ -6074,6 +6094,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6627c5a3917cbc94ca16c1b7337c5fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragOption: 0
+  timeStopOption: 0
+  inputDisabledOption: 0
+  fixedCloseMethodOption: 0
 --- !u!223 &2039539409
 Canvas:
   m_ObjectHideFlags: 0
@@ -6845,6 +6869,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75298011ed61dc44280d8f1581b26c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragOption: 0
+  timeStopOption: 1
+  inputDisabledOption: 0
+  fixedCloseMethodOption: 0
   gameEventImage: {fileID: 826728702}
   gameEventName: {fileID: 731105475}
   gameEventBody: {fileID: 48857920}

@@ -20,6 +20,8 @@ public class FloatingEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("Floating Effect");
+
         vector3 = new Vector3(0, Mathf.Sin(delta_x) * variance, 0);
         transform.localPosition = vector3;
 

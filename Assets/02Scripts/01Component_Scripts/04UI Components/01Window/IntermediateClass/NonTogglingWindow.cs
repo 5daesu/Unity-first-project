@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class NonTogglingWindow : Window
 {
-    void Awake()
-    {
-        canvas = gameObject.GetComponent<Canvas>();
-        isActive = false;
-    }
-
     void OnEnable()
     {
         ManagerGrouping.managerGrouping.uwM.InitializeWindowSortingOrder(this);

@@ -30,14 +30,27 @@ public class AlphaChangeTogglingAction : TogglingAction
     {
         canvasGroup.alpha = 0;
 
-        while (canvasGroup.alpha <= 1)
+        if (Time.timeScale == 0)    //UI Action should not be influenced by Time.timescale
         {
-            canvasGroup.alpha += colorChangingSpeed * Time.deltaTime;
-
-            yield return null;
+            while (canvasGroup.alpha <= 1)
+            {
+                canvasGroup.alpha += colorChangingSpeed * Time.fixedDeltaTime * 0.12f;
+                
+                yield return null;
+            }
+            canvasGroup.alpha = 1;
         }
-        canvasGroup.alpha = 1;
+        else
+        {
+            while (canvasGroup.alpha <= 1)
+            {
+                canvasGroup.alpha += colorChangingSpeed * Time.deltaTime;
 
+                yield return null;
+            }
+            canvasGroup.alpha = 1;
+        }
+        
         yield break;
     }
 
@@ -45,14 +58,27 @@ public class AlphaChangeTogglingAction : TogglingAction
     {
         canvasGroup.alpha = 1;
 
-        while (canvasGroup.alpha > 0)
+        if (Time.timeScale == 0)    //UI Action should not be influenced by Time.timescale        
         {
-            canvasGroup.alpha -= colorChangingSpeed * Time.deltaTime;
+            while (canvasGroup.alpha > 0)
+            {
+                canvasGroup.alpha -= colorChangingSpeed * Time.fixedDeltaTime * 0.12f;
 
-            yield return null;
+                yield return null;
+            }
+            canvasGroup.alpha = 0;
         }
-        canvasGroup.alpha = 0;
+        else
+        {
+            while (canvasGroup.alpha > 0)
+            {
+                canvasGroup.alpha -= colorChangingSpeed * Time.deltaTime;
 
+                yield return null;
+            }
+            canvasGroup.alpha = 0;
+        }
+        
         gameObject.SetActive(false);
         yield break;
     }
