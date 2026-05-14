@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Grid : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class Grid : MonoBehaviour
         Debug.Log("실행됨");
         int i = Random.Range(0, 5);
         summon = true;
-        unit = Instantiate(ManagerGrouping.managerGrouping.piM.playerDeck.Summon(), transform.position, Quaternion.identity, transform);
+        unit = Instantiate(SingletonTable.singletonTable.piM.playerDeck.Summon(), transform.position, Quaternion.identity, transform);
     }
     
     private void OnMouseOver()  //run when mouse is over object's collider
@@ -40,14 +41,14 @@ public class Grid : MonoBehaviour
 
     private void OnMouseDown()  //run when mouse click object's collider
     {
-        if (summon == false)
+        if (Input.GetMouseButtonDown(0))
         {
-            ManagerGrouping.managerGrouping.soM.ChangeSelected(gameObject);
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                if (summon == false) SingletonTable.singletonTable.soM.ChangeSelected(gameObject);
+                else SingletonTable.singletonTable.soM.ChangeSelected(unit);
+                Debug.Log(i_Row + "행 " + i_Column + "렬");
+            }
         }
-        else
-        {
-            ManagerGrouping.managerGrouping.soM.ChangeSelected(unit);
-        }
-        Debug.Log(i_Row + "행 " + i_Column + "렬");
     }
 }

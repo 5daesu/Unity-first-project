@@ -41,9 +41,9 @@ public class MonsterBehavior : MonoBehaviour
 
     void MovePath()
     {
-        transform.position = Vector2.MoveTowards(transform.position, ManagerGrouping.managerGrouping.rtM.finalNodeList[i + 1].grid.transform.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, SingletonTable.singletonTable.rtM.finalNodeList[i + 1].grid.transform.position, speed * Time.deltaTime);
 
-        if (transform.position == ManagerGrouping.managerGrouping.rtM.finalNodeList[i + 1].grid.transform.position) i++;
+        if (transform.position == SingletonTable.singletonTable.rtM.finalNodeList[i + 1].grid.transform.position) i++;
     }
 
     public void GetDamage(bool attackType, float beforeDamage)
@@ -65,15 +65,15 @@ public class MonsterBehavior : MonoBehaviour
 
     private void Die()
     {
-        ManagerGrouping.managerGrouping.piM.ChangeMoney(rewardMoney);
+        SingletonTable.singletonTable.piM.ChangeMoney(rewardMoney);
         DeActivation();
     }
 
     void CheckArrival()
     {
-        if (transform.position == ManagerGrouping.managerGrouping.rtM.targetNode.grid.transform.position)
+        if (transform.position == SingletonTable.singletonTable.rtM.targetNode.grid.transform.position)
         {
-            ManagerGrouping.managerGrouping.piM.ChangeHp(-1);
+            SingletonTable.singletonTable.piM.ChangeHp(-1);
             DeActivation();
         }
     }
@@ -81,8 +81,8 @@ public class MonsterBehavior : MonoBehaviour
     void DeActivation()
     {
         gameObject.SetActive(false);
-        ManagerGrouping.managerGrouping.gpM.livingMonsters.Remove(gameObject);
-        ManagerGrouping.managerGrouping.gpM.CheckLeftMonster();
+        SingletonTable.singletonTable.gpM.livingMonsters.Remove(gameObject);
+        SingletonTable.singletonTable.gpM.CheckLeftMonster();
     }
 
     void OnEnable()

@@ -71,6 +71,6 @@ public class Attack : MonoBehaviour
     {
         //state = ~~~;
         Debug.Log("½ÇÇà");
-        ManagerGrouping.managerGrouping.opM.GetObject(poolingIndex, gameObject);
+        SingletonTable.singletonTable.opM.GetObject(poolingIndex, gameObject);
     }
 }

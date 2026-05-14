@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7915f939d89da41a01eb0984fe927c, type: 3}
+  m_Name: 000BumperCropEvent
+  m_EditorClassIdentifier: 
+  gameEventCode: 0
+  gameEventName: BumperCrop
+  gameEventSprite: {fileID: 21300000, guid: 732b6b1e76193f346aa6297ac6e05a43, type: 3}
+  gameEventBodyText: We have a good harvest this year!
+  actions:
+  - {fileID: 11400000, guid: cb3845e3489c4f62bb9e8bd1768a77e7, type: 2}
+  primaryCondition: 1
+  secondaryCondition: 1

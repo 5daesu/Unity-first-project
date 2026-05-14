@@ -33,6 +33,12 @@ public class GameSettingWindow : MonoBehaviour
         ChangeTab(keyBindingTab);
     }
 
+    public void OnClickSaveButton()
+    {
+        SingletonTable.singletonTable.kbM.SavePreset(0);
+        Debug.Log("Save Button Clicked");
+    }
+
     private void ChangeTab(GameObject newTab)
     {
         curTab.SetActive(false);

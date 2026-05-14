@@ -1,0 +1,25 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:Foldout text="ManagerGroup" name="ManagerGroup" value="false">
+        <ui:Foldout text="GameEnvirnomentGroup" name="GameEnvirnomentGroup" value="false">
+            <uie:PropertyField binding-path="ggM" label="GrigGeneratorManager" name="GrigGeneratorManager" />
+            <uie:PropertyField binding-path="gpM" label="GameProgressManager" name="GameProgressManager" />
+            <uie:PropertyField binding-path="geM" label="GameEventManager" name="GameEventManager" />
+            <uie:PropertyField binding-path="rtM" label="RoutingManager" name="RoutingManager" />
+            <uie:PropertyField label="ObjectPoolingManager" binding-path="opM" name="ObjectPoolingManager" />
+        </ui:Foldout>
+        <ui:Foldout text="GamePlayerGroup" name="GamePlayerGroup" value="false">
+            <uie:PropertyField binding-path="piM" label="PlayerInfoManager" name="PlayerInfoManager" />
+            <uie:PropertyField binding-path="soM" label="selectedObjectManager" name="selectedObjectManager" />
+        </ui:Foldout>
+        <ui:Foldout text="UserActionGroup" name="UserActionGroup" value="false">
+            <uie:PropertyField binding-path="kiM" label="KeyInputManager" name="KeyInputManager" />
+            <uie:PropertyField binding-path="kbM" label="KeyBindingManager" name="KeyBindingManager" />
+            <uie:PropertyField binding-path="udM" label="UnitDragManager" name="UnitDragManager" />
+        </ui:Foldout>
+        <ui:Foldout text="UserInterfaceGroup" name="UserInterfaceGroup" value="false">
+            <uie:PropertyField binding-path="uwM" label="UiWindowManager" name="UiWindowManager" />
+        </ui:Foldout>
+    </ui:Foldout>
+    <ui:Foldout text="DataTableGroup" name="DataTableGroup" value="false" />
+    <ui:Foldout text="Default_Inspector" name="Default_Inspector" value="false" />
+</ui:UXML>

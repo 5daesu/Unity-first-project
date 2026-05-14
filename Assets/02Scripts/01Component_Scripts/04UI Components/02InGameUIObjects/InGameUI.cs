@@ -25,20 +25,20 @@ public class InGameUI : MonoBehaviour
         else if (mainButton.buttonState == 3)
         {
             SummonUnit();
-            ManagerGrouping.managerGrouping.soM.UnSelsectObject();  //There is CheckButtonState
+            SingletonTable.singletonTable.soM.UnSelsectObject();  //There is CheckButtonState
         }
     }
 
     private void BuildCastle()
     {
-        ManagerGrouping.managerGrouping.soM.selectedObject.GetComponent<Grid>().BuildCastle();
-        ManagerGrouping.managerGrouping.piM.SpendCastleCost();
+        SingletonTable.singletonTable.soM.selectedObject.GetComponent<Grid>().BuildCastle();
+        SingletonTable.singletonTable.piM.SpendCastleCost();
     }
 
     private void SummonUnit()
     {
-        ManagerGrouping.managerGrouping.soM.selectedObject.GetComponent<Grid>().Summon();
-        ManagerGrouping.managerGrouping.piM.SpendSummonCost();
+        SingletonTable.singletonTable.soM.selectedObject.GetComponent<Grid>().Summon();
+        SingletonTable.singletonTable.piM.SpendSummonCost();
     }
 
 }

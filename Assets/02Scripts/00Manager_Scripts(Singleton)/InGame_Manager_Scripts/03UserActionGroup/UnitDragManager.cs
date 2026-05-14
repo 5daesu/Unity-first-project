@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UnitDragManager : MonoBehaviour        //Action about Moving Unit by Drag and Drop
 {
@@ -27,31 +28,36 @@ public class UnitDragManager : MonoBehaviour        //Action about Moving Unit b
 
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = new Ray(mousePosition - new Vector3(0, 0, -0.5f), new Vector3(0, 0, -1f));
-
-            hitCollider = Physics2D.GetRayIntersection(ray);
-
-            if (hitCollider.collider != null)
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                GameObject hitObject = hitCollider.transform.gameObject;
+                Ray ray = new Ray(mousePosition - new Vector3(0, 0, -0.5f), new Vector3(0, 0, -1f));
 
-                if (hitObject.tag == "Grid")
+                hitCollider = Physics2D.GetRayIntersection(ray);
+
+                if (hitCollider.collider != null)
                 {
-                    beforeGrid = hitObject.GetComponent<Grid>();
+                    GameObject hitObject = hitCollider.transform.gameObject;
 
-                    if (beforeGrid.castle == false) return;
-                    else
+                    if (hitObject.tag == "Grid")
                     {
-                        if (beforeGrid.summon == false) return;
+                        beforeGrid = hitObject.GetComponent<Grid>();
+
+                        if (beforeGrid.castle == false) return;
                         else
                         {
-                            blankObject.GetComponent<SpriteRenderer>().sprite = beforeGrid.unit.GetComponent<SpriteRenderer>().sprite;
-                            onDrag = true;
+                            if (beforeGrid.summon == false) return;
+                            else
+                            {
+                                blankObject.GetComponent<SpriteRenderer>().sprite = beforeGrid.unit.GetComponent<SpriteRenderer>().sprite;
+                                onDrag = true;
+                            }
                         }
                     }
                 }
             }
         }
+
+        //if (onDrag) UpdateObjectPos();
 
         if (onDrag == true && Input.GetMouseButtonUp(0))
         {

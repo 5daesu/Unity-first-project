@@ -14,16 +14,16 @@ public class SelectedObjectManager : MonoBehaviour
 
     public void UnSelsectObject()
     {
-        if (ManagerGrouping.managerGrouping.soM.selectedObject == null)   //write for -> if there's no ref for selectedObject this method will make error  
+        if (SingletonTable.singletonTable.soM.selectedObject == null)   //write for -> if there's no ref for selectedObject this method will make error  
         {
             InGameUI.inGameUI.mainButton.CheckButtonState(selectedObject);
             return;
         }
 
-        SpriteRenderer spriteRenderer = ManagerGrouping.managerGrouping.soM.selectedObject.GetComponent<SpriteRenderer>(); //for visual effects
+        SpriteRenderer spriteRenderer = SingletonTable.singletonTable.soM.selectedObject.GetComponent<SpriteRenderer>(); //for visual effects
         spriteRenderer.color = new Color(1, 1, 1, 1);   //original color?
         //selected = false;
-        ManagerGrouping.managerGrouping.soM.selectedObject = null;
+        SingletonTable.singletonTable.soM.selectedObject = null;
 
         InGameUI.inGameUI.mainButton.CheckButtonState(selectedObject);
     }

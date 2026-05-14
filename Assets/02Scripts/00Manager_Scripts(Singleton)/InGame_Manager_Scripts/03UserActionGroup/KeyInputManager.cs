@@ -26,39 +26,39 @@ public class KeyInputManager : MonoBehaviour        //it is a set with KeyBindin
     {
         if (Input.GetKeyDown(KeyCode.Escape))   //ESC isn't influenced by inputDisabledWindow
         {
-            if (ManagerGrouping.managerGrouping.uwM.topTogglingWindow != null) ManagerGrouping.managerGrouping.uwM.topTogglingWindow.CloseWindow();
+            if (SingletonTable.singletonTable.uwM.topTogglingWindow != null) SingletonTable.singletonTable.uwM.topTogglingWindow.CloseWindow();
             else
             {
                 Debug.Log("esc!");
-                ManagerGrouping.managerGrouping.uwM.gameSettingScreen.OpenWindow();
+                SingletonTable.singletonTable.uwM.gameSettingScreen.OpenWindow();
             }
         }
 
         if (inputDisabledWinodwStack == 0)
         {
 
-            if (Input.GetKeyDown(ManagerGrouping.managerGrouping.kbM.keybindingDict[UserAction.Toggle_Inventory_Window]))
+            if (Input.GetKeyDown(SingletonTable.singletonTable.kbM.curKeybindingSet[UserAction.Toggle_Inventory_Window]))
             {
-                if (ManagerGrouping.managerGrouping.uwM.inventoryWindow.isActive == false) ManagerGrouping.managerGrouping.uwM.inventoryWindow.OpenWindow();
-                else ManagerGrouping.managerGrouping.uwM.inventoryWindow.CloseWindow();
+                if (SingletonTable.singletonTable.uwM.inventoryWindow.isActive == false) SingletonTable.singletonTable.uwM.inventoryWindow.OpenWindow();
+                else SingletonTable.singletonTable.uwM.inventoryWindow.CloseWindow();
             }
 
-            else if (Input.GetKeyDown(ManagerGrouping.managerGrouping.kbM.keybindingDict[UserAction.Toggle_Quest_Window]))
+            else if (Input.GetKeyDown(SingletonTable.singletonTable.kbM.curKeybindingSet[UserAction.Toggle_Quest_Window]))
             {
-                if (ManagerGrouping.managerGrouping.uwM.questWindow.isActive == false) ManagerGrouping.managerGrouping.uwM.questWindow.OpenWindow();
-                else ManagerGrouping.managerGrouping.uwM.questWindow.CloseWindow();
+                if (SingletonTable.singletonTable.uwM.questWindow.isActive == false) SingletonTable.singletonTable.uwM.questWindow.OpenWindow();
+                else SingletonTable.singletonTable.uwM.questWindow.CloseWindow();
             }
 
-            else if (Input.GetKeyDown(ManagerGrouping.managerGrouping.kbM.keybindingDict[UserAction.Toggle_DetailedPlayerInfo_Window]))
+            else if (Input.GetKeyDown(SingletonTable.singletonTable.kbM.curKeybindingSet[UserAction.Toggle_DetailedPlayerInfo_Window]))
             {
-                if (ManagerGrouping.managerGrouping.uwM.detailedPlayerInfoWindow.isActive == false) ManagerGrouping.managerGrouping.uwM.detailedPlayerInfoWindow.OpenWindow();
-                else ManagerGrouping.managerGrouping.uwM.detailedPlayerInfoWindow.CloseWindow();
+                if (SingletonTable.singletonTable.uwM.detailedPlayerInfoWindow.isActive == false) SingletonTable.singletonTable.uwM.detailedPlayerInfoWindow.OpenWindow();
+                else SingletonTable.singletonTable.uwM.detailedPlayerInfoWindow.CloseWindow();
             }
 
         }
         else
         {
-            //Need something for User
+            //Need something for User : alert Sound...
         }
         
     }

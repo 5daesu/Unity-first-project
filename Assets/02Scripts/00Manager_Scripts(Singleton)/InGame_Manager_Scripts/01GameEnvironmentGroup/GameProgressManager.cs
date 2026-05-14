@@ -21,7 +21,6 @@ public class GameProgressManager : MonoBehaviour
     public int curRound { get; set; }
 
     private GameObject curMonster;
-    private float checkTime;
     private int controlCoroutine = 0;
 
     void Awake()
@@ -29,29 +28,26 @@ public class GameProgressManager : MonoBehaviour
         livingMonsters = new List<GameObject>();
 
         onBreak = false;
-        checkTime = 0;      //before stage1, there needs more time
-        curRound = 1;       //
+        curRound = 1;
     }
 
     void Start()
     {
-        gameObject.transform.position = ManagerGrouping.managerGrouping.ggM.nodeArray[0, 0].grid.transform.position;
+        gameObject.transform.position = SingletonTable.singletonTable.ggM.nodeArray[0, 0].grid.transform.position;
         monsterPortal.transform.position = monsterPortal.transform.parent.transform.position;
+
+        StateChange();
+    }
+
+    public void StartRoundByUser()
+    {
+        if (onBreak == false) return;
 
         StateChange();
     }
 
     void Update()   //
     {
-        if (onBreak == true)
-        {
-            checkTime += Time.deltaTime;
-            if (checkTime > breakTime)
-            {
-                checkTime = 0;
-                StateChange();
-            }
-        }
     }
 
     void StateChange()
@@ -61,15 +57,15 @@ public class GameProgressManager : MonoBehaviour
             Debug.Log(curRound + " Round Breaktime");
             onBreak = true;
 
-            ManagerGrouping.managerGrouping.geM.DrawGameEvent();                                                                    //Drawing GameEvent
-            ManagerGrouping.managerGrouping.uwM.gameEventWindow.GetComponent<GameEventWindow>().OpenWindow();                       //Setting Active
+            SingletonTable.singletonTable.geM.DrawGameEvent();                                                                    //Drawing GameEvent
+            SingletonTable.singletonTable.uwM.gameEventWindow.GetComponent<GameEventWindow>().OpenWindow();                       //Setting Active
             
-            InGameUI.inGameUI.mainButton.CheckButtonState(ManagerGrouping.managerGrouping.soM.selectedObject);
+            InGameUI.inGameUI.mainButton.CheckButtonState(SingletonTable.singletonTable.soM.selectedObject);
         }
         else
         {
             onBreak = false;
-            InGameUI.inGameUI.mainButton.CheckButtonState(ManagerGrouping.managerGrouping.soM.selectedObject);  //it should be faster than StartStage() because after running PathFinding() it should be never changed
+            InGameUI.inGameUI.mainButton.CheckButtonState(SingletonTable.singletonTable.soM.selectedObject);  //it should be faster than StartStage() because after running PathFinding() it should be never changed
             Debug.Log(curRound + " Wave Start");
             StartWave();
         }
@@ -77,7 +73,7 @@ public class GameProgressManager : MonoBehaviour
 
     void StartWave()
     {
-        ManagerGrouping.managerGrouping.rtM.PathFinding();
+        SingletonTable.singletonTable.rtM.PathFinding();
 
         curMonster = stageMonsters[curRound - 1];
         int curMonsterCost = curMonster.GetComponent<MonsterInfo>().cost;

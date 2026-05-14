@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class GridGenerateManager : MonoBehaviour
 {
-    public int row;      //god, work on inspector window
-    public int column;   //fuf, work on inspector window
-    public GameObject gridPrefab;     //for prefabs
-    GameObject instanceGrid;   //for instances
-    public Node[,] nodeArray;     //the array is only-one in the game
+    [SerializeField] private GameObject mapTable;
+    [SerializeField] private GameObject gridPrefab;     //for prefabs
+    public int row;         //god, work on inspector window
+    public int column;      //fuf, work on inspector window
+    private GameObject instanceGrid;                    //for instances
+    public Node[,] nodeArray;                           //the array is only-one in the game
 
     void Awake()
     {
@@ -26,7 +27,7 @@ public class GridGenerateManager : MonoBehaviour
                 float y = 4f - (halfHeight * i) - (halfHeight * j);   
                 Vector3 locFromParent = new Vector3(x, y, 0f);
 
-                instanceGrid = Instantiate(gridPrefab, transform.position + locFromParent, Quaternion.identity, transform);     //Instantiate by child of GGM
+                instanceGrid = Instantiate(gridPrefab, transform.position + locFromParent, Quaternion.identity, mapTable.transform);    //Instantiate by child of GGM
                 //instanceGrid.transform.parent = gameObject.transform;   //make Grid go to parent's(GridGenerateManager) child object
                 instanceGrid.GetComponent<Grid>().i_Row = i + 1;        //for 1 ~ n ( not 0 ~ n-1 ) 
                 instanceGrid.GetComponent<Grid>().i_Column = j + 1;     //for 1 ~ n

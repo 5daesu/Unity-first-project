@@ -55,7 +55,7 @@ public class PlayerInfoManager : MonoBehaviour
     {
         playerMoney += changedAmount;
 
-        ManagerGrouping.managerGrouping.uwM.simplePlayerResourceWindow.UpdateWindowContent();
+        SingletonTable.singletonTable.uwM.simplePlayerResourceWindow.UpdateWindowContent();
         InGameUI.inGameUI.mainButton.CheckButtonState();
     }
 
@@ -63,7 +63,7 @@ public class PlayerInfoManager : MonoBehaviour
     {
         playerHp += changedAmount;
 
-        ManagerGrouping.managerGrouping.uwM.simplePlayerResourceWindow.UpdateWindowContent();
+        SingletonTable.singletonTable.uwM.simplePlayerResourceWindow.UpdateWindowContent();
         //if (playerHp <= 0) return;
     }
 }

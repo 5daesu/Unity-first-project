@@ -25,7 +25,7 @@ public class GameSettingScreen : MonoBehaviour
     public void OnClickResumeButton()
     {
         if (gameSettingWindow.isActive == true) gameSettingWindow.CloseWindow();
-        ManagerGrouping.managerGrouping.uwM.gameSettingScreen.CloseWindow();
+        SingletonTable.singletonTable.uwM.gameSettingScreen.CloseWindow();
     }
 
     public void OnClickGameSettingButton()

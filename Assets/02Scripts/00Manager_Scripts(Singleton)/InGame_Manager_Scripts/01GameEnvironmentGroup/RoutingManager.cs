@@ -32,8 +32,8 @@ public class RoutingManager : MonoBehaviour
 
     public void PathFinding()   //by A* algorithm
     {
-        startNode = ManagerGrouping.managerGrouping.ggM.nodeArray[0, 0];
-        targetNode = ManagerGrouping.managerGrouping.ggM.nodeArray[ManagerGrouping.managerGrouping.ggM.row - 1, ManagerGrouping.managerGrouping.ggM.column - 1];
+        startNode = SingletonTable.singletonTable.ggM.nodeArray[0, 0];
+        targetNode = SingletonTable.singletonTable.ggM.nodeArray[SingletonTable.singletonTable.ggM.row - 1, SingletonTable.singletonTable.ggM.column - 1];
 
         openList = new List<Node>() { startNode };
         closeList = new List<Node>();
@@ -73,8 +73,8 @@ public class RoutingManager : MonoBehaviour
 
     public void SupposedPathFinding()   //for build castle, check something block to targetNode by supposing
     {
-        startNode = ManagerGrouping.managerGrouping.ggM.nodeArray[0, 0];
-        targetNode = ManagerGrouping.managerGrouping.ggM.nodeArray[ManagerGrouping.managerGrouping.ggM.row - 1, ManagerGrouping.managerGrouping.ggM.column - 1];
+        startNode = SingletonTable.singletonTable.ggM.nodeArray[0, 0];
+        targetNode = SingletonTable.singletonTable.ggM.nodeArray[SingletonTable.singletonTable.ggM.row - 1, SingletonTable.singletonTable.ggM.column - 1];
 
         openList = new List<Node>() { startNode };
         closeList = new List<Node>();
@@ -119,9 +119,9 @@ public class RoutingManager : MonoBehaviour
         Node neighborNode;
         int moveCost;
 
-        if (!(checkRow < 1) && !(checkColumn < 1) && !(checkRow > ManagerGrouping.managerGrouping.ggM.row) && !(checkColumn > ManagerGrouping.managerGrouping.ggM.column) && ManagerGrouping.managerGrouping.ggM.nodeArray[checkRow - 1, checkColumn - 1].grid.castle == false && !closeList.Contains(ManagerGrouping.managerGrouping.ggM.nodeArray[checkRow - 1, checkColumn - 1]))
+        if (!(checkRow < 1) && !(checkColumn < 1) && !(checkRow > SingletonTable.singletonTable.ggM.row) && !(checkColumn > SingletonTable.singletonTable.ggM.column) && SingletonTable.singletonTable.ggM.nodeArray[checkRow - 1, checkColumn - 1].grid.castle == false && !closeList.Contains(SingletonTable.singletonTable.ggM.nodeArray[checkRow - 1, checkColumn - 1]))
         {// checking Point1. is it in array's size   Point2. is there no castle   Point3. is it not in closeList
-            neighborNode = ManagerGrouping.managerGrouping.ggM.nodeArray[checkRow - 1, checkColumn - 1];
+            neighborNode = SingletonTable.singletonTable.ggM.nodeArray[checkRow - 1, checkColumn - 1];
             moveCost = curNode.value_G + 1;
 
             if (moveCost < neighborNode.value_G || !openList.Contains(neighborNode))

@@ -28,11 +28,11 @@ public class MainButton : MonoBehaviour
 
             if (castle == false)
             {
-                bool onBreak = ManagerGrouping.managerGrouping.gpM.onBreak;
-                Node selectedNode = ManagerGrouping.managerGrouping.ggM.nodeArray[selctedObject.GetComponent<Grid>().i_Row - 1, selctedObject.GetComponent<Grid>().i_Column - 1];
-                bool checkPath = ManagerGrouping.managerGrouping.rtM.CheckPath(selectedNode);
-                int playerMoney = ManagerGrouping.managerGrouping.piM.playerMoney;
-                int castleCost = ManagerGrouping.managerGrouping.piM.castleCost;
+                bool onBreak = SingletonTable.singletonTable.gpM.onBreak;
+                Node selectedNode = SingletonTable.singletonTable.ggM.nodeArray[selctedObject.GetComponent<Grid>().i_Row - 1, selctedObject.GetComponent<Grid>().i_Column - 1];
+                bool checkPath = SingletonTable.singletonTable.rtM.CheckPath(selectedNode);
+                int playerMoney = SingletonTable.singletonTable.piM.playerMoney;
+                int castleCost = SingletonTable.singletonTable.piM.castleCost;
 
                 if (onBreak == false || checkPath == false || playerMoney < castleCost) ChangeButtonState(0);
                 else ChangeButtonState(1);
@@ -40,8 +40,8 @@ public class MainButton : MonoBehaviour
             else
             {
                 bool summon = selctedObject.GetComponent<Grid>().summon;
-                int playerMoney = ManagerGrouping.managerGrouping.piM.playerMoney;
-                int summonCost = ManagerGrouping.managerGrouping.piM.summonCost;
+                int playerMoney = SingletonTable.singletonTable.piM.playerMoney;
+                int summonCost = SingletonTable.singletonTable.piM.summonCost;
 
                 if (summon == false)
                 {
@@ -50,7 +50,7 @@ public class MainButton : MonoBehaviour
                 }
                 else    //This scope can run well because selectedObject is ref value
                 {
-                    ManagerGrouping.managerGrouping.soM.ChangeSelected(selctedObject.GetComponent<Grid>().unit);    //Never write "CheckButtonState(selctedObject);", it makes infinity loof. because it's already there 
+                    SingletonTable.singletonTable.soM.ChangeSelected(selctedObject.GetComponent<Grid>().unit);    //Never write "CheckButtonState(selctedObject);", it makes infinity loof. because it's already there 
                 }
             }
         }
@@ -64,7 +64,7 @@ public class MainButton : MonoBehaviour
         }
         else
         {
-            ManagerGrouping.managerGrouping.soM.UnSelsectObject();
+            SingletonTable.singletonTable.soM.UnSelsectObject();
             ChangeButtonState(0);
         }
     }
@@ -72,7 +72,7 @@ public class MainButton : MonoBehaviour
     public void CheckButtonState()  //Its overloading. When selectedObj didnt change, it should be call
     {
         Debug.Log("Call CheckButtonState");
-        GameObject selctedObject = ManagerGrouping.managerGrouping.soM.selectedObject;
+        GameObject selctedObject = SingletonTable.singletonTable.soM.selectedObject;
 
         if (selctedObject == null)
         {
@@ -84,11 +84,11 @@ public class MainButton : MonoBehaviour
 
             if (castle == false)
             {
-                bool onBreak = ManagerGrouping.managerGrouping.gpM.onBreak;
-                Node selectedNode = ManagerGrouping.managerGrouping.ggM.nodeArray[selctedObject.GetComponent<Grid>().i_Row - 1, selctedObject.GetComponent<Grid>().i_Column - 1];
-                bool checkPath = ManagerGrouping.managerGrouping.rtM.CheckPath(selectedNode);
-                int playerMoney = ManagerGrouping.managerGrouping.piM.playerMoney;
-                int castleCost = ManagerGrouping.managerGrouping.piM.castleCost;
+                bool onBreak = SingletonTable.singletonTable.gpM.onBreak;
+                Node selectedNode = SingletonTable.singletonTable.ggM.nodeArray[selctedObject.GetComponent<Grid>().i_Row - 1, selctedObject.GetComponent<Grid>().i_Column - 1];
+                bool checkPath = SingletonTable.singletonTable.rtM.CheckPath(selectedNode);
+                int playerMoney = SingletonTable.singletonTable.piM.playerMoney;
+                int castleCost = SingletonTable.singletonTable.piM.castleCost;
 
                 if (onBreak == false || checkPath == false || playerMoney < castleCost) ChangeButtonState(0);
                 else ChangeButtonState(1);
@@ -96,8 +96,8 @@ public class MainButton : MonoBehaviour
             else
             {
                 bool summon = selctedObject.GetComponent<Grid>().summon;
-                int playerMoney = ManagerGrouping.managerGrouping.piM.playerMoney;
-                int summonCost = ManagerGrouping.managerGrouping.piM.summonCost;
+                int playerMoney = SingletonTable.singletonTable.piM.playerMoney;
+                int summonCost = SingletonTable.singletonTable.piM.summonCost;
 
                 if (summon == false)
                 {
@@ -106,7 +106,7 @@ public class MainButton : MonoBehaviour
                 }
                 else    //This scope can run well because selectedObject is ref value
                 {
-                    ManagerGrouping.managerGrouping.soM.ChangeSelected(selctedObject.GetComponent<Grid>().unit);    //Never write "CheckButtonState(selctedObject);" because it's already there 
+                    SingletonTable.singletonTable.soM.ChangeSelected(selctedObject.GetComponent<Grid>().unit);    //Never write "CheckButtonState(selctedObject);" because it's already there 
                 }
             }
         }
@@ -119,7 +119,7 @@ public class MainButton : MonoBehaviour
         }
         else
         {
-            ManagerGrouping.managerGrouping.soM.UnSelsectObject();
+            SingletonTable.singletonTable.soM.UnSelsectObject();
             ChangeButtonState(0);
         }
     }
