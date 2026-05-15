@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class MonsterBehavior : MonoBehaviour
 {
+    const int MonsterSortingOffset = 2;
+
     public Image HpBar;
 
     float maxHp;
@@ -15,9 +17,11 @@ public class MonsterBehavior : MonoBehaviour
     int rewardMoney;
 
     int i;
+    SpriteRenderer monsterSprite;
 
     private void Awake()
     {
+        monsterSprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -36,6 +40,7 @@ public class MonsterBehavior : MonoBehaviour
     void Update()
     {
         MovePath();
+        RefreshSortingOrder();
         CheckArrival();
     }
 
@@ -44,6 +49,16 @@ public class MonsterBehavior : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, SingletonTable.singletonTable.rtM.finalNodeList[i + 1].grid.transform.position, speed * Time.deltaTime);
 
         if (transform.position == SingletonTable.singletonTable.rtM.finalNodeList[i + 1].grid.transform.position) i++;
+    }
+
+    void RefreshSortingOrder()
+    {
+        if (monsterSprite == null) monsterSprite = gameObject.GetComponent<SpriteRenderer>();
+        if (monsterSprite == null) return;
+
+        int targetIndex = Mathf.Min(i + 1, SingletonTable.singletonTable.rtM.finalNodeList.Count - 1);
+        Grid currentGrid = SingletonTable.singletonTable.rtM.finalNodeList[targetIndex].grid;
+        monsterSprite.sortingOrder = currentGrid.GetObjectSortingOrder(MonsterSortingOffset);
     }
 
     public void GetDamage(bool attackType, float beforeDamage)

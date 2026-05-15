@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 
 public class Grid : MonoBehaviour
 {
+    const int SortingOrderScale = 10;
+    const int UnitSortingOffset = 1;
+
     public bool castle = false;
     public bool summon = false;
     public GameObject unit;
@@ -20,10 +23,34 @@ public class Grid : MonoBehaviour
         gridsprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
+    public int GetBaseSortingOrder()
+    {
+        return (i_Row + i_Column) * SortingOrderScale;
+    }
+
+    public int GetObjectSortingOrder(int offset)
+    {
+        return GetBaseSortingOrder() + offset;
+    }
+
+    public void RefreshSortingOrder()
+    {
+        if (gridsprite == null) gridsprite = gameObject.GetComponent<SpriteRenderer>();
+
+        gridsprite.sortingOrder = GetBaseSortingOrder();
+
+        if (unit != null)
+        {
+            SpriteRenderer unitSprite = unit.GetComponent<SpriteRenderer>();
+            if (unitSprite != null) unitSprite.sortingOrder = GetObjectSortingOrder(UnitSortingOffset);
+        }
+    }
+
     public void BuildCastle()  //construct castle in grid
     {
         castle = true;
         gridsprite.sprite = castlesprite;
+        RefreshSortingOrder();
     }
 
     public void Summon()    //summon unit on castle
@@ -32,6 +59,7 @@ public class Grid : MonoBehaviour
         int i = Random.Range(0, 5);
         summon = true;
         unit = Instantiate(SingletonTable.singletonTable.piM.playerDeck.Summon(), transform.position, Quaternion.identity, transform);
+        RefreshSortingOrder();
     }
     
     private void OnMouseOver()  //run when mouse is over object's collider

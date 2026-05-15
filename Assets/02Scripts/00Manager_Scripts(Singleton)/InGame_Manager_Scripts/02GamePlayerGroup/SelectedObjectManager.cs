@@ -5,6 +5,8 @@ using UnityEngine;
 public class SelectedObjectManager : MonoBehaviour
 {
     public GameObject selectedObject { get; set; }
+    private Color selectedObjectOriginalColor;
+    private const float selectedDarkenAmount = 0.65f;
 
     //bool selected = false;
 
@@ -21,7 +23,7 @@ public class SelectedObjectManager : MonoBehaviour
         }
 
         SpriteRenderer spriteRenderer = SingletonTable.singletonTable.soM.selectedObject.GetComponent<SpriteRenderer>(); //for visual effects
-        spriteRenderer.color = new Color(1, 1, 1, 1);   //original color?
+        spriteRenderer.color = selectedObjectOriginalColor;
         //selected = false;
         SingletonTable.singletonTable.soM.selectedObject = null;
 
@@ -39,7 +41,12 @@ public class SelectedObjectManager : MonoBehaviour
             UnSelsectObject();
             selectedObject = tmp;
             SpriteRenderer selectedSpriteRenderer = tmp.GetComponent<SpriteRenderer>();    //for visual effects
-            selectedSpriteRenderer.color = new Color(1, 1, 1, 0.25f);
+            selectedObjectOriginalColor = selectedSpriteRenderer.color;
+            selectedSpriteRenderer.color = new Color(
+                selectedObjectOriginalColor.r * selectedDarkenAmount,
+                selectedObjectOriginalColor.g * selectedDarkenAmount,
+                selectedObjectOriginalColor.b * selectedDarkenAmount,
+                selectedObjectOriginalColor.a);
             //selected = true;
             //StartCoroutine(SelectVFX(selectedSpriteRenderer));
             Debug.Log("New object is Selected");

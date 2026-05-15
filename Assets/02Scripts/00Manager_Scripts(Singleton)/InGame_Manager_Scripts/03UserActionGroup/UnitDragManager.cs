@@ -48,7 +48,9 @@ public class UnitDragManager : MonoBehaviour        //Action about Moving Unit b
                             if (beforeGrid.summon == false) return;
                             else
                             {
-                                blankObject.GetComponent<SpriteRenderer>().sprite = beforeGrid.unit.GetComponent<SpriteRenderer>().sprite;
+                                SpriteRenderer blankSprite = blankObject.GetComponent<SpriteRenderer>();
+                                blankSprite.sprite = beforeGrid.unit.GetComponent<SpriteRenderer>().sprite;
+                                blankSprite.sortingOrder = 10000;
                                 onDrag = true;
                             }
                         }
@@ -91,6 +93,8 @@ public class UnitDragManager : MonoBehaviour        //Action about Moving Unit b
                             beforeGrid.unit.transform.localPosition = new Vector3(0, 0, 0);
                             afterGrid.unit = beforeGrid.unit;
                             beforeGrid.unit = null;
+                            beforeGrid.RefreshSortingOrder();
+                            afterGrid.RefreshSortingOrder();
                         }
                         else
                         {
@@ -100,7 +104,9 @@ public class UnitDragManager : MonoBehaviour        //Action about Moving Unit b
                 }
             }
             onDrag = false;
-            blankObject.GetComponent<SpriteRenderer>().sprite = null;
+            SpriteRenderer blankSprite = blankObject.GetComponent<SpriteRenderer>();
+            blankSprite.sprite = null;
+            blankSprite.sortingOrder = 0;
         }
     }   //Update method scope
 

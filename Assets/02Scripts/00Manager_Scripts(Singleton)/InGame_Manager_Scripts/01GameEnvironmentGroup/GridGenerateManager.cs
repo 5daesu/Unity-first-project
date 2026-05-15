@@ -29,9 +29,11 @@ public class GridGenerateManager : MonoBehaviour
 
                 instanceGrid = Instantiate(gridPrefab, transform.position + locFromParent, Quaternion.identity, mapTable.transform);    //Instantiate by child of GGM
                 //instanceGrid.transform.parent = gameObject.transform;   //make Grid go to parent's(GridGenerateManager) child object
-                instanceGrid.GetComponent<Grid>().i_Row = i + 1;        //for 1 ~ n ( not 0 ~ n-1 ) 
-                instanceGrid.GetComponent<Grid>().i_Column = j + 1;     //for 1 ~ n
-                nodeArray[i, j].grid = instanceGrid.GetComponent<Grid>();
+                Grid grid = instanceGrid.GetComponent<Grid>();
+                grid.i_Row = i + 1;        //for 1 ~ n ( not 0 ~ n-1 ) 
+                grid.i_Column = j + 1;     //for 1 ~ n
+                grid.RefreshSortingOrder();
+                nodeArray[i, j].grid = grid;
             }
         }
     }
