@@ -7,19 +7,23 @@ public class Meteor : MonoBehaviour
     public Vector3 targetPosition;
     public float speed;
     public float acceleration;
+    public float damageRadius = 0.75f;
 
     float curSpeed;
+    bool atkType;
+    int atkDamage;
 
-    void Start()
+    public void Initialize(Vector3 targetPosition, bool atkType, int atkDamage)
     {
+        this.targetPosition = targetPosition;
+        this.atkType = atkType;
+        this.atkDamage = atkDamage;
+        transform.position = targetPosition + new Vector3(0, 5f, 0);
         curSpeed = speed;
-        targetPosition = gameObject.transform.parent.GetComponent<Attack>().enemyList[0].transform.position;
     }
 
     void OnEnable()
     {
-        targetPosition = gameObject.transform.parent.GetComponent<Attack>().enemyList[0].transform.position;
-        gameObject.transform.position = targetPosition + new Vector3(0, 5f, 0);
         curSpeed = speed;
     }
 
@@ -32,10 +36,23 @@ public class Meteor : MonoBehaviour
 
     void CheckArrival()
     {
-        if (gameObject.transform.position == targetPosition)
+        if (Vector3.Distance(gameObject.transform.position, targetPosition) <= 0.01f)
         {
             Debug.Log("meteor bomb");
+            ApplyDamage();
             gameObject.SetActive(false);
+        }
+    }
+
+    void ApplyDamage()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(targetPosition, damageRadius);
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.tag != "Enemy") continue;
+
+            MonsterBehavior monsterBehavior = hit.GetComponent<MonsterBehavior>();
+            if (monsterBehavior != null) monsterBehavior.GetDamage(atkType, atkDamage);
         }
     }
 }

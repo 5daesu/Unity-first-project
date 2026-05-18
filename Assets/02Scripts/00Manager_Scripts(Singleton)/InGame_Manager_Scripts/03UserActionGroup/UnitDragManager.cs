@@ -87,18 +87,11 @@ public class UnitDragManager : MonoBehaviour        //Action about Moving Unit b
                     {
                         if (afterGrid.summon == false)
                         {
-                            beforeGrid.summon = false;
-                            afterGrid.summon = true;
-                            beforeGrid.unit.transform.parent = afterGrid.transform;
-                            beforeGrid.unit.transform.localPosition = new Vector3(0, 0, 0);
-                            afterGrid.unit = beforeGrid.unit;
-                            beforeGrid.unit = null;
-                            beforeGrid.RefreshSortingOrder();
-                            afterGrid.RefreshSortingOrder();
+                            MoveUnitToEmptyGrid();
                         }
                         else
                         {
-                            Debug.Log("Theres already unit");
+                            SwapUnits();
                         }
                     }
                 }
@@ -114,5 +107,37 @@ public class UnitDragManager : MonoBehaviour        //Action about Moving Unit b
     {
         mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
         blankObject.transform.position = mousePosition;
+    }
+
+    void MoveUnitToEmptyGrid()
+    {
+        beforeGrid.summon = false;
+        afterGrid.summon = true;
+        beforeGrid.unit.transform.parent = afterGrid.transform;
+        beforeGrid.unit.transform.localPosition = new Vector3(0, 0, 0);
+        afterGrid.unit = beforeGrid.unit;
+        beforeGrid.unit = null;
+        beforeGrid.RefreshSortingOrder();
+        afterGrid.RefreshSortingOrder();
+    }
+
+    void SwapUnits()
+    {
+        if (beforeGrid == afterGrid) return;
+
+        GameObject beforeUnit = beforeGrid.unit;
+        GameObject afterUnit = afterGrid.unit;
+
+        beforeGrid.unit = afterUnit;
+        afterGrid.unit = beforeUnit;
+
+        beforeUnit.transform.parent = afterGrid.transform;
+        beforeUnit.transform.localPosition = new Vector3(0, 0, 0);
+
+        afterUnit.transform.parent = beforeGrid.transform;
+        afterUnit.transform.localPosition = new Vector3(0, 0, 0);
+
+        beforeGrid.RefreshSortingOrder();
+        afterGrid.RefreshSortingOrder();
     }
 }

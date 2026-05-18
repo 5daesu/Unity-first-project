@@ -15,10 +15,13 @@ public class Attack : MonoBehaviour
 
     void Start()
     {
+        UnitStatus unitStatus = gameObject.GetComponent<UnitStatus>();
+
         onAttack = false;
-        atkDamage = gameObject.GetComponent<UnitStatus>().attackDamage;
-        atkRange = gameObject.GetComponent<UnitStatus>().attackRange;
-        atkTerm = gameObject.GetComponent<UnitStatus>().attackSpeed;
+        atkType = unitStatus.attackType != '0';
+        atkDamage = unitStatus.attackDamage;
+        atkRange = unitStatus.attackRange;
+        atkTerm = unitStatus.attackSpeed;
 
         timer = 0;
         gameObject.GetComponent<CircleCollider2D>().radius = atkRange;
@@ -30,9 +33,9 @@ public class Attack : MonoBehaviour
         Debug.Log("There is collision");
         if (other.tag == "Enemy")
         {
-            Debug.Log("사거리 안으로 진입");
+            Debug.Log("Enemy entered attack range");
             onAttack = true;
-            enemyList.Add(other.gameObject);
+            if (!enemyList.Contains(other.gameObject)) enemyList.Add(other.gameObject);
         }
     }
     void OnTriggerExit2D(Collider2D other)
@@ -46,12 +49,31 @@ public class Attack : MonoBehaviour
 
     void CheckEnemyList()
     {
+        RemoveInvalidEnemies();
+
         if (enemyList.Count < 1)
         {
             onAttack = false;
-            Debug.Log("공격상태해제");
+            Debug.Log("Attack state released");
             timer = 0;
         }
+    }
+
+    void RemoveInvalidEnemies()
+    {
+        enemyList.RemoveAll(enemy => enemy == null || enemy.activeSelf == false);
+    }
+
+    GameObject GetTarget()
+    {
+        RemoveInvalidEnemies();
+        if (enemyList.Count < 1)
+        {
+            CheckEnemyList();
+            return null;
+        }
+
+        return enemyList[0];
     }
 
     void Update()
@@ -69,8 +91,24 @@ public class Attack : MonoBehaviour
 
     void AttckMoment()  //Just the time( because of animating )
     {
+        GameObject target = GetTarget();
+        if (target == null) return;
+
         //state = ~~~;
-        Debug.Log("실행");
-        SingletonTable.singletonTable.opM.GetObject(poolingIndex, gameObject);
+        Debug.Log("Attack");
+        GameObject attackObject = SingletonTable.singletonTable.opM.GetObject(poolingIndex, gameObject);
+
+        Arrow arrow = attackObject.GetComponent<Arrow>();
+        if (arrow != null)
+        {
+            arrow.Initialize(target, atkType, atkDamage);
+            return;
+        }
+
+        Meteor meteor = attackObject.GetComponent<Meteor>();
+        if (meteor != null)
+        {
+            meteor.Initialize(target.transform.position, atkType, atkDamage);
+        }
     }
 }
