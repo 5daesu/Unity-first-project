@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Node   // for A* algorithm
 {
-    public Grid grid;
+    public GameGrid grid;
     public int value_G, value_H;    // moved distance, rest of distance
     public Node parentNode;
 

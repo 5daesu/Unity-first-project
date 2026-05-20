@@ -9,6 +9,7 @@ public class UnitData : ScriptableObject
     public string unitName;
     public int unitLevel;
     public int unitCode;
+    // Legacy recipe data. New merge rules should be defined with UnitMergeRecipe assets.
     public int mergeType;
     public int mergeCode;   //(unitCode * 1000 ^ 2) + (unitCode * 1000 ^ 1) + (unitCode * 1000 ^ 0) is MergeCode
     public GameObject emptyTreeNode;

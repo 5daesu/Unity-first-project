@@ -8,8 +8,8 @@ public class UnitDragManager : MonoBehaviour        //Action about Moving Unit b
 {
     public GameObject blankObject;  //for contain copiedObject who is did
 
-    Grid beforeGrid;
-    Grid afterGrid;
+    GameGrid beforeGrid;
+    GameGrid afterGrid;
 
     Vector3 mousePosition;
     RaycastHit2D hitCollider;
@@ -40,7 +40,7 @@ public class UnitDragManager : MonoBehaviour        //Action about Moving Unit b
 
                     if (hitObject.tag == "Grid")
                     {
-                        beforeGrid = hitObject.GetComponent<Grid>();
+                        beforeGrid = hitObject.GetComponent<GameGrid>();
 
                         if (beforeGrid.castle == false) return;
                         else
@@ -76,7 +76,7 @@ public class UnitDragManager : MonoBehaviour        //Action about Moving Unit b
 
                 if (hitObject.tag == "Grid")
                 {
-                    afterGrid = hitObject.GetComponent<Grid>();
+                    afterGrid = hitObject.GetComponent<GameGrid>();
                     //Debug.Log(grid.i_Row + "+" + grid.i_Column);
 
                     if (afterGrid.castle == false)

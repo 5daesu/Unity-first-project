@@ -18,18 +18,23 @@ public class MainButton : MonoBehaviour
     public void CheckButtonState(GameObject selctedObject)
     {
         Debug.Log("Call CheckButtonState");
-        if (selctedObject == null)
+        if (SingletonTable.singletonTable.soM.SelectedUnitCount() > 0)
+        {
+            if (SingletonTable.singletonTable.soM.HasMergeableSelection()) ChangeButtonState(5);
+            else ChangeButtonState(4);
+        }
+        else if (selctedObject == null)
         {
             ChangeButtonState(0);
         }
         else if (selctedObject.tag == "Grid")
         {
-            bool castle = selctedObject.GetComponent<Grid>().castle;
+            bool castle = selctedObject.GetComponent<GameGrid>().castle;
 
             if (castle == false)
             {
                 bool onBreak = SingletonTable.singletonTable.gpM.onBreak;
-                Node selectedNode = SingletonTable.singletonTable.ggM.nodeArray[selctedObject.GetComponent<Grid>().i_Row - 1, selctedObject.GetComponent<Grid>().i_Column - 1];
+                Node selectedNode = SingletonTable.singletonTable.ggM.nodeArray[selctedObject.GetComponent<GameGrid>().i_Row - 1, selctedObject.GetComponent<GameGrid>().i_Column - 1];
                 bool checkPath = SingletonTable.singletonTable.rtM.CheckPath(selectedNode);
                 int playerMoney = SingletonTable.singletonTable.piM.playerMoney;
                 int castleCost = SingletonTable.singletonTable.piM.castleCost;
@@ -39,7 +44,7 @@ public class MainButton : MonoBehaviour
             }
             else
             {
-                bool summon = selctedObject.GetComponent<Grid>().summon;
+                bool summon = selctedObject.GetComponent<GameGrid>().summon;
                 int playerMoney = SingletonTable.singletonTable.piM.playerMoney;
                 int summonCost = SingletonTable.singletonTable.piM.summonCost;
 
@@ -50,7 +55,7 @@ public class MainButton : MonoBehaviour
                 }
                 else    //This scope can run well because selectedObject is ref value
                 {
-                    SingletonTable.singletonTable.soM.ChangeSelected(selctedObject.GetComponent<Grid>().unit);    //Never write "CheckButtonState(selctedObject);", it makes infinity loof. because it's already there 
+                    SingletonTable.singletonTable.soM.ChangeSelected(selctedObject.GetComponent<GameGrid>().unit);    //Never write "CheckButtonState(selctedObject);", it makes infinity loof. because it's already there
                 }
             }
         }
@@ -74,18 +79,23 @@ public class MainButton : MonoBehaviour
         Debug.Log("Call CheckButtonState");
         GameObject selctedObject = SingletonTable.singletonTable.soM.selectedObject;
 
-        if (selctedObject == null)
+        if (SingletonTable.singletonTable.soM.SelectedUnitCount() > 0)
+        {
+            if (SingletonTable.singletonTable.soM.HasMergeableSelection()) ChangeButtonState(5);
+            else ChangeButtonState(4);
+        }
+        else if (selctedObject == null)
         {
             ChangeButtonState(0);
         }
         else if (selctedObject.tag == "Grid")
         {
-            bool castle = selctedObject.GetComponent<Grid>().castle;
+            bool castle = selctedObject.GetComponent<GameGrid>().castle;
 
             if (castle == false)
             {
                 bool onBreak = SingletonTable.singletonTable.gpM.onBreak;
-                Node selectedNode = SingletonTable.singletonTable.ggM.nodeArray[selctedObject.GetComponent<Grid>().i_Row - 1, selctedObject.GetComponent<Grid>().i_Column - 1];
+                Node selectedNode = SingletonTable.singletonTable.ggM.nodeArray[selctedObject.GetComponent<GameGrid>().i_Row - 1, selctedObject.GetComponent<GameGrid>().i_Column - 1];
                 bool checkPath = SingletonTable.singletonTable.rtM.CheckPath(selectedNode);
                 int playerMoney = SingletonTable.singletonTable.piM.playerMoney;
                 int castleCost = SingletonTable.singletonTable.piM.castleCost;
@@ -95,7 +105,7 @@ public class MainButton : MonoBehaviour
             }
             else
             {
-                bool summon = selctedObject.GetComponent<Grid>().summon;
+                bool summon = selctedObject.GetComponent<GameGrid>().summon;
                 int playerMoney = SingletonTable.singletonTable.piM.playerMoney;
                 int summonCost = SingletonTable.singletonTable.piM.summonCost;
 
@@ -106,7 +116,7 @@ public class MainButton : MonoBehaviour
                 }
                 else    //This scope can run well because selectedObject is ref value
                 {
-                    SingletonTable.singletonTable.soM.ChangeSelected(selctedObject.GetComponent<Grid>().unit);    //Never write "CheckButtonState(selctedObject);" because it's already there 
+                    SingletonTable.singletonTable.soM.ChangeSelected(selctedObject.GetComponent<GameGrid>().unit);    //Never write "CheckButtonState(selctedObject);" because it's already there
                 }
             }
         }
@@ -129,37 +139,37 @@ public class MainButton : MonoBehaviour
         if (i == 0)
         {
             buttonState = 0;
-            buttonText.text = "°Ç¼³";
+            buttonText.text = "ê±´ì„¤";
             button.interactable = false;
         }
         else if (i == 1)
         {
             buttonState = 1;
-            buttonText.text = "°Ç¼³";
+            buttonText.text = "ê±´ì„¤";
             button.interactable = true;
         }
         else if (i == 2)
         {
             buttonState = 2;
-            buttonText.text = "¼ÒÈ¯";
+            buttonText.text = "ì†Œí™˜";
             button.interactable = false;
         }
         else if (i == 3)
         {
             buttonState = 3;
-            buttonText.text = "¼ÒÈ¯";
+            buttonText.text = "ì†Œí™˜";
             button.interactable = true;
         }
         else if (i == 4)
         {
             buttonState = 4;
-            buttonText.text = "Á¶ÇÕ";
+            buttonText.text = "ì¡°í•©";
             button.interactable = false;
         }
         else if (i == 5)
         {
             buttonState = 5;
-            buttonText.text = "Á¶ÇÕ";
+            buttonText.text = "ì¡°í•©";
             button.interactable = true;
         }
         else

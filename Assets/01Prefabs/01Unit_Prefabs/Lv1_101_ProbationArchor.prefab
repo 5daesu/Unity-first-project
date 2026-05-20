@@ -132,8 +132,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ae1d6605846fe44d87a5a3faa025688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
+  unitData: {fileID: 11400000, guid: 9507b92646b6b6244a740cda80929550, type: 2}
   attackType: 49
   attackDamage: 20
   attackRange: 5
@@ -150,8 +151,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ad727b55013e634fa160aab152fd6fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   poolingIndex: 0
   atkType: 0
   atkDamage: 0

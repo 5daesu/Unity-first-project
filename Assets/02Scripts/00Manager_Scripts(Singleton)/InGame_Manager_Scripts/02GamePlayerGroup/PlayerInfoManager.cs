@@ -25,6 +25,7 @@ public class PlayerInfoManager : MonoBehaviour
     [Header("Deck")]
     public Deck playerDeck;
     public GameObject editDeckObject;
+    public UnitMergeRecipeList mergeRecipeList;
     public List<GameObject> unitList;
 
     void Awake()
@@ -34,9 +35,20 @@ public class PlayerInfoManager : MonoBehaviour
 
     void Start()
     {
-        if (playerDeck == null)
+        InitializeCurrentDeck();
+    }
+
+    private void InitializeCurrentDeck()
+    {
+        if (playerDeck != null) return;
+
+        if (editDeckObject != null)
         {
-            playerDeck = editDeckObject.GetComponent<TestDeckEditor>().testDeck;
+            TestDeckEditor testDeckEditor = editDeckObject.GetComponent<TestDeckEditor>();
+            if (testDeckEditor != null)
+            {
+                playerDeck = testDeckEditor.testDeck ?? testDeckEditor.BuildTestDeck();
+            }
         }
     }
 
@@ -133,5 +145,32 @@ public class PlayerInfoManager : MonoBehaviour
     public void ChangePlayerStat(PlayerStat playerStat, int changedAmount)
     {
         SetPlayerStat(playerStat, GetPlayerStat(playerStat) + changedAmount);
+    }
+
+    public void AddUnitToCurrentDeck(UnitData unitData)
+    {
+        if (playerDeck == null) InitializeCurrentDeck();
+        if (playerDeck == null) return;
+
+        playerDeck.AddUnit(unitData);
+    }
+
+    public bool RemoveUnitFromCurrentDeck(UnitData unitData)
+    {
+        if (playerDeck == null) InitializeCurrentDeck();
+        if (playerDeck == null) return false;
+
+        return playerDeck.RemoveUnit(unitData);
+    }
+
+    public bool TryFindMergeResult(IReadOnlyList<UnitData> materials, out UnitData result)
+    {
+        if (mergeRecipeList == null)
+        {
+            result = null;
+            return false;
+        }
+
+        return mergeRecipeList.TryFindResult(materials, out result);
     }
 }

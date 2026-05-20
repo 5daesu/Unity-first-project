@@ -57,7 +57,7 @@ public class MonsterBehavior : MonoBehaviour
         if (monsterSprite == null) return;
 
         int targetIndex = Mathf.Min(i + 1, SingletonTable.singletonTable.rtM.finalNodeList.Count - 1);
-        Grid currentGrid = SingletonTable.singletonTable.rtM.finalNodeList[targetIndex].grid;
+        GameGrid currentGrid = SingletonTable.singletonTable.rtM.finalNodeList[targetIndex].grid;
         monsterSprite.sortingOrder = currentGrid.GetObjectSortingOrder(MonsterSortingOffset);
     }
 

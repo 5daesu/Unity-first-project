@@ -1,117 +1,86 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Deck
 {
     public bool isCompleted;
-    public UnitData[,] deckData;    //For save and load Deck
+    public List<UnitData> deckPool { get; private set; }
 
-    private int[,] mergeCodeTable;
-    private GameObject[,] unitPrefabTable;
-
-    public void AssignMemory(UnitData blankUnitData)    //blankUnitData is for instead of "new"
+    public Deck()
     {
-        deckData = new UnitData[4, 4];
-        mergeCodeTable = new int[4, 4];
-        unitPrefabTable = new GameObject[4, 4];
+        deckPool = new List<UnitData>();
+    }
 
-        for (int i = 0; i < 4; i++)
+    public Deck(IEnumerable<UnitData> initialUnits)
+    {
+        deckPool = new List<UnitData>();
+        AddUnits(initialUnits);
+    }
+
+    public void AddUnits(IEnumerable<UnitData> unitDataList)
+    {
+        if (unitDataList == null) return;
+
+        foreach (UnitData unitData in unitDataList)
         {
-            for (int j = 0; j < 4; j++)
-            {
-                deckData[i, j] = blankUnitData;    //there's some caution in unity editor : i think because scriptableobject is designed to be made directly by asset in unity editor
-                //mergeCodeTable[i, j] = new int();
-                //unitPrefabTable[i, j] = new GameObject();
-            }
+            AddUnit(unitData);
         }
     }
 
-    /*
-    private void Awake()
+    public void AddUnit(UnitData unitData)
     {
-        deckData = new UnitData[4, 4];
-        mergeCodeTable = new int[4, 4];
-        unitPrefabTable = new GameObject[4, 4];
+        if (unitData == null) return;
+        if (deckPool == null) deckPool = new List<UnitData>();
 
-        for (int i = 0; i < 4; i++)
-        {
-            for (int j = 0; j < 4; j++)
-            {
-                deckData[i, j] = new UnitData();
-                mergeCodeTable[i, j] = new int();
-                unitPrefabTable[i, j] = new GameObject();
-            }
-        }
+        deckPool.Add(unitData);
     }
-    */
 
-    public void UpdateTable()
+    public bool RemoveUnit(UnitData unitData)
     {
-        for (int i = 0; i < 4; i++) //i should be 4
+        if (deckPool == null || unitData == null) return false;
+
+        return deckPool.Remove(unitData);
+    }
+
+    public UnitData SummonUnitData()
+    {
+        if (deckPool == null || deckPool.Count == 0)
         {
-            for (int j = 0; j < 4; j++)
-            {
-                mergeCodeTable[i, j] = deckData[i, j].mergeCode;
-                unitPrefabTable[i, j] = deckData[i, j].unitPrefab;
-            }
+            Debug.LogWarning("Deck is empty. Can't summon unit.");
+            return null;
         }
+
+        List<UnitData> summonableUnits = new List<UnitData>();
+
+        foreach (UnitData unitData in deckPool)
+        {
+            if (unitData == null || unitData.unitPrefab == null || unitData.unitLevel != 1) continue;
+
+            summonableUnits.Add(unitData);
+        }
+
+        if (summonableUnits.Count == 0)
+        {
+            Debug.LogWarning("Deck has no level 1 unit to summon.");
+            return null;
+        }
+
+        UnitData selectedUnitData = summonableUnits[Random.Range(0, summonableUnits.Count)];
+        if (selectedUnitData.unitPrefab != null) Debug.Log(selectedUnitData.unitPrefab.name);
+        return selectedUnitData;
     }
 
     public GameObject Summon()
     {
-        Debug.Log(unitPrefabTable[0, 0].name);
-        return unitPrefabTable[0, Random.Range(0, 4)];
+        UnitData unitData = SummonUnitData();
+        return unitData != null ? unitData.unitPrefab : null;
     }
 
-    public GameObject Merge(int lv, int mergeCode)
+    public UnitData Merge(UnitMergeRecipeList mergeRecipeList, params UnitData[] materials)
     {
-        GameObject mergedUnit = new GameObject();
+        if (mergeRecipeList == null) return null;
 
-        int i;
-        if (lv == 1)
-        {
-            for (i = 0; i < 4; i++)
-            {
-                if (mergeCodeTable[0, i] == mergeCode)
-                {
-                    mergedUnit = unitPrefabTable[0, i];
-                    break;
-                }
-            }
-        }
-        else if (lv == 2)
-        {
-            for (i = 0; i < 4; i++)
-            {
-                if (mergeCodeTable[1, i] == mergeCode)
-                {
-                    mergedUnit = unitPrefabTable[0, i];
-                }
-            }
-        }
-        else if (lv == 3)
-        {
-            for (i = 0; i < 4; i++)
-            {
-                if (mergeCodeTable[2, i] == mergeCode)
-                {
-                    mergedUnit = unitPrefabTable[0, i];
-                }
-            }
-        }
-        else if (lv == 4)
-        {
-            for (i = 0; i < 4; i++)
-            {
-                if (mergeCodeTable[3, i] == mergeCode)
-                {
-                    mergedUnit = unitPrefabTable[0, i];
-                }
-            }
-        }
-
-        return mergedUnit;
+        UnitData result;
+        return mergeRecipeList.TryFindResult(materials, out result) ? result : null;
     }
-
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+    private const float IsometricRangeYScale = 0.5f;
+    private const int AttackRangeColliderPointCount = 64;
+
     public int poolingIndex;
     public bool atkType;
     public int atkDamage;
@@ -24,8 +27,30 @@ public class Attack : MonoBehaviour
         atkTerm = unitStatus.attackSpeed;
 
         timer = 0;
-        gameObject.GetComponent<CircleCollider2D>().radius = atkRange;
+        ConfigureAttackRangeCollider();
         enemyList = new List<GameObject>();
+    }
+
+    void ConfigureAttackRangeCollider()
+    {
+        CircleCollider2D circleCollider = gameObject.GetComponent<CircleCollider2D>();
+        if (circleCollider != null) circleCollider.enabled = false;
+
+        PolygonCollider2D rangeCollider = gameObject.GetComponent<PolygonCollider2D>();
+        if (rangeCollider == null) rangeCollider = gameObject.AddComponent<PolygonCollider2D>();
+
+        Vector2[] points = new Vector2[AttackRangeColliderPointCount];
+        for (int i = 0; i < AttackRangeColliderPointCount; i++)
+        {
+            float angle = Mathf.PI * 2f * i / AttackRangeColliderPointCount;
+            points[i] = new Vector2(
+                Mathf.Cos(angle) * atkRange,
+                Mathf.Sin(angle) * atkRange * IsometricRangeYScale);
+        }
+
+        rangeCollider.isTrigger = true;
+        rangeCollider.pathCount = 1;
+        rangeCollider.SetPath(0, points);
     }
 
     void OnTriggerEnter2D(Collider2D other)

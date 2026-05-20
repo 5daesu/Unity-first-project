@@ -1,0 +1,23 @@
+﻿%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65eec77c2ca0cc74c8c52d0faadb996e, type: 3}
+  m_Name: Lv1_102_ProbationSwordman
+  m_EditorClassIdentifier: 
+  unitName: Lv1_ProbationSwordman
+  unitLevel: 1
+  unitCode: 102
+  mergeType: 0
+  mergeCode: 0
+  emptyTreeNode: {fileID: 914631993699149358, guid: b57f5fa8239d2bb40981efb9807dddeb, type: 3}
+  unitPrefab: {fileID: 1582591168891884711, guid: f73331b36d8339b46874e87b19b211a4, type: 3}
+  unitSprite: {fileID: 21300000, guid: 5ac55bdc22dd1e944999039de65b5b42, type: 3}
+

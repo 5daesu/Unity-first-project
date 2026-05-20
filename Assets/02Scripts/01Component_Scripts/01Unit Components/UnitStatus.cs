@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UnitStatus : MonoBehaviour
 {
+    public UnitData unitData;
     public char attackType;
     public int attackDamage;
     public float attackRange;

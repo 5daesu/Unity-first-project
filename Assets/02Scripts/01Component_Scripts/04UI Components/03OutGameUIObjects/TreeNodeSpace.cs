@@ -9,6 +9,7 @@ public class TreeNodeSpace : MonoBehaviour  //TreeNodeGenerator also make sapce 
 
     [SerializeField] private GameObject blankTreeNode;
     [SerializeField] private UnitDataList[] unitDataList;
+    [SerializeField] private UnitMergeRecipeList mergeRecipeList;
 
     private GameObject[,] treeNodeArray;
 
@@ -95,27 +96,30 @@ public class TreeNodeSpace : MonoBehaviour  //TreeNodeGenerator also make sapce 
 
     private void FindChildTreeNode(int unitCode)
     {
-        UnitData unitData = FindTreeNode(unitCode).GetComponent<UnitDataTreeNode>().unitData;
+        GameObject treeNode = FindTreeNode(unitCode);
+        if (treeNode == null) return;
 
-        int level = unitData.unitLevel;
-        int mType = unitData.mergeType;
-        int mCode = unitData.mergeCode;
-
-        if (level == 1) return; //there's no ChildTreeNode
-        else
-        {
-            List<int> unitCodeList = DissolveMergeCode(mCode, mType);
-
-            foreach(int uCode in unitCodeList)
-            {
-                FindTreeNode(uCode).GetComponent<UnitDataTreeNode>().MarkTreeNode();
-                FindChildTreeNode(uCode);
-            }
-        }
+        FindChildTreeNode(treeNode.GetComponent<UnitDataTreeNode>().unitData);
     }
 
     public void FindChildTreeNode(UnitData unitData)
     {
+        if (mergeRecipeList != null)
+        {
+            List<UnitData> materialList = mergeRecipeList.GetMaterialsForResult(unitData);
+
+            foreach (UnitData material in materialList)
+            {
+                GameObject treeNode = FindTreeNode(material.unitCode);
+                if (treeNode == null) continue;
+
+                treeNode.GetComponent<UnitDataTreeNode>().MarkTreeNode();
+                FindChildTreeNode(material);
+            }
+
+            return;
+        }
+
         int level = unitData.unitLevel;
         int mType = unitData.mergeType;
         int mCode = unitData.mergeCode;
@@ -161,26 +165,27 @@ public class TreeNodeSpace : MonoBehaviour  //TreeNodeGenerator also make sapce 
 
     private void FindParentTreeNode(int unitCode)
     {
-        int level = unitCode / 100;
+        GameObject treeNode = FindTreeNode(unitCode);
+        if (treeNode == null) return;
 
-        if (level == 4) return; //there's no ParentTreeNode
-        else
-        {
-            UnitData uData;
-            for (int i = 0; i < lvLength[level]; i++)
-            {
-                uData = treeNodeArray[level, i].GetComponent<UnitDataTreeNode>().unitData;
-
-                foreach (int uCode in DissolveMergeCode(uData.mergeCode, uData.mergeType))
-                {
-                    if (unitCode == uCode) treeNodeArray[level, i].GetComponent<UnitDataTreeNode>().MarkTreeNode();
-                }
-            }
-        }
+        FindParentTreeNode(treeNode.GetComponent<UnitDataTreeNode>().unitData);
     }
 
     public void FindParentTreeNode(UnitData unitData)
     {
+        if (mergeRecipeList != null)
+        {
+            foreach (UnitData result in mergeRecipeList.GetResultsUsingMaterial(unitData))
+            {
+                GameObject treeNode = FindTreeNode(result.unitCode);
+                if (treeNode == null) continue;
+
+                treeNode.GetComponent<UnitDataTreeNode>().MarkTreeNode();
+            }
+
+            return;
+        }
+
         int unitCode = unitData.unitCode;
         int level = unitData.unitLevel;
 
