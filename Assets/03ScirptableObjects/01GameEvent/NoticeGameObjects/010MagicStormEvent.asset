@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7915f939d89da41a01eb0984fe927c, type: 3}
+  m_Name: 010MagicStormEvent
+  m_EditorClassIdentifier: 
+  gameEventCode: 10
+  gameEventName: 마력 폭풍
+  gameEventSprite: {fileID: 21300000, guid: da4b84223d573eaddcdb192e6767aa97, type: 3}
+  gameEventBodyText: 불안정한 마력이 땅을 휩쓸었습니다. 귀중한 자원이 드러났지만 성벽도 손상되었습니다.
+  actions:
+  - {fileID: 11400000, guid: 709a1d7065e74908bc41c95f019f9c5b, type: 2}
+  - {fileID: 11400000, guid: 5e02290d52de46279e3b755f31adff6e, type: 2}
+  isEnabled: 1
+  availabilityConditions: []
+  baseWeight: 30
+  weightModifiers: []

@@ -10,5 +10,6 @@ public enum PlayerStat
     Morale,
     Security,
     Faith,
-    Diplomacy
+    Diplomacy,
+    Hygiene
 }

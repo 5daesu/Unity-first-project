@@ -100,3 +100,14 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   speed: 4
   acceleration: 0.02
+  damageRadius: 0.75
+  explosionSprites:
+  - {fileID: 21300000, guid: 527d1b0f7a1955fa26a95c6b37726b52, type: 3}
+  - {fileID: 21300000, guid: 16dd827ea1b4f6ec6a319ae8bcaa3e9c, type: 3}
+  - {fileID: 21300000, guid: 5e8e8210fbf401cd8bbb8396742c8cbb, type: 3}
+  - {fileID: 21300000, guid: 7ff0e044921da9790c282d4141630582, type: 3}
+  - {fileID: 21300000, guid: 04d12be777251bcec8cba38aadcda033, type: 3}
+  - {fileID: 21300000, guid: afd6c574ea1baef958679c8db364f1d6, type: 3}
+  - {fileID: 21300000, guid: 3fa2e51717df1dfce2719c9e60b9f25c, type: 3}
+  - {fileID: 21300000, guid: da7b3cbf6f52f9be3a6c9bc75ccea77f, type: 3}
+  explosionFrameDuration: 0.06

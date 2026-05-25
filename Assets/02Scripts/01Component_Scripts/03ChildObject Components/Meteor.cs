@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Meteor : MonoBehaviour
@@ -8,10 +7,22 @@ public class Meteor : MonoBehaviour
     public float speed;
     public float acceleration;
     public float damageRadius = 0.75f;
+    public Sprite[] explosionSprites;
+    public float explosionFrameDuration = 0.06f;
 
     float curSpeed;
     bool atkType;
     int atkDamage;
+    bool isExploding;
+    Sprite meteorSprite;
+    SpriteRenderer spriteRenderer;
+    Coroutine explosionCoroutine;
+
+    void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null) meteorSprite = spriteRenderer.sprite;
+    }
 
     public void Initialize(Vector3 targetPosition, bool atkType, int atkDamage)
     {
@@ -19,16 +30,18 @@ public class Meteor : MonoBehaviour
         this.atkType = atkType;
         this.atkDamage = atkDamage;
         transform.position = targetPosition + new Vector3(0, 5f, 0);
-        curSpeed = speed;
+        ResetMeteor();
     }
 
     void OnEnable()
     {
-        curSpeed = speed;
+        ResetMeteor();
     }
 
     void Update()
     {
+        if (isExploding) return;
+
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, curSpeed * Time.deltaTime);
         curSpeed += acceleration;
         CheckArrival();
@@ -40,7 +53,7 @@ public class Meteor : MonoBehaviour
         {
             Debug.Log("meteor bomb");
             ApplyDamage();
-            gameObject.SetActive(false);
+            PlayExplosion();
         }
     }
 
@@ -54,5 +67,47 @@ public class Meteor : MonoBehaviour
             MonsterBehavior monsterBehavior = hit.GetComponent<MonsterBehavior>();
             if (monsterBehavior != null) monsterBehavior.GetDamage(atkType, atkDamage);
         }
+    }
+
+    void ResetMeteor()
+    {
+        curSpeed = speed;
+        isExploding = false;
+
+        if (explosionCoroutine != null)
+        {
+            StopCoroutine(explosionCoroutine);
+            explosionCoroutine = null;
+        }
+
+        if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null && meteorSprite != null) spriteRenderer.sprite = meteorSprite;
+    }
+
+    void PlayExplosion()
+    {
+        isExploding = true;
+        transform.position = targetPosition;
+
+        if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null || explosionSprites == null || explosionSprites.Length == 0)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
+        explosionCoroutine = StartCoroutine(PlayExplosionCoroutine());
+    }
+
+    IEnumerator PlayExplosionCoroutine()
+    {
+        foreach (Sprite explosionSprite in explosionSprites)
+        {
+            if (explosionSprite != null) spriteRenderer.sprite = explosionSprite;
+            yield return new WaitForSeconds(explosionFrameDuration);
+        }
+
+        explosionCoroutine = null;
+        gameObject.SetActive(false);
     }
 }

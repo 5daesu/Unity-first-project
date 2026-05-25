@@ -10,8 +10,8 @@ public abstract class GameEvent : ScriptableObject
     public string gameEventBodyText;
     [SerializeField] private GameEventAction[] actions;
 
-    public abstract bool PrimaryCondition();
-    public abstract float SecondaryCondition();   // return value range is 0 ~ 1, return value is probability, if probability is 0, this cant be in availableGameEventsList.
+    public abstract bool IsAvailable();
+    public abstract float GetWeight();
 
     public virtual void StartGameEvent()
     {

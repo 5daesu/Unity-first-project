@@ -9,13 +9,14 @@ public class PlayerInfoManager : MonoBehaviour
     public int playerMoney;
 
     [Header("Stats")]
-    public int publicSentiment;
-    public int luck;
-    public int economy;
-    public int morale;
-    public int security;
-    public int faith;
-    public int diplomacy;
+    [Range(-100, 100)] public int publicSentiment;
+    [Range(-100, 100)] public int luck;
+    [Range(-100, 100)] public int economy;
+    [Range(-100, 100)] public int morale;
+    [Range(-100, 100)] public int security;
+    [Range(-100, 100)] public int faith;
+    [Range(-100, 100)] public int diplomacy;
+    [Range(-100, 100)] public int hygiene;
 
     [Header("Costs")]
     public int castleCost;
@@ -77,10 +78,18 @@ public class PlayerInfoManager : MonoBehaviour
 
     public void ChangeMoney(int changedAmount)
     {
-        playerMoney += changedAmount;
+        playerMoney += CalculateMoneyChange(changedAmount);
 
         SingletonTable.singletonTable.uwM.simplePlayerResourceWindow.UpdateWindowContent();
         InGameUI.inGameUI.mainButton.CheckButtonState();
+    }
+
+    private int CalculateMoneyChange(int changedAmount)
+    {
+        if (changedAmount <= 0) return changedAmount;
+
+        float economyMultiplier = Mathf.Max(0f, 1f + economy * 0.01f);
+        return Mathf.RoundToInt(changedAmount * economyMultiplier);
     }
 
     public void ChangeHp(int changedAmount)
@@ -109,6 +118,8 @@ public class PlayerInfoManager : MonoBehaviour
                 return faith;
             case PlayerStat.Diplomacy:
                 return diplomacy;
+            case PlayerStat.Hygiene:
+                return hygiene;
             default:
                 return 0;
         }
@@ -116,6 +127,8 @@ public class PlayerInfoManager : MonoBehaviour
 
     public void SetPlayerStat(PlayerStat playerStat, int value)
     {
+        value = Mathf.Clamp(value, -100, 100);
+
         switch (playerStat)
         {
             case PlayerStat.PublicSentiment:
@@ -139,12 +152,26 @@ public class PlayerInfoManager : MonoBehaviour
             case PlayerStat.Diplomacy:
                 diplomacy = value;
                 break;
+            case PlayerStat.Hygiene:
+                hygiene = value;
+                break;
         }
+
+        UpdatePlayerInfoWindow();
     }
 
     public void ChangePlayerStat(PlayerStat playerStat, int changedAmount)
     {
         SetPlayerStat(playerStat, GetPlayerStat(playerStat) + changedAmount);
+    }
+
+    private void UpdatePlayerInfoWindow()
+    {
+        if (SingletonTable.singletonTable == null) return;
+        if (SingletonTable.singletonTable.uwM == null) return;
+        if (SingletonTable.singletonTable.uwM.stageInfoWindow == null) return;
+
+        SingletonTable.singletonTable.uwM.stageInfoWindow.UpdateWindowContent();
     }
 
     public void AddUnitToCurrentDeck(UnitData unitData)

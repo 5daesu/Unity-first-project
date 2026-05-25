@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a61e9bd1e32e4d24aa16bde17135e851, type: 3}
+  m_Name: 003RoyalTaxEvent
+  m_EditorClassIdentifier: 
+  gameEventCode: 3
+  gameEventName: 왕실 세금
+  gameEventSprite: {fileID: 21300000, guid: e9fae261c7ebd704102b91362b09780e, type: 3}
+  gameEventBodyText: 왕실에서 긴급 세금을 요구했습니다. 응하면 재정은 줄지만 왕실과의 관계는 좋아집니다.
+  actions: []
+  choices:
+  - choiceText: 수락한다
+    resultPreviewText: "결과: 골드 -20, 외교 +10"
+    actions:
+    - {fileID: 11400000, guid: f88e616485f94041a67b172f3e047400, type: 2}
+    - {fileID: 11400000, guid: 6cc5665a5a6f42df856327be7662f1af, type: 2}
+  - choiceText: 거절한다
+    resultPreviewText: "결과: 골드는 유지, 외교 -10"
+    actions:
+    - {fileID: 11400000, guid: f64eefc2d6a34e7093672e54fec38142, type: 2}
+  isEnabled: 1
+  availabilityConditions: []
+  baseWeight: 15
+  weightModifiers: []

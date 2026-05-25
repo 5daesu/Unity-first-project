@@ -8,61 +8,71 @@ public class GameEventManager : MonoBehaviour
 
     [SerializeField] private NoticeGameEvent[] noticeGameEvents;
 
-    private List<GameEvent> possibleGameEvents;     //when GameEventManager choose GameEvent, there's no possiblity of choosing whitin this List, but later it can be changed.
     private List<GameEvent> availableGameEvents;    //current selectable
 
     void Awake()
     {
-        possibleGameEvents = new List<GameEvent>();
         availableGameEvents = new List<GameEvent>();
     }
 
     void Start()
     {
-        CheckPrimaryCondition(noticeGameEvents);
-        CheckSecondCondition(possibleGameEvents);
+        RefreshAvailableGameEvents();
     }
 
-    private void CheckPrimaryCondition(GameEvent[] gameEvents)
+    private void CollectAvailableGameEvents(GameEvent[] gameEvents)
     {
         foreach (GameEvent gameEvent in gameEvents)
         {
-            if (gameEvent.PrimaryCondition() == true)     //it will be modified like this "if (gameEvent.FirstCondition() == true)"
-            {
-                possibleGameEvents.Add(gameEvent);
-            }
-        }
-    }
+            if (gameEvent == null) continue;
+            if (!gameEvent.IsAvailable()) continue;
+            if (gameEvent.GetWeight() <= 0f) continue;
 
-    private void CheckSecondCondition(List<GameEvent> gameEvents)   //Check Second Condition, Second Condition returns 0 ~ 1 float number, that is probability, it shoulb be called when player turn ends
-    {
-        for (int i = 0; i < gameEvents.Count; i++)
-        {
-            if (gameEvents[i].SecondaryCondition() > 0)
-            {
-                availableGameEvents.Add(gameEvents[i]);
-                possibleGameEvents.RemoveAt(i);
-                i--;    //because it is deleted once, so index should be updated
-            }
+            availableGameEvents.Add(gameEvent);
         }
     }
 
     public void DrawGameEvent()    //Draw is like a roulette, bbopkki
     {
         Debug.Log("Draw GameEvent!");
+        RefreshAvailableGameEvents();
 
-        for (int i = 0; i < 3; i++)
+        if (availableGameEvents.Count == 0)
         {
-            //Debug.Log("AvailableGameEvent's count is " + availableGameEvents.Count);
-            int random = Random.Range(0, availableGameEvents.Count);
-            //Debug.Log("EventRandomNumber is " + random);
-
-            if (availableGameEvents[random].SecondaryCondition() > Random.Range(0f, 1f))
-            {
-                curStageGameEvent = availableGameEvents[Random.Range(0, availableGameEvents.Count)];
-            }
+            curStageGameEvent = null;
+            Debug.LogWarning("There is no available GameEvent.");
+            return;
         }
 
-        curStageGameEvent = availableGameEvents[Random.Range(0, availableGameEvents.Count)];
+        curStageGameEvent = DrawWeightedGameEvent(availableGameEvents);
+    }
+
+    private void RefreshAvailableGameEvents()
+    {
+        availableGameEvents.Clear();
+
+        CollectAvailableGameEvents(noticeGameEvents);
+    }
+
+    private GameEvent DrawWeightedGameEvent(List<GameEvent> gameEvents)
+    {
+        float totalWeight = 0f;
+
+        foreach (GameEvent gameEvent in gameEvents)
+        {
+            totalWeight += gameEvent.GetWeight();
+        }
+
+        if (totalWeight <= 0f) return null;
+
+        float randomWeight = Random.Range(0f, totalWeight);
+
+        foreach (GameEvent gameEvent in gameEvents)
+        {
+            randomWeight -= gameEvent.GetWeight();
+            if (randomWeight <= 0f) return gameEvent;
+        }
+
+        return gameEvents[gameEvents.Count - 1];
     }
 }

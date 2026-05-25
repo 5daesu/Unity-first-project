@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: 000BumperCropEvent
   m_EditorClassIdentifier: 
   gameEventCode: 0
-  gameEventName: BumperCrop
+  gameEventName: 풍년
   gameEventSprite: {fileID: 21300000, guid: 732b6b1e76193f346aa6297ac6e05a43, type: 3}
-  gameEventBodyText: We have a good harvest this year!
+  gameEventBodyText: 올해는 작황이 좋습니다. 창고에 여유 식량이 쌓이며 추가 수익을 얻었습니다.
   actions:
   - {fileID: 11400000, guid: cb3845e3489c4f62bb9e8bd1768a77e7, type: 2}
-  primaryCondition: 1
-  secondaryCondition: 1
+  isEnabled: 1
+  availabilityConditions: []
+  baseWeight: 100
+  weightModifiers: []

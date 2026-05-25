@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a61e9bd1e32e4d24aa16bde17135e851, type: 3}
+  m_Name: 009RefugeeWaveEvent
+  m_EditorClassIdentifier: 
+  gameEventCode: 9
+  gameEventName: 피난민 행렬
+  gameEventSprite: {fileID: 21300000, guid: 14f344269c9fd379afd5bf8e59a9fb47, type: 3}
+  gameEventBodyText: 전쟁을 피해 온 사람들이 정착지 앞에 모였습니다. 받아들이면 부담은 커지지만 방어 인력이 늘어납니다.
+  actions: []
+  choices:
+  - choiceText: 받아들인다
+    resultPreviewText: "결과: 골드 -20, 체력 +1"
+    actions:
+    - {fileID: 11400000, guid: f88e616485f94041a67b172f3e047400, type: 2}
+    - {fileID: 11400000, guid: 1f16b7a966a3483db0db73070580b106, type: 2}
+  - choiceText: 거절한다
+    resultPreviewText: "결과: 민심 -10"
+    actions:
+    - {fileID: 11400000, guid: 96048fd80e064ee1bddc3cb93ece56c0, type: 2}
+  isEnabled: 1
+  availabilityConditions: []
+  baseWeight: 45
+  weightModifiers: []

@@ -22,6 +22,7 @@ public class GameProgressManager : MonoBehaviour
 
     private GameObject curMonster;
     private int controlCoroutine = 0;
+    private bool isSpawningWave;
 
     void Awake()
     {
@@ -36,6 +37,7 @@ public class GameProgressManager : MonoBehaviour
         gameObject.transform.position = SingletonTable.singletonTable.ggM.nodeArray[0, 0].grid.transform.position;
         monsterPortal.transform.position = monsterPortal.transform.parent.transform.position;
 
+        UpdateRoundWindows();
         StateChange();
     }
 
@@ -52,6 +54,8 @@ public class GameProgressManager : MonoBehaviour
 
     void StateChange()
     {
+        UpdateRoundWindows();
+
         if (onBreak == false)
         {
             Debug.Log(curRound + " Round Breaktime");
@@ -79,26 +83,46 @@ public class GameProgressManager : MonoBehaviour
         int curMonsterCost = curMonster.GetComponent<MonsterInfo>().cost;
         Debug.Log(curMonsterCost);
 
-        StartCoroutine(GenerateMonster(curMonsterCost));
+        isSpawningWave = true;
+        StartCoroutine(GenerateMonster(curRound, curMonsterCost));
     }
 
-    IEnumerator GenerateMonster(int curMonsterCost)
+    IEnumerator GenerateMonster(int round, int curMonsterCost)
     {
         for (int i = 0; i < 100; i += curMonsterCost)
         {
-            livingMonsters.Add(monsterPoolingManager.GetObject(curRound - 1));  //livingMonsters.Add(monsterPoolingManager.GetObject(curStage - 1, gameObject));   //it is not pooling but temporary method
+            livingMonsters.Add(monsterPoolingManager.GetObject(round - 1));  //livingMonsters.Add(monsterPoolingManager.GetObject(curStage - 1, gameObject));   //it is not pooling but temporary method
             controlCoroutine += curMonsterCost;
             yield return new WaitForSecondsRealtime(1f);
         }
+
+        isSpawningWave = false;
+        TryCompleteRound();
     }
 
     public void CheckLeftMonster() //Call when monster die
     {
-        if (livingMonsters.Count == 0)
+        TryCompleteRound();
+    }
+
+    private void TryCompleteRound()
+    {
+        if (isSpawningWave || livingMonsters.Count > 0) return;
+
+        Debug.Log(curRound + "Stage Clear");
+        curRound += 1;
+        UpdateRoundWindows();
+        StateChange();
+    }
+
+    private void UpdateRoundWindows()
+    {
+        if (SingletonTable.singletonTable == null) return;
+        if (SingletonTable.singletonTable.uwM == null) return;
+
+        if (SingletonTable.singletonTable.uwM.stageInfoWindow != null)
         {
-            Debug.Log(curRound + "Stage Clear");
-            curRound += 1;
-            StateChange();
+            SingletonTable.singletonTable.uwM.stageInfoWindow.UpdateWindowContent();
         }
     }
 }

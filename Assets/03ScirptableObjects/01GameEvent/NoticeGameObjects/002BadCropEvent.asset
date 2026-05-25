@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: 002BadCropEvent
   m_EditorClassIdentifier: 
   gameEventCode: 2
-  gameEventName: BadCrop
+  gameEventName: 흉년
   gameEventSprite: {fileID: 21300000, guid: 3925bbe669b832b49a3413c0e2bcef22, type: 3}
-  gameEventBodyText: We have a bad harvest this year.
+  gameEventBodyText: 가뭄과 병충해로 수확량이 크게 줄었습니다. 주민들의 버틸 힘이 약해집니다.
   actions:
   - {fileID: 11400000, guid: 5e02290d52de46279e3b755f31adff6e, type: 2}
-  primaryCondition: 1
-  secondaryCondition: 1
+  isEnabled: 1
+  availabilityConditions: []
+  baseWeight: 100
+  weightModifiers: []

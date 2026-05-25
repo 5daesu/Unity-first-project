@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7915f939d89da41a01eb0984fe927c, type: 3}
+  m_Name: 008MineCollapseEvent
+  m_EditorClassIdentifier: 
+  gameEventCode: 8
+  gameEventName: 광산 붕괴
+  gameEventSprite: {fileID: 21300000, guid: c268f80e69f4c952973a4cb2c0eba86d, type: 3}
+  gameEventBodyText: 인근 광산이 무너졌습니다. 복구를 위해 비상 자금이 빠져나갑니다.
+  actions:
+  - {fileID: 11400000, guid: 78a3adc6217a45b895c5873caaea43a0, type: 2}
+  isEnabled: 1
+  availabilityConditions: []
+  baseWeight: 35
+  weightModifiers: []
