@@ -31,7 +31,6 @@ public class SmoothMove : MonoBehaviour     //caution! : When values of pivot an
     void OnEnable()
     {
         rectTransform.localPosition = startPoint;
-        Debug.Log(rectTransform.localPosition.x + " " + rectTransform.localPosition.y + " " + rectTransform.localPosition.z);
         currentSpeed = initialSpeed;
         //StartCoroutine(Move());
         Callmove();
@@ -67,7 +66,6 @@ public class SmoothMove : MonoBehaviour     //caution! : When values of pivot an
 
     IEnumerator ReMove()
     {
-        Debug.Log("Remove");
         while (rectTransform.localPosition != startPoint)
         {
             rectTransform.localPosition = Vector3.MoveTowards(rectTransform.localPosition, startPoint, currentSpeed * Time.deltaTime);

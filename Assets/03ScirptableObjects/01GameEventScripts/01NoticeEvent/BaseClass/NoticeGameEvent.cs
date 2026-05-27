@@ -22,7 +22,7 @@ public class NoticeGameEvent : GameEvent
         if (!isEnabled) return false;
         if (availabilityConditions == null) return true;
 
-        // 조건은 AND 방식으로 처리한다. 하나라도 실패하면 후보에서 제외된다.
+        // 조건은 AND 방식으로 처리한다. 하나라도 실패하면 후보에서 제외한다.
         foreach (GameEventStatCondition condition in availabilityConditions)
         {
             if (condition == null) continue;
@@ -47,7 +47,7 @@ public class NoticeGameEvent : GameEvent
             }
         }
 
-        // 음수 가중치는 가중치 랜덤 선택을 망가뜨리므로 0 이상으로 제한한다.
+        // 음수 가중치는 가중치 기반 선택을 망가뜨리므로 0 이상으로 제한한다.
         return Mathf.Max(0f, weight);
     }
 }

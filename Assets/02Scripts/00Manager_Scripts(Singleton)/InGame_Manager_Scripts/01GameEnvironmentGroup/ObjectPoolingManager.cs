@@ -13,8 +13,6 @@ public class ObjectPoolingManager : MonoBehaviour
         pools = new List<GameObject>[prefabs.Length];
 
         for (int index = 0; index < pools.Length; index++) pools[index] = new List<GameObject>();
-
-        Debug.Log(pools.Length);
     }
 
     public GameObject GetObject(int index)

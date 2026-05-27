@@ -81,15 +81,12 @@ public class KeyBindingManager : MonoBehaviour      //it is a set with KeyInputM
         foreach (UserAction userAction in System.Enum.GetValues(typeof(UserAction)))
         {
             keyBindingPreset.keyCodeList[i] = System.Enum.GetName(typeof(KeyCode), curKeybindingSet[userAction]);
-            Debug.Log(System.Enum.GetName(typeof(KeyCode), curKeybindingSet[userAction]));
 
             i++;
         }
 
         string jsonData = JsonUtility.ToJson(keyBindingPreset);
-        Debug.Log(jsonData);
         File.WriteAllText(filePath + "/keyBindingPreset" + fileIndex, jsonData);
-        Debug.Log(filePath + "/keyBindingPreset saved");
     }
 
     public void LoadPreset(int fileIndex)

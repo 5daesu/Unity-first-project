@@ -29,7 +29,6 @@ public class KeyInputManager : MonoBehaviour        //it is a set with KeyBindin
             if (SingletonTable.singletonTable.uwM.topTogglingWindow != null) SingletonTable.singletonTable.uwM.topTogglingWindow.CloseWindow();
             else
             {
-                Debug.Log("esc!");
                 SingletonTable.singletonTable.uwM.gameSettingScreen.OpenWindow();
             }
         }

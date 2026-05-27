@@ -15,26 +15,25 @@ public class MainButton : MonoBehaviour
         button = GetComponent<Button>();
     }
 
-    public void CheckButtonState(GameObject selctedObject)
+    public void CheckButtonState(GameObject selectedObject)
     {
-        Debug.Log("Call CheckButtonState");
         if (SingletonTable.singletonTable.soM.SelectedUnitCount() > 0)
         {
             if (SingletonTable.singletonTable.soM.HasMergeableSelection()) ChangeButtonState(5);
             else ChangeButtonState(4);
         }
-        else if (selctedObject == null)
+        else if (selectedObject == null)
         {
             ChangeButtonState(0);
         }
-        else if (selctedObject.tag == "Grid")
+        else if (selectedObject.tag == "Grid")
         {
-            bool castle = selctedObject.GetComponent<GameGrid>().castle;
+            bool castle = selectedObject.GetComponent<GameGrid>().castle;
 
             if (castle == false)
             {
                 bool onBreak = SingletonTable.singletonTable.gpM.onBreak;
-                Node selectedNode = SingletonTable.singletonTable.ggM.nodeArray[selctedObject.GetComponent<GameGrid>().i_Row - 1, selctedObject.GetComponent<GameGrid>().i_Column - 1];
+                Node selectedNode = SingletonTable.singletonTable.ggM.nodeArray[selectedObject.GetComponent<GameGrid>().i_Row - 1, selectedObject.GetComponent<GameGrid>().i_Column - 1];
                 bool checkPath = SingletonTable.singletonTable.rtM.CheckPath(selectedNode);
                 int playerMoney = SingletonTable.singletonTable.piM.playerMoney;
                 int castleCost = SingletonTable.singletonTable.piM.castleCost;
@@ -44,7 +43,7 @@ public class MainButton : MonoBehaviour
             }
             else
             {
-                bool summon = selctedObject.GetComponent<GameGrid>().summon;
+                bool summon = selectedObject.GetComponent<GameGrid>().summon;
                 int playerMoney = SingletonTable.singletonTable.piM.playerMoney;
                 int summonCost = SingletonTable.singletonTable.piM.summonCost;
 
@@ -55,11 +54,11 @@ public class MainButton : MonoBehaviour
                 }
                 else    //This scope can run well because selectedObject is ref value
                 {
-                    SingletonTable.singletonTable.soM.ChangeSelected(selctedObject.GetComponent<GameGrid>().unit);    //Never write "CheckButtonState(selctedObject);", it makes infinity loof. because it's already there
+                    SingletonTable.singletonTable.soM.ChangeSelected(selectedObject.GetComponent<GameGrid>().unit);    //Never write "CheckButtonState(selectedObject);", it makes infinity loop. because it's already there
                 }
             }
         }
-        else if (selctedObject.tag == "Unit")
+        else if (selectedObject.tag == "Unit")
         {
 
             //if(cant merge)ChangeButtonState(5)
@@ -69,33 +68,32 @@ public class MainButton : MonoBehaviour
         }
         else
         {
-            SingletonTable.singletonTable.soM.UnSelsectObject();
+            SingletonTable.singletonTable.soM.UnSelectObject();
             ChangeButtonState(0);
         }
     }
 
     public void CheckButtonState()  //Its overloading. When selectedObj didnt change, it should be call
     {
-        Debug.Log("Call CheckButtonState");
-        GameObject selctedObject = SingletonTable.singletonTable.soM.selectedObject;
+        GameObject selectedObject = SingletonTable.singletonTable.soM.selectedObject;
 
         if (SingletonTable.singletonTable.soM.SelectedUnitCount() > 0)
         {
             if (SingletonTable.singletonTable.soM.HasMergeableSelection()) ChangeButtonState(5);
             else ChangeButtonState(4);
         }
-        else if (selctedObject == null)
+        else if (selectedObject == null)
         {
             ChangeButtonState(0);
         }
-        else if (selctedObject.tag == "Grid")
+        else if (selectedObject.tag == "Grid")
         {
-            bool castle = selctedObject.GetComponent<GameGrid>().castle;
+            bool castle = selectedObject.GetComponent<GameGrid>().castle;
 
             if (castle == false)
             {
                 bool onBreak = SingletonTable.singletonTable.gpM.onBreak;
-                Node selectedNode = SingletonTable.singletonTable.ggM.nodeArray[selctedObject.GetComponent<GameGrid>().i_Row - 1, selctedObject.GetComponent<GameGrid>().i_Column - 1];
+                Node selectedNode = SingletonTable.singletonTable.ggM.nodeArray[selectedObject.GetComponent<GameGrid>().i_Row - 1, selectedObject.GetComponent<GameGrid>().i_Column - 1];
                 bool checkPath = SingletonTable.singletonTable.rtM.CheckPath(selectedNode);
                 int playerMoney = SingletonTable.singletonTable.piM.playerMoney;
                 int castleCost = SingletonTable.singletonTable.piM.castleCost;
@@ -105,7 +103,7 @@ public class MainButton : MonoBehaviour
             }
             else
             {
-                bool summon = selctedObject.GetComponent<GameGrid>().summon;
+                bool summon = selectedObject.GetComponent<GameGrid>().summon;
                 int playerMoney = SingletonTable.singletonTable.piM.playerMoney;
                 int summonCost = SingletonTable.singletonTable.piM.summonCost;
 
@@ -116,11 +114,11 @@ public class MainButton : MonoBehaviour
                 }
                 else    //This scope can run well because selectedObject is ref value
                 {
-                    SingletonTable.singletonTable.soM.ChangeSelected(selctedObject.GetComponent<GameGrid>().unit);    //Never write "CheckButtonState(selctedObject);" because it's already there
+                    SingletonTable.singletonTable.soM.ChangeSelected(selectedObject.GetComponent<GameGrid>().unit);    //Never write "CheckButtonState(selectedObject);" because it's already there
                 }
             }
         }
-        else if (selctedObject.tag == "Unit")
+        else if (selectedObject.tag == "Unit")
         {
             //if(cant merge)ChangeButtonState(5)
             ChangeButtonState(4);
@@ -129,7 +127,7 @@ public class MainButton : MonoBehaviour
         }
         else
         {
-            SingletonTable.singletonTable.soM.UnSelsectObject();
+            SingletonTable.singletonTable.soM.UnSelectObject();
             ChangeButtonState(0);
         }
     }

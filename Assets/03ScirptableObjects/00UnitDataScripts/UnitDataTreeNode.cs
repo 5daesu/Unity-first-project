@@ -26,15 +26,6 @@ public class UnitDataTreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExi
         blankImageCanvasGroup.alpha = 0f;
     }
 
-    /*
-    public void OnClickTreeNode()
-    {
-        Debug.Log(unitData.unitName);
-        if (unitData.unitLevel == 1) Debug.Log("Unit Level is 1, There's No Recipe");
-        else Debug.Log("Unit Level is " + unitData.unitLevel);
-    }
-    */
-
     public void ResetUnitImage(Sprite unitSprite)
     {
         unitImageObject.sprite = unitSprite;
@@ -42,7 +33,6 @@ public class UnitDataTreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void MarkTreeNode()
     {
-        Debug.Log("Marking");
         blankImageCanvasGroup.alpha = 0.5f;
     }
 

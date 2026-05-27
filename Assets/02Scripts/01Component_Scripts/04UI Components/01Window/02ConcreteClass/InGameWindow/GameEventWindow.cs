@@ -168,8 +168,6 @@ public class GameEventWindow : TogglingWindow
 
     public void OnClickButton0()
     {
-        Debug.Log("Clicked");
-
         ExecuteCurrentGameEvent(0);
         CloseWindow();
     }

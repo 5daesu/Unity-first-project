@@ -25,7 +25,6 @@ public class DragAction : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log(eventData.pointerDrag.gameObject.name);
         rectTransform.anchoredPosition += eventData.delta; // maybe parent's object's scale value;
     }
 
@@ -37,6 +36,5 @@ public class DragAction : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
     public void OnPointerDown(PointerEventData eventData)
     {
         //eventData.pointerClick.gameObject = blankObject;
-        Debug.Log("OnPointerDown");
     }
 }

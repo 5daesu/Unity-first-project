@@ -25,7 +25,7 @@ public class InGameUI : MonoBehaviour
         else if (mainButton.buttonState == 3)
         {
             SummonUnit();
-            SingletonTable.singletonTable.soM.UnSelsectObject();  //There is CheckButtonState
+            SingletonTable.singletonTable.soM.UnSelectObject();
         }
         else if (mainButton.buttonState == 5)
         {
@@ -59,7 +59,7 @@ public class InGameUI : MonoBehaviour
         GameGrid resultGrid = selectedUnits[0].transform.parent.GetComponent<GameGrid>();
         if (resultGrid == null) return;
 
-        SingletonTable.singletonTable.soM.UnSelsectObject();
+        SingletonTable.singletonTable.soM.UnSelectObject();
 
         foreach (GameObject selectedUnit in selectedUnits)
         {

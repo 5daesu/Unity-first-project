@@ -30,7 +30,6 @@ public class SmoothMoveTogglingAction : TogglingAction
     void OnEnable()
     {
         rectTransform.localPosition = startPoint;
-        Debug.Log(rectTransform.localPosition.x + " " + rectTransform.localPosition.y + " " + rectTransform.localPosition.z);
         currentSpeed = initialSpeed;
     }
 

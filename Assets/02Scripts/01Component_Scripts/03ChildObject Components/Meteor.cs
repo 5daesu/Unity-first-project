@@ -51,7 +51,6 @@ public class Meteor : MonoBehaviour
     {
         if (Vector3.Distance(gameObject.transform.position, targetPosition) <= 0.01f)
         {
-            Debug.Log("meteor bomb");
             ApplyDamage();
             PlayExplosion();
         }

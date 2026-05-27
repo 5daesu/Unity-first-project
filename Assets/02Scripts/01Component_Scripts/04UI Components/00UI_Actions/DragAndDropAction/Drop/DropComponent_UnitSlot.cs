@@ -13,9 +13,6 @@ public class DropComponent_UnitSlot : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("Drop");
-        Debug.Log(eventData.pointerDrag.gameObject.name);
-
         if (eventData.pointerDrag != null)
         {
             deckEditBoxObject.GetComponent<DeckEditorBox>().UpdateUnitSlot(lv, index, eventData.pointerDrag.transform.parent.transform.parent.GetComponent<UnitDataTreeNode>().unitData);

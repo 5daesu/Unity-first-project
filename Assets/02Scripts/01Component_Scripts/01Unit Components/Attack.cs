@@ -55,10 +55,8 @@ public class Attack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("There is collision");
         if (other.tag == "Enemy")
         {
-            Debug.Log("Enemy entered attack range");
             onAttack = true;
             if (!enemyList.Contains(other.gameObject)) enemyList.Add(other.gameObject);
         }
@@ -79,7 +77,6 @@ public class Attack : MonoBehaviour
         if (enemyList.Count < 1)
         {
             onAttack = false;
-            Debug.Log("Attack state released");
             timer = 0;
         }
     }
@@ -109,18 +106,16 @@ public class Attack : MonoBehaviour
             if (timer > atkTerm)
             {
                 timer = 0;
-                AttckMoment();
+                AttackMoment();
             }
         }
     }
 
-    void AttckMoment()  //Just the time( because of animating )
+    void AttackMoment()
     {
         GameObject target = GetTarget();
         if (target == null) return;
 
-        //state = ~~~;
-        Debug.Log("Attack");
         GameObject attackObject = SingletonTable.singletonTable.opM.GetObject(poolingIndex, gameObject);
 
         Arrow arrow = attackObject.GetComponent<Arrow>();

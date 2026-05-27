@@ -65,19 +65,14 @@ public class UiWindowManager : MonoBehaviour
     public void RemoveWindowFromWindowList(TogglingWindow targetWindow)     //Remove Window and Reorder sortingorder
     {
         togglingWindows.Remove(targetWindow);
-        Debug.Log("Remove " + targetWindow);
 
         ReorderWindowSortingOrder();
     }
 
     private void ReorderWindowSortingOrder()    //Rearrange sortingorder
     {
-        foreach (TogglingWindow window in togglingWindows)
-            Debug.Log(window + " in List");
-
         if (togglingWindows.Count == 0)
         {
-            Debug.Log("togglingWindow List is empty!");
             topTogglingWindow = null;
         }
         else

@@ -66,7 +66,6 @@ public class Deck
         }
 
         UnitData selectedUnitData = summonableUnits[Random.Range(0, summonableUnits.Count)];
-        if (selectedUnitData.unitPrefab != null) Debug.Log(selectedUnitData.unitPrefab.name);
         return selectedUnitData;
     }
 

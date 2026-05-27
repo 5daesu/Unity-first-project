@@ -20,7 +20,6 @@ public class DeckBuildingBox : MonoBehaviour
 
     public void OnClickExitButton()
     {
-        Debug.Log("exit");
         gameObject.GetComponent<SmoothMove>().CallRemove();
     }
 }

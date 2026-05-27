@@ -36,7 +36,6 @@ public class GameSettingWindow : MonoBehaviour
     public void OnClickSaveButton()
     {
         SingletonTable.singletonTable.kbM.SavePreset(0);
-        Debug.Log("Save Button Clicked");
     }
 
     private void ChangeTab(GameObject newTab)

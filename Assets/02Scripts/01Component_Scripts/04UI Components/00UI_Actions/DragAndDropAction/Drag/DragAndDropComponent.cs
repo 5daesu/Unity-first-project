@@ -45,8 +45,6 @@ public class DragAndDropComponent : MonoBehaviour, IPointerDownHandler, IBeginDr
         canvas.sortingOrder = 9;
         canvasGroup.blocksRaycasts = false;
         canvasGroup.alpha = 0.6f;
-
-        Debug.Log("BeginDrag");
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -68,6 +66,5 @@ public class DragAndDropComponent : MonoBehaviour, IPointerDownHandler, IBeginDr
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("OnPointerDown");
     }
 }

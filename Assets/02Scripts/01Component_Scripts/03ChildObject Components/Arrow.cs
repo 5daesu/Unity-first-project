@@ -24,7 +24,6 @@ public class Arrow : MonoBehaviour
 
         if (other.tag == "Enemy")    //it should be changed
         {
-            Debug.Log("arrow hit");
             other.GetComponent<MonsterBehavior>().GetDamage(atkType, atkDamage);
             gameObject.SetActive(false);
         }

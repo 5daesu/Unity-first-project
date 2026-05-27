@@ -86,11 +86,9 @@ public class TreeNodeSpace : MonoBehaviour  //TreeNodeGenerator also make sapce 
 
         for (int i = 0; i < lvLength[unitLevel - 1]; i++)
         {
-            Debug.Log("Find TreeNode");
             if (unitCode == treeNodeArray[unitLevel - 1, i].GetComponent<UnitDataTreeNode>().unitCode) return treeNodeArray[unitLevel - 1, i];
         }
 
-        Debug.Log("Can't Find TreeNode");
         return null;
     }
 

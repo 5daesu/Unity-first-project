@@ -31,9 +31,9 @@ public class SelectedObjectManager : MonoBehaviour
         UpdateAttackRangeIndicatorPosition();
     }
 
-    public void UnSelsectObject()
+    public void UnSelectObject()
     {
-        if (SingletonTable.singletonTable.soM.selectedObject == null && selectedUnits.Count == 0)   //write for -> if there's no ref for selectedObject this method will make error
+        if (SingletonTable.singletonTable.soM.selectedObject == null && selectedUnits.Count == 0)
         {
             HideAttackRange();
             InGameUI.inGameUI.mainButton.CheckButtonState(selectedObject);
@@ -51,6 +51,7 @@ public class SelectedObjectManager : MonoBehaviour
         HideAttackRange();
         //selected = false;
         SingletonTable.singletonTable.soM.selectedObject = null;
+        SingletonTable.singletonTable.rtM.RefreshRoutePreview();
 
         InGameUI.inGameUI.mainButton.CheckButtonState(selectedObject);
     }
@@ -59,7 +60,7 @@ public class SelectedObjectManager : MonoBehaviour
     {
         if (tmp == null)
         {
-            UnSelsectObject();
+            UnSelectObject();
             return;
         }
 
@@ -71,18 +72,16 @@ public class SelectedObjectManager : MonoBehaviour
 
         if (tmp == selectedObject)  //if user click same things it should be unselected
         {
-            UnSelsectObject();
+            UnSelectObject();
         }
         else
         {
-            UnSelsectObject();
+            UnSelectObject();
             selectedObject = tmp;
             DarkenSelectedObject(tmp);
 
             ShowAttackRange(selectedObject);
-            //selected = true;
-            //StartCoroutine(SelectVFX(selectedSpriteRenderer));
-            Debug.Log("New object is Selected");
+            SingletonTable.singletonTable.rtM.RefreshRoutePreview();
 
             InGameUI.inGameUI.mainButton.CheckButtonState(selectedObject);
         }
@@ -141,12 +140,13 @@ public class SelectedObjectManager : MonoBehaviour
 
         selectedObject = selectedUnits.Count > 0 ? selectedUnits[selectedUnits.Count - 1] : null;
         ShowAttackRange(selectedObject);
+        SingletonTable.singletonTable.rtM.RefreshRoutePreview();
         InGameUI.inGameUI.mainButton.CheckButtonState(selectedObject);
     }
 
     private void DarkenSelectedObject(GameObject target)
     {
-        SpriteRenderer selectedSpriteRenderer = target.GetComponent<SpriteRenderer>();    //for visual effects
+        SpriteRenderer selectedSpriteRenderer = target.GetComponent<SpriteRenderer>();
         if (selectedSpriteRenderer == null) return;
 
         if (selectedObjectOriginalColors.ContainsKey(target) == false)
@@ -239,29 +239,4 @@ public class SelectedObjectManager : MonoBehaviour
 
         attackRangeIndicator.transform.position = selectedObject.transform.position;
     }
-
-    
-    /*
-    IEnumerator SelectVFX(SpriteRenderer spriteRenderer)
-    {
-        bool alphaDown = false;
-        spriteRenderer.color = new Color(1, 1, 1, 0.25f);
-
-        while (selected)
-        {
-            if (spriteRenderer.color.a <= 0.5f) alphaDown = false;
-            else if (spriteRenderer.color.a >= 1) alphaDown = true;
-
-            if (alphaDown == true) spriteRenderer.color -= new Color(1, 1, 1, 0.6f * Time.deltaTime);
-            else spriteRenderer.color += new Color(1, 1, 1, 0.6f * Time.deltaTime);
-
-            yield return null;  // new WaitForSeconds(0.1f);
-            if(!selected)
-            {
-                spriteRenderer.color = new Color(1, 1, 1, 1);
-                yield break;
-            }
-        }
-    }
-    */
 }

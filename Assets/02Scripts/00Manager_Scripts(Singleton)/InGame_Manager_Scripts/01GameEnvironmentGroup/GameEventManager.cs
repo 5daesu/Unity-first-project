@@ -34,7 +34,6 @@ public class GameEventManager : MonoBehaviour
 
     public void DrawGameEvent()    //Draw is like a roulette, bbopkki
     {
-        Debug.Log("Draw GameEvent!");
         RefreshAvailableGameEvents();
 
         if (availableGameEvents.Count == 0)

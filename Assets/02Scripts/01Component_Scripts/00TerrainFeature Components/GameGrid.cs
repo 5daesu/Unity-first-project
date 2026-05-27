@@ -51,11 +51,11 @@ public class GameGrid : MonoBehaviour
         castle = true;
         gridsprite.sprite = castlesprite;
         RefreshSortingOrder();
+        SingletonTable.singletonTable.rtM.RefreshRoutePreview();
     }
 
     public void Summon()    //summon unit on castle
     {
-        Debug.Log("Summon");
         int i = Random.Range(0, 5);
         UnitData summonedUnitData = SingletonTable.singletonTable.piM.playerDeck.SummonUnitData();
         if (summonedUnitData == null || summonedUnitData.unitPrefab == null) return;
@@ -82,7 +82,6 @@ public class GameGrid : MonoBehaviour
             {
                 if (summon == false) SingletonTable.singletonTable.soM.ChangeSelected(gameObject);
                 else SingletonTable.singletonTable.soM.ChangeSelected(unit);
-                Debug.Log(i_Row + " row " + i_Column + " column");
             }
         }
     }

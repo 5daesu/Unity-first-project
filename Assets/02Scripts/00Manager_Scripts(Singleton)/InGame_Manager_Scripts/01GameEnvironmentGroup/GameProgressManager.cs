@@ -58,19 +58,18 @@ public class GameProgressManager : MonoBehaviour
 
         if (onBreak == false)
         {
-            Debug.Log(curRound + " Round Breaktime");
             onBreak = true;
 
             SingletonTable.singletonTable.geM.DrawGameEvent();                                                                    //Drawing GameEvent
             SingletonTable.singletonTable.uwM.gameEventWindow.GetComponent<GameEventWindow>().OpenWindow();                       //Setting Active
             
+            SingletonTable.singletonTable.rtM.RefreshRoutePreview();
             InGameUI.inGameUI.mainButton.CheckButtonState(SingletonTable.singletonTable.soM.selectedObject);
         }
         else
         {
             onBreak = false;
             InGameUI.inGameUI.mainButton.CheckButtonState(SingletonTable.singletonTable.soM.selectedObject);  //it should be faster than StartStage() because after running PathFinding() it should be never changed
-            Debug.Log(curRound + " Wave Start");
             StartWave();
         }
     }
@@ -81,7 +80,6 @@ public class GameProgressManager : MonoBehaviour
 
         curMonster = stageMonsters[curRound - 1];
         int curMonsterCost = curMonster.GetComponent<MonsterInfo>().cost;
-        Debug.Log(curMonsterCost);
 
         isSpawningWave = true;
         StartCoroutine(GenerateMonster(curRound, curMonsterCost));
@@ -109,7 +107,6 @@ public class GameProgressManager : MonoBehaviour
     {
         if (isSpawningWave || livingMonsters.Count > 0) return;
 
-        Debug.Log(curRound + "Stage Clear");
         curRound += 1;
         UpdateRoundWindows();
         StateChange();

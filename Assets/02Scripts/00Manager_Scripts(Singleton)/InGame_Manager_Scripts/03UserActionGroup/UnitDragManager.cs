@@ -63,25 +63,21 @@ public class UnitDragManager : MonoBehaviour        //Action about Moving Unit b
 
         if (onDrag == true && Input.GetMouseButtonUp(0))
         {
-            //Debug.Log(mousePosition.x + "+" + mousePosition.y + "+" + mousePosition.z);
             Ray ray = new Ray(mousePosition - new Vector3(0, 0, -0.5f), new Vector3(0, 0, -1f));
-            //Debug.Log(ray.origin + "+" + ray.direction);
 
             hitCollider = Physics2D.GetRayIntersection(ray);
 
             if (hitCollider.collider != null)    //6 is Grid LayerMask
             {
-                //Debug.Log("there is RaycastHit");
                 GameObject hitObject = hitCollider.transform.gameObject;
 
                 if (hitObject.tag == "Grid")
                 {
                     afterGrid = hitObject.GetComponent<GameGrid>();
-                    //Debug.Log(grid.i_Row + "+" + grid.i_Column);
 
                     if (afterGrid.castle == false)
                     {
-                        Debug.Log("Wrong Grid");
+                        onDrag = false;
                     }
                     else
                     {
